@@ -10,3 +10,10 @@ spec:
   gitPollInterval: 0m30s
   clusterRole:
     enabled: true
+  fluxCloud:
+    enabled: true
+    githubUrl: https://github.com/mozilla-it/voice-infra
+    slackUrl: https://hooks.slack.com/services/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
+    slackChannel: "#k8s"
+  args:
+    connect: "ws://fluxcloud/"
