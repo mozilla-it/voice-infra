@@ -1,0 +1,12 @@
+apiVersion: "flux.codesink.net/v1alpha1"
+kind: "Flux"
+metadata:
+  name: "voice"
+spec:
+  namespace: flux-system
+  gitUrl: ssh://git@github.com/mozilla-it/voice-infra.git
+  gitBranch: master
+  gitPath: k8s/cluster
+  gitPollInterval: 0m30s
+  clusterRole:
+    enabled: true
