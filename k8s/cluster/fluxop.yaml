@@ -1,4 +1,3 @@
----
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -443,3 +442,115 @@ status:
     plural: ""
   conditions: []
   storedVersions: []
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: fluxhelmreleases.helm.integrations.flux.weave.works
+spec:
+  group: helm.integrations.flux.weave.works
+  names:
+    kind: FluxHelmRelease
+    listKind: FluxHelmReleaseList
+    plural: fluxhelmreleases
+  scope: Namespaced
+  version: v1alpha2
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  name: flux-operator
+  namespace: flux-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: flux-operator
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- nonResourceURLs:
+  - '*'
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: null
+  name: flux-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: flux-operator
+subjects:
+- kind: ServiceAccount
+  name: flux-operator
+  namespace: flux-system
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: flux-operator
+  namespace: flux-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flux-operator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flux-operator
+    spec:
+      containers:
+      - env:
+        - name: WATCH_NAMESPACE
+          value: flux-system
+        - name: GIT_SECRET_NAME
+        - name: FLUX_IMAGE
+          value: fluxcd/flux
+        - name: FLUX_VERSION
+          value: 1.16.0
+        - name: HELM_OPERATOR_IMAGE
+          value: quay.io/weaveworks/helm-operator
+        - name: HELM_OPERATOR_VERSION
+          value: 0.4.0
+        - name: MEMCACHED_IMAGE
+          value: memcached
+        - name: MEMCACHED_VERSION
+          value: 1.4.36-alpine
+        - name: TILLER_IMAGE
+          value: gcr.io/kubernetes-helm/tiller
+        - name: TILLER_VERSION
+          value: v2.9.1
+        - name: FLUX_NAMESPACE
+        - name: DISABLE_ROLES
+          value: "false"
+        - name: DISABLE_CLUSTER_ROLES
+          value: "false"
+        image: justinbarrick/flux-operator:v0.0.2
+        imagePullPolicy: IfNotPresent
+        name: flux-operator
+        resources:
+          limits:
+            cpu: 250m
+            memory: 512Mi
+      serviceAccountName: flux-operator
+status: {}
