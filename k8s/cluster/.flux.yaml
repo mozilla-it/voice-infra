@@ -1,4 +1,5 @@
-version: 1
+---
 commandUpdated:
   generators:
-    - command: kustomize build .
+  - command: kustomize build .
+version: 1

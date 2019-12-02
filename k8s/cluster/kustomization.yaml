@@ -7,3 +7,4 @@ resources:
 - flux.yaml
 - sealed-secrets
 - kubecost
+- kube2iam
