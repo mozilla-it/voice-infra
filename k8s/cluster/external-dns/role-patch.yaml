@@ -1,0 +1,10 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: external-dns
+spec:
+  template:
+    metadata:
+      annotations:
+        iam.amazonaws.com/role: external-dns

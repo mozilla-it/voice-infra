@@ -9,3 +9,5 @@ resources:
 - kubecost
 - kube2iam
 - velero
+- cluster-autoscaler
+- external-dns
