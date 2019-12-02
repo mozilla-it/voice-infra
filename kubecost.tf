@@ -46,7 +46,10 @@ data "aws_iam_policy_document" "kubecost_policy" {
       "s3:List*",
     ]
 
-    resources = ["${aws_s3_bucket.kubecost.arn}/*"]
+    resources = [
+      "${aws_s3_bucket.kubecost.arn}/*",
+      "${aws_s3_bucket.kubecost.arn}",
+    ]
   }
 }
 

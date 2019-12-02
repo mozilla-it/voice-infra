@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  template:
+    metadata:
+      annotations:
+        iam.amazonaws.com/role: velero
+---
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: default
+  namespace: velero
+spec:
+  config:
+    region: us-west-2
+  provider: aws
+---
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: default
+  namespace: velero
+spec:
+  config:
+    region: us-west-2
+  provider: aws
+  objectStorage:
+    bucket: velero-voice-20191202191224448900000001

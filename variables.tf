@@ -5,3 +5,7 @@ variable "region" {
 variable "cluster_version" {
   default = "1.13"
 }
+
+variable "cluster_name" {
+  default = "voice"
+}
