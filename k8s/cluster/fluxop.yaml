@@ -528,6 +528,8 @@ spec:
           value: fluxcd/flux
         - name: FLUX_VERSION
           value: 1.16.0
+        - name: FLUXCLOUD_VERSION
+          value: v0.3.9
         - name: HELM_OPERATOR_IMAGE
           value: quay.io/weaveworks/helm-operator
         - name: HELM_OPERATOR_VERSION
