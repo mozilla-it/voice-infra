@@ -12,3 +12,4 @@ resources:
 - cluster-autoscaler
 - external-dns
 - dashboard
+- voice
