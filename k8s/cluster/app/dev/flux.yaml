@@ -8,12 +8,11 @@ spec:
   args:
     manifest-generation: 'true'
     sync-garbage-collection: 'true'
+    connect: "ws://flux-voice-fluxcloud.flux-system/"
   clusterRole:
     enabled: false
   role:
     enabled: true
-  args:
-    connect: "ws://flux-voice-fluxcloud.flux-system/"
   gitBranch: master
   gitPath: k8s/app/dev
   gitPollInterval: 0m30s
