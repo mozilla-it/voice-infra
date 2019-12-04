@@ -1,0 +1,21 @@
+---
+apiVersion: flux.codesink.net/v1alpha1
+kind: Flux
+metadata:
+  name: voice-stage
+spec:
+  namespace: voice-stage
+  args:
+    manifest-generation: 'true'
+    sync-garbage-collection: 'true'
+    connect: "ws://flux-voice-fluxcloud.flux-system/"
+    git-ci-skip: 'true'
+    k8s-namespace-whitelist: voice-stage
+  clusterRole:
+    enabled: false
+  role:
+    enabled: true
+  gitBranch: master
+  gitPath: k8s/app/stage
+  gitPollInterval: 0m30s
+  gitUrl: ssh://git@github.com/mozilla-it/voice-infra.git
