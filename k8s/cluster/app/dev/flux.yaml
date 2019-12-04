@@ -4,6 +4,7 @@ kind: Flux
 metadata:
   name: voice
 spec:
+  namespace: voice-dev
   args:
     manifest-generation: 'true'
     sync-garbage-collection: 'true'
