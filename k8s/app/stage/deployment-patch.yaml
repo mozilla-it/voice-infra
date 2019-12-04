@@ -5,3 +5,4 @@ metadata:
   annotations:
    flux.weave.works/automated: "true"
    flux.weave.works/tag.web: "glob:master-*"
+   external-dns.alpha.kubernetes.io/hostname: voice.allizom.org
