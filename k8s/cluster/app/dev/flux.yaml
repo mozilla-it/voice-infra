@@ -10,7 +10,7 @@ spec:
     sync-garbage-collection: 'true'
     connect: "ws://flux-voice-fluxcloud.flux-system/"
     git-ci-skip: 'true'
-    k8s-namespace-whitelist: voice-dev
+    k8s-allow-namespace: voice-dev
   clusterRole:
     enabled: false
   role:
