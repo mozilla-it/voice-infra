@@ -7,6 +7,7 @@ spec:
   args:
     manifest-generation: 'true'
     sync-garbage-collection: 'true'
+    git-ci-skip: 'true'
   clusterRole:
     enabled: true
   fluxCloud:
