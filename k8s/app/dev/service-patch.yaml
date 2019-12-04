@@ -3,4 +3,4 @@ kind: Service
 metadata:
   name: voice
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: voice-dev.allizom.org.
+    external-dns.alpha.kubernetes.io/hostname: voice-dev.allizom.org.,voice-dev.core.us-west-2.appsvcs-voice.nubis.allizom.org.
