@@ -4,6 +4,8 @@ namespace: voice-dev
 resources:
 - deployment.yaml
 - service.yaml
+patchesStrategicMerge:
+- deployment-patch.yaml
 commonAnnotations:
   owner: gozer@mozilla.com
   team: itsre
