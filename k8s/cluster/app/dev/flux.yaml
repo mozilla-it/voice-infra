@@ -9,6 +9,7 @@ spec:
     manifest-generation: 'true'
     sync-garbage-collection: 'true'
     connect: "ws://flux-voice-fluxcloud.flux-system/"
+    k8s-namespace-whitelist: voice-dev
   clusterRole:
     enabled: false
   role:
