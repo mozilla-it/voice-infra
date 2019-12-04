@@ -1,6 +1,5 @@
 ---
-commandUpdated:
+patchUpdated:
   generators:
-  - command: kustomize build .
+    - command: kustomize build .
   patchFile: flux-patch.yaml
-version: 1
