@@ -1,0 +1,14 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voice
+  namespace: voice-prod
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: web
+      containers:
+      - image: itsre/voice-web:master-71fc21482a01da0469a24ddb85487980f4acde12
+        name: web
