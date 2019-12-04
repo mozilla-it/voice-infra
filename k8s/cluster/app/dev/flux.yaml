@@ -2,7 +2,7 @@
 apiVersion: flux.codesink.net/v1alpha1
 kind: Flux
 metadata:
-  name: voice
+  name: voice-dev
 spec:
   namespace: voice-dev
   args:
