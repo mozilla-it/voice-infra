@@ -12,4 +12,5 @@ resources:
 - cluster-autoscaler
 - external-dns
 - dashboard
+- metrics-server
 - app
