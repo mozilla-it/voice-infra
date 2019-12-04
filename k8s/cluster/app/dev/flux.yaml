@@ -1,0 +1,17 @@
+---
+apiVersion: flux.codesink.net/v1alpha1
+kind: Flux
+metadata:
+  name: voice
+spec:
+  args:
+    manifest-generation: 'true'
+    sync-garbage-collection: 'true'
+  role:
+    enabled: true
+  args:
+    connect: "ws://fluxcloud.flux-system/"
+  gitBranch: master
+  gitPath: k8s/app/dev
+  gitPollInterval: 0m30s
+  gitUrl: ssh://git@github.com/mozilla-it/voice-infra.git

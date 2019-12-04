@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voice
+spec:
+  selector:
+    matchLabels:
+      app: voice
+  # tells deployment to run 2 pods matching the template
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: voice
+    spec:
+      containers:
+      - name: web
+        command:
+          - yarn
+          - start:prod
+        image: itsre/voice-web:master-latest
+        ports:
+        - containerPort: 9000
+        livenessProbe:
+          httpGet:
+            port: 9000
+            path: /api/v1/metrics
+        readinessProbe:
+          httpGet:
+            port: 9000
+            path: /api/v1/metrics
+        resources:
+          limits:
+            cpu: '1'
+            memory: 512Mi
+          requests:
+            cpu: 125m
+            memory: 256Mi
+        env:
+        - name: SERVER_CONFIG_PATH
+          value: /dev/null
+        - name: K8S_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
