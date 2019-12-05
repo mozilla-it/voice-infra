@@ -2,7 +2,6 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: 
   name: kubecost-token
   namespace: kubecost
 spec:
@@ -10,8 +9,6 @@ spec:
     kubecost-token: AgBw5IHHvigvDa1iKGjA+bWxAuVOIV/KJ6+Ma2vzCeffogKrk9TgmXNRs5Tmr2SP0MaZfiO8Vd29dd2k32015XMEZOk3yHgoICJVLwAtewAQfIHFiCFD1RU4K/DKZmYVvLzTlIZ5vOqJ8EmyFQlYs/D7XJs4PC+n9+seNbWzd+v/ltN7pjtCm7tj0509VQ2WJZ8zyQdx4l4Ow6+nIVWgBF486JEiai2LR3WGqHe2Xh6WPMe2fuKA8gCe70RGy75Mxddmo+Zb6cKoTfbaN/mFDsPT1IELSdr3ybpeePwTpndhrig0og38lN9fkke8ZCFRqGLYA6VUsxT061xCVc+KclpTF/Yb1Lr0AK5iGRt13jaOMmTiq9Xm+8Xnzm1yNG7nb/rCr9zBhvmwyex5q9VWzAdLX6SpprZvXOyo01IbXfKQ8SkIsTtuUFcRUA1aHtCrtLyaPicej68ANTm9dVeE0s55VINQCBTwc7tP1YJRBe4M3A2cndhYT0x61eGV5CuNi1zT45UpBOkPC62ZWaH35BsC5XW8yAWPgKpsUGDaf2BShBMQZ3G6pWvkUhjEp2fI+HEuOs0GjBOA8wsrqO+ULvHaRnJcppWNfCjSNC7wkx7FQF7J7YHoTE5OqaY2kPW5+CudO3QIwQ16veepw3zixEs/diJhIvB8YRXwVLSC1Z0S0vhcE5OGoNpCd+RivPSE72g1PcSuT30QoZsEmRnJvw6XcoHjwgV/dHuTBMXwCZRzjC1Fvw==
   template:
     metadata:
-      creationTimestamp: 
       name: kubecost-token
       namespace: kubecost
     type: Opaque
-status: {}
