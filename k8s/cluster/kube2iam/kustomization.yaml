@@ -1,6 +1,0 @@
----
-images:
-- name: jtblin/kube2iam
-  newTag: 0.10.8
-resources:
-- deployment.yaml
