@@ -37,7 +37,7 @@ spec:
       - name: config-template
         configMap:
           name: voice-config-template
-      - name: voice-config
+      - name: config
         emptyDir:
       containers:
       - name: web
