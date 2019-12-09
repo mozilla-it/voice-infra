@@ -14,6 +14,31 @@ spec:
       labels:
         app: voice
     spec:
+      initContainers:
+      - name: config
+        image: objectiflibre/jinja-init@sha256:c7145abac214c6adf2824427f5f1d76a57a112d5f76dbc13608ae71684797fa3
+        env:
+        # source and destination files
+        - name: JINJA_DEST_FILE
+          value: /config/config.json
+        - name: JINJA_SRC_FILE
+          value: /config_src/config.json.j2
+        # let's be verbose
+        - name: VERBOSE
+          value: "1"
+        volumeMounts:
+        # configMap mount point
+        - name: config-template
+          mountPath: /config_src
+        # target directory mount point; the final config file will be created here
+        - name: config
+          mountPath: /config
+      volumes:
+      - name: config-template
+        configMap:
+          name: voice-config-template
+      - name: voice-config
+        emptyDir:
       containers:
       - name: web
         command:
@@ -37,6 +62,9 @@ spec:
           requests:
             cpu: 125m
             memory: 256Mi
+        volumeMounts:
+        - name: config
+          mountPath: /config
         env:
         - name: SERVER_CONFIG_PATH
           value: /dev/null
