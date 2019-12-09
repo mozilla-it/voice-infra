@@ -67,7 +67,7 @@ spec:
           mountPath: /config
         env:
         - name: SERVER_CONFIG_PATH
-          value: /dev/null
+          value: /config/config.json
         - name: K8S_NAMESPACE
           valueFrom:
             fieldRef:
