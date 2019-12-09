@@ -5,3 +5,5 @@ metadata:
   annotations:
    flux.weave.works/automated: "true"
    flux.weave.works/tag.web: "glob:master-*"
+   reloader.stakater.com/auto: "true"
+   iam.amazonaws.com/role: voice-k8s
