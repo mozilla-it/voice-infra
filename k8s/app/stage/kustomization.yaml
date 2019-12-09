@@ -5,6 +5,7 @@ resources:
 - deployment.yaml
 - hpa.yaml
 - service.yaml
+- config-template.yaml
 patchesStrategicMerge:
 - deployment-patch.yaml
 - service-patch.yaml
