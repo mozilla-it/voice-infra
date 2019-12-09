@@ -13,4 +13,5 @@ resources:
 - github.com/mozilla-it/k8s-common/external-dns?ref=v0.0.1
 - github.com/mozilla-it/k8s-common/dashboard?ref=v0.0.1
 - github.com/mozilla-it/k8s-common/metrics-server?ref=v0.0.1
+- github.com/mozilla-it/k8s-common/reloader
 - app
