@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: voice-config-template
+data:
+  config.json.j2: |
+    {
+      "port": 9000,
+      "logfile": "/var/log/voice.log",
+      "PROD": true,
+      "DB_ROOT_USER": "admin",
+      "DB_ROOT_PASS": "XXX",
+      "MYSQLUSER": "admin",
+      "MYSQLPASS": "XXX",
+      "MYSQLDBNAME": "voice",
+      "MYSQLHOST": "YYY",
+      "MYSQLPORT":  "3306",
+      "BUCKET_NAME": "ZZZ",
+      "BUCKET_LOCATION": "us-west-2",
+      "ENVIRONMENT": "stage",
+      "RELEASE_VERSION": "v2.4.3_384eabf445e2e460c2155242faaad8f8f9f73649",
+      "SECRET": "XXX",
+      "ADMIN_EMAILS": "",
+      "KIBANA_ADMINS": "",
+      "BASKET_API_KEY": "XXX",
+      "REDIS_URL": "XXX",
+      "KIBANA_URL": "XXX",
+      "LAST_DATASET": "",
+      "AUTH0": {
+        "DOMAIN": "auth.mozilla.auth0.com",
+        "CLIENT_ID": "XXX",
+        "CLIENT_SECRET": "XXX"
+      }
+    }

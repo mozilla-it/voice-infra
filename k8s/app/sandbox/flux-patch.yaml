@@ -1,0 +1,14 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voice
+  namespace: voice-sandbox
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+      - name: web
+      containers:
+      - image: itsre/voice-web:master-0c072b6b0b243e6db6a5081c4b8a2bf7e48ac726
+        name: web
