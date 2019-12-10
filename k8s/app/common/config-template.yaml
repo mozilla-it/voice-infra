@@ -22,7 +22,7 @@ data:
       "ADMIN_EMAILS": "",
       "KIBANA_ADMINS": "",
       "BASKET_API_KEY": "XXX",
-      "REDIS_URL": "XXX",
+      "REDIS_URL": "redis://redis-master/",
       "KIBANA_URL": "XXX",
       "LAST_DATASET": "",
       "AUTH0": {
