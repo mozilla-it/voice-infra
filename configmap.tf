@@ -41,8 +41,14 @@ resource "kubernetes_config_map" "voice-dev" {
   }
 
   data = {
-    api.host = "myhost:443"
-    db.host  = "dbhost:5432"
+    environment     = "stage"
+    mysql_host      = "${data.aws_db_instance.voice-stage.address}"
+    mysql_username  = "read-only"
+    mysql_password  = "read-only"
+    mysql_dbname    = "voice"
+    aws_region      = "${var.region}"
+    bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
+    bucket_name     = "${data.aws_s3_bucket.voice-stage.bucket}"
   }
 }
 
@@ -53,7 +59,13 @@ resource "kubernetes_config_map" "voice-sandbox" {
   }
 
   data = {
-    api.host = "myhost:443"
-    db.host  = "dbhost:5432"
+    environment     = "stage"
+    mysql_host      = "${data.aws_db_instance.voice-stage.address}"
+    mysql_username  = "read-only"
+    mysql_password  = "read-only"
+    mysql_dbname    = "voice"
+    aws_region      = "${var.region}"
+    bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
+    bucket_name     = "${data.aws_s3_bucket.voice-stage.bucket}"
   }
 }
