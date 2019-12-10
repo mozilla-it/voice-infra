@@ -6,9 +6,9 @@ resource "kubernetes_config_map" "voice-prod" {
 
   data = {
     environment     = "prod"
-    mysql_host      = "${data.aws_db_instance.voice-prod.address}"
+    mysql_host      = "${module.db-prod.address}"
     mysql_username  = "read-only"
-    mysql_password  = "read-only"
+    mysql_password  = "read-only"                               # pragma: allowlist secret
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-prod.region}"
@@ -24,9 +24,9 @@ resource "kubernetes_config_map" "voice-stage" {
 
   data = {
     environment     = "stage"
-    mysql_host      = "${data.aws_db_instance.voice-stage.address}"
+    mysql_host      = "${module.db-stage.address}"
     mysql_username  = "read-only"
-    mysql_password  = "read-only"
+    mysql_password  = "read-only"                                # pragma: allowlist secret
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
@@ -42,9 +42,9 @@ resource "kubernetes_config_map" "voice-dev" {
 
   data = {
     environment     = "stage"
-    mysql_host      = "${data.aws_db_instance.voice-stage.address}"
+    mysql_host      = "${module.db-stage.address}"
     mysql_username  = "read-only"
-    mysql_password  = "read-only"
+    mysql_password  = "read-only"                                # pragma: allowlist secret
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
@@ -60,9 +60,9 @@ resource "kubernetes_config_map" "voice-sandbox" {
 
   data = {
     environment     = "stage"
-    mysql_host      = "${data.aws_db_instance.voice-stage.address}"
+    mysql_host      = "${module.db-stage.address}"
     mysql_username  = "read-only"
-    mysql_password  = "read-only"
+    mysql_password  = "read-only"                                # pragma: allowlist secret
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
