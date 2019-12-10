@@ -16,6 +16,6 @@ spec:
   role:
     enabled: true
   gitBranch: master
-  gitPath: k8s/app/prod
+  gitPath: k8s/app/envs/prod
   gitPollInterval: 0m30s
   gitUrl: ssh://git@github.com/mozilla-it/voice-infra.git
