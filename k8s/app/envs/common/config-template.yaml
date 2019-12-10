@@ -18,7 +18,7 @@ data:
       "BUCKET_NAME": "ZZZ",
       "BUCKET_LOCATION": "{{ bucket_location }}",
       "ENVIRONMENT": "stage",
-      "RELEASE_VERSION": "{{ image_version }",
+      "RELEASE_VERSION": "{{ image_version }}",
       "SECRET": "XXX",
       "ADMIN_EMAILS": "",
       "KIBANA_ADMINS": "",
