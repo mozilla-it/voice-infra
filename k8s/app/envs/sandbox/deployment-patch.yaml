@@ -5,3 +5,9 @@ metadata:
   annotations:
    flux.weave.works/automated: "true"
    flux.weave.works/tag.web: "glob:sandbox-*"
+   reloader.stakater.com/auto: "true"
+spec:
+  template:
+    metadata:
+      annotations:
+        iam.amazonaws.com/role: voice-k8s
