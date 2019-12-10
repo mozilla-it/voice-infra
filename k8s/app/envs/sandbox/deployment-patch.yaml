@@ -10,4 +10,4 @@ spec:
   template:
     metadata:
       annotations:
-        iam.amazonaws.com/role: voice-k8s
+        iam.amazonaws.com/role: voice-k8s-sandbox
