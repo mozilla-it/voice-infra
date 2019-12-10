@@ -76,6 +76,9 @@ spec:
         env:
         - name: SERVER_CONFIG_PATH
           value: /config/config.json
+        # Disable NewRelic for the time being
+        - name: NEW_RELIC_AGENT_ENABLED
+          value: "false"
         - name: K8S_NAMESPACE
           valueFrom:
             fieldRef:
