@@ -28,11 +28,6 @@ spec:
           value: "1"
         - name: JINJA_VAR_auth0_domain
           value: "auth.mozilla.auth0.com"
-        - name: JINJA_VAR_image_version
-          valueFrom:
-            resourceFieldRef:
-              containerName: web
-              resource: image
         volumeMounts:
         # configMap mount point
         - name: config-template
