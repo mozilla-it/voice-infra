@@ -28,6 +28,12 @@ resource "aws_iam_role" "voice" {
   assume_role_policy = "${data.aws_iam_policy_document.voice_sts.json}"
 }
 
+resource "aws_iam_role" "voice-sandbox" {
+  name = "voice-k8s-sandbox"
+
+  assume_role_policy = "${data.aws_iam_policy_document.voice_sts.json}"
+}
+
 data "aws_iam_policy_document" "voice" {
   statement {
     sid = "s3"
@@ -59,9 +65,58 @@ data "aws_iam_policy_document" "voice" {
   }
 }
 
+data "aws_iam_policy_document" "voice-sandbox" {
+  statement {
+    sid = "s3"
+
+    actions = [
+      "s3:List*",
+      "s3:Get*",
+    ]
+
+    resources = [
+      "${data.aws_s3_bucket.voice-prod.arn}/*",
+      "${data.aws_s3_bucket.voice-prod.arn}",
+    ]
+  }
+
+  statement {
+    sid = "s3write"
+
+    actions = [
+      "s3:*",
+    ]
+
+    resources = [
+      "${data.aws_s3_bucket.voice-stage.arn}/*",
+      "${data.aws_s3_bucket.voice-stage.arn}",
+    ]
+  }
+
+  statement {
+    sid = "s3list"
+
+    actions = [
+      "s3:ListBucket",
+    ]
+
+    resources = [
+      "${data.aws_s3_bucket.voice-stage.arn}",
+      "${data.aws_s3_bucket.voice-prod.arn}",
+    ]
+  }
+}
+
 resource "aws_iam_role_policy" "voice" {
   name = "voice-k8s-role-policy-${var.cluster_name}"
   role = "${aws_iam_role.voice.id}"
 
   policy = "${data.aws_iam_policy_document.voice.json}"
+}
+
+resource "aws_iam_role_policy" "voice-sandbox" {
+  name = "voice-k8s-role-policy-${var.cluster_name}-sandbox"
+  role = "${aws_iam_role.voice-sandbox.id}"
+
+  policy = "${data.aws_iam_policy_document.voice-sandbox.json}"
 }
