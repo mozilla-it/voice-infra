@@ -102,9 +102,9 @@ spec:
           value: "false"
         - name: NEW_RELIC_API_KEY
           valueFrom:
-          secretKeyRef:
-            name: voice
-            key: new_relic_api_key
+            secretKeyRef:
+              name: voice
+              key: new_relic_api_key
         - name: K8S_NAMESPACE
           valueFrom:
             fieldRef:
