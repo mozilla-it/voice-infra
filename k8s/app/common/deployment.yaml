@@ -99,7 +99,7 @@ spec:
           value: /config/config.json
         # Disable NewRelic for the time being
         - name: NEW_RELIC_AGENT_ENABLED
-          value: "false"
+          value: "true"
         - name: NEW_RELIC_API_KEY
           valueFrom:
             secretKeyRef:
