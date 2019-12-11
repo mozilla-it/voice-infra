@@ -13,5 +13,9 @@ metadata:
 spec:
   template:
     metadata:
+      labels:
+        # This duplication is required
+        kube-monkey/enabled: enabled
+        kube-monkey/identifier: voice
       annotations:
         iam.amazonaws.com/role: voice-k8s-dev
