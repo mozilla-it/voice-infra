@@ -100,11 +100,11 @@ spec:
         # Disable NewRelic for the time being
         - name: NEW_RELIC_AGENT_ENABLED
           value: "true"
-        - name: NEW_RELIC_API_KEY
+        - name: NEW_RELIC_LICENSE_KEY
           valueFrom:
             secretKeyRef:
               name: voice
-              key: new_relic_api_key
+              key: new_relic_license_key
         - name: K8S_NAMESPACE
           valueFrom:
             fieldRef:
