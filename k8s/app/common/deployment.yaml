@@ -39,15 +39,20 @@ spec:
         - name: config
           mountPath: /config
         # /secrets is the default mount point used by jinja-init
-        - name: secrets
+        - name: configmap
           mountPath: /secrets
+        - name: secrets
+          mountPath: /secrets/secrets
       volumes:
       - name: config-template
         configMap:
           name: voice-config-template
-      - name: secrets
+      - name: configmap
         configMap:
           name: voice-configmap
+      - name: secrets
+        secret:
+          secretName: voice
       - name: config
         emptyDir:
       containers:
