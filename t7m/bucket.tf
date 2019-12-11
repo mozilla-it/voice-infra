@@ -5,3 +5,11 @@ data "aws_s3_bucket" "voice-prod" {
 data "aws_s3_bucket" "voice-stage" {
   bucket = "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
 }
+
+resource "aws_s3_bucket" "voice-dev" {
+  bucket_prefix = "voice-dev-clips-"
+}
+
+resource "aws_s3_bucket" "voice-sandbox" {
+  bucket_prefix = "voice-sandbox-clips-"
+}

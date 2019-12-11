@@ -47,8 +47,8 @@ resource "kubernetes_config_map" "voice-dev" {
     mysql_password  = "${module.db-dev.password}"
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
-    bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
-    bucket_name     = "${data.aws_s3_bucket.voice-stage.bucket}"
+    bucket_location = "${aws_s3_bucket.voice-dev.region}"
+    bucket_name     = "${aws_s3_bucket.voice-dev.bucket}"
   }
 }
 
@@ -65,7 +65,7 @@ resource "kubernetes_config_map" "voice-sandbox" {
     mysql_password  = "${module.db-sandbox.password}"
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
-    bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
-    bucket_name     = "${data.aws_s3_bucket.voice-stage.bucket}"
+    bucket_location = "${aws_s3_bucket.voice-sandbox.region}"
+    bucket_name     = "${aws_s3_bucket.voice-sandbox.bucket}"
   }
 }
