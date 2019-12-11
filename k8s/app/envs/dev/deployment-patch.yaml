@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: voice
+  labels:
+    kube-monkey/enabled: enabled
   annotations:
    flux.weave.works/automated: "true"
    flux.weave.works/tag.web: "glob:master-*"
