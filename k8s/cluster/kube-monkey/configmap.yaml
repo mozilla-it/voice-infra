@@ -13,6 +13,6 @@ data:
     blacklisted_namespaces = ["kube-system"]
     time_zone = "America/Montreal"
     graceperiod_sec= 10
-    # [debug]
-    # enabled= true
-    # schedule_immediate_kill= true
+    [debug]
+    enabled= true
+    schedule_immediate_kill= true
