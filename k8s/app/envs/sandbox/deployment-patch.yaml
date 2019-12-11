@@ -11,3 +11,13 @@ spec:
     metadata:
       annotations:
         iam.amazonaws.com/role: voice-k8s-sandbox
+    spec:
+      $setElementOrder/containers:
+      - name: web
+      containers:
+      - name: web
+        env:
+        - name: ENVIRONMENT
+          value: sandbox
+        - name: NEW_RELIC_APP_NAME
+          value: "Common Voice $(ENVIRONMENT)"
