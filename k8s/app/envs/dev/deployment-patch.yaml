@@ -17,5 +17,6 @@ spec:
         # This duplication is required
         kube-monkey/enabled: enabled
         kube-monkey/identifier: voice
+        kube-monkey/mtbf: "3"
       annotations:
         iam.amazonaws.com/role: voice-k8s-dev
