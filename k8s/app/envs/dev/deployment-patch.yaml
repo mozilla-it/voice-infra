@@ -4,6 +4,7 @@ metadata:
   name: voice
   labels:
     kube-monkey/enabled: enabled
+    kube-monkey/identifier: voice
   annotations:
    flux.weave.works/automated: "true"
    flux.weave.works/tag.web: "glob:master-*"
