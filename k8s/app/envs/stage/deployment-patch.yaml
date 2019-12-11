@@ -20,4 +20,4 @@ spec:
         - name: ENVIRONMENT
           value: stage
         - name: NEW_RELIC_APP_NAME
-          value: "Common Voice $(ENVIRONMENT)"
+          value: "voice-$(ENVIRONMENT)"
