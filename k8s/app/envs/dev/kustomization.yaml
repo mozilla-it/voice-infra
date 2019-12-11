@@ -3,6 +3,8 @@ kind: Kustomization
 namespace: voice-dev
 bases:
 - ../../common
+resources:
+- secret.yaml
 patchesStrategicMerge:
 - deployment-patch.yaml
 - service-patch.yaml
