@@ -10,6 +10,7 @@
         labels:
           app: kube-monkey
       spec:
+        serviceAccountName: flux-operator
         containers:
           -  name: kube-monkey
              command:

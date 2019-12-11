@@ -4,3 +4,4 @@ namespace: kube-system
 resources:
 - configmap.yaml
 - deployment.yaml
+- rbac.yaml
