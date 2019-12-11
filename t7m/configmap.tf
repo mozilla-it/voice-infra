@@ -7,8 +7,8 @@ resource "kubernetes_config_map" "voice-prod" {
   data = {
     environment     = "prod"
     mysql_host      = "${module.db-prod.address}"
-    mysql_username  = "read-only"
-    mysql_password  = "read-only"                               # pragma: allowlist secret
+    mysql_username  = "${module.db-prod.username}"
+    mysql_password  = "${module.db-prod.password}"
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-prod.region}"
@@ -25,8 +25,8 @@ resource "kubernetes_config_map" "voice-stage" {
   data = {
     environment     = "stage"
     mysql_host      = "${module.db-stage.address}"
-    mysql_username  = "read-only"
-    mysql_password  = "read-only"                                # pragma: allowlist secret
+    mysql_username  = "${module.db-stage.username}"
+    mysql_password  = "${module.db-stage.password}"
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
@@ -42,9 +42,9 @@ resource "kubernetes_config_map" "voice-dev" {
 
   data = {
     environment     = "stage"
-    mysql_host      = "${module.db-stage.address}"
-    mysql_username  = "read-only"
-    mysql_password  = "read-only"                                # pragma: allowlist secret
+    mysql_host      = "${module.db-dev.address}"
+    mysql_username  = "${module.db-dev.username}"
+    mysql_password  = "${module.db-dev.password}"
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-stage.region}"
@@ -60,9 +60,9 @@ resource "kubernetes_config_map" "voice-sandbox" {
 
   data = {
     environment     = "stage"
-    mysql_host      = "${module.db-stage.address}"
-    mysql_username  = "read-only"
-    mysql_password  = "read-only"                                # pragma: allowlist secret
+    mysql_host      = "${module.db-sandbox.address}"
+    mysql_username  = "${module.db-sandbox.username}"
+    mysql_password  = "${module.db-sandbox.password}"
     mysql_dbname    = "voice"
     aws_region      = "${var.region}"
     bucket_location = "${data.aws_s3_bucket.voice-stage.region}"

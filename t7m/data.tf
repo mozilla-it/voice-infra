@@ -1,4 +1,4 @@
-data terraform_remote_state "vpc-us-west-2" {
+data terraform_remote_state "vpc" {
   backend = "s3"
 
   config {
@@ -9,5 +9,5 @@ data terraform_remote_state "vpc-us-west-2" {
 }
 
 data "aws_vpc" "us-west-2" {
-  id = "${data.terraform_remote_state.vpc-us-west-2.vpc_id}"
+  id = "${data.terraform_remote_state.vpc.vpc_id}"
 }

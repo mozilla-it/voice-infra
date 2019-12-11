@@ -3,14 +3,14 @@ locals {
     {
       instance_type                 = "m5.large"
       key_name                      = "nubis"
-      subnets                       = "${data.terraform_remote_state.vpc-us-west-2.private_subnets}"
+      subnets                       = "${data.terraform_remote_state.vpc.private_subnets}"
       autoscaling_enabled           = true
       asg_desired_capacity          = 3
       asg_min_size                  = 3
       asg_max_size                  = 5
       spot_price                    = "0.08"
       additional_userdata           = "${data.template_file.additional_userdata.rendered}"
-      additional_security_group_ids = "${data.terraform_remote_state.vpc-us-west-2.instance_security_groups}"
+      additional_security_group_ids = "${data.terraform_remote_state.vpc.instance_security_groups}"
     },
   ]
 
@@ -46,8 +46,8 @@ module "k8s" {
   source = "github.com/mdn/infra//k8s/clusters/eks/modules/eks"
 
   region      = "${var.region}"
-  vpc_id      = "${data.terraform_remote_state.vpc-us-west-2.vpc_id}"
-  eks_subnets = "${split(",",data.terraform_remote_state.vpc-us-west-2.public_subnets)}"
+  vpc_id      = "${data.terraform_remote_state.vpc.vpc_id}"
+  eks_subnets = "${split(",",data.terraform_remote_state.vpc.public_subnets)}"
 
   cluster_name    = "voice"
   cluster_version = "1.14"
