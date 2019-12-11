@@ -21,12 +21,14 @@ resource "random_string" "password" {
 
 resource "aws_db_instance" "database" {
   count          = "${var.create ? 1 : 0 }"
-  instance_class = "db.t3.micro"
+  instance_class = "db.t3.medium"
   identifier     = "${var.name}"
   engine         = "mysql"
   name           = "voice"
   username       = "voice"
   password       = "${random_string.password.result}"
+
+  apply_immediately = true
 
   vpc_security_group_ids = [
     "${aws_security_group.database.*.id}",
