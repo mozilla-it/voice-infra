@@ -2,12 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: voice
-  labels:
-    kube-monkey/enabled: enabled
-    kube-monkey/identifier: voice
-    kube-monkey/mtbf: "3"
-    kube-monkey/kill-mode: "fixed"
-    kube-monkey/kill-value: "1"
   annotations:
    flux.weave.works/automated: "true"
    flux.weave.works/tag.web: "glob:master-*"
@@ -15,12 +9,5 @@ metadata:
 spec:
   template:
     metadata:
-      labels:
-        # This duplication is required
-        kube-monkey/enabled: enabled
-        kube-monkey/identifier: voice
-        kube-monkey/mtbf: "3"
-        kube-monkey/kill-mode: "fixed"
-        kube-monkey/kill-value: "1"
       annotations:
         iam.amazonaws.com/role: voice-k8s-dev
