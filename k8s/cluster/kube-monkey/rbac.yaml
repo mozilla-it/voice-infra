@@ -9,7 +9,9 @@ metadata:
   name: kube-monkey
 rules:
 - apiGroups: ["", "extensions", "apps"]
-  resources: ["deployments"]
+  resources:
+    - deployments
+    - replicasets
   verbs:  ["get", "list", "watch"]
 - apiGroups: [""]
   resources: ["namespaces"]
