@@ -6,7 +6,7 @@ metadata:
 data:
   config.toml: |
     [kubemonkey]
-    dry_run = true
+    # dry_run = true
     run_hour = 20
     start_hour = 21
     end_hour = 23
