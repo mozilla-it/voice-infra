@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: voice-dev
 bases:
 - ../../common
+- ../../common/elasticsearch
 resources:
 - secret.yaml
 patchesStrategicMerge:

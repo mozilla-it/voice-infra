@@ -1,0 +1,4 @@
+namespace: ""
+replicas: 1
+rbac:
+  create: true
