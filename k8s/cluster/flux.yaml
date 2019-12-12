@@ -18,7 +18,7 @@ spec:
   helmOperator:
     enabled: true
     helmOperatorImage: fluxcd/helm-operator
-    helmOperatorVersion: "0.10.1"
+    helmOperatorVersion: "0.4.0"
   gitBranch: master
   gitPath: k8s/cluster
   gitPollInterval: 0m30s
