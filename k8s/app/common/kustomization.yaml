@@ -3,6 +3,8 @@ kind: Kustomization
 namespace: voice-stage
 bases:
 - redis
+- elasticsearch
+- kibana
 resources:
 - deployment.yaml
 - hpa.yaml
