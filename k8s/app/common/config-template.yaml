@@ -23,7 +23,7 @@ data:
       "KIBANA_ADMINS": "",
       "BASKET_API_KEY": "{{ basket_api_key }}",
       "REDIS_URL": "redis://redis-master/",
-      "KIBANA_URL": "XXX",
+      "KIBANA_URL": "http://kibana:5601/",
       "LAST_DATASET": "",
       "AUTH0": {
         "DOMAIN": "{{ auth0_domain }}",
