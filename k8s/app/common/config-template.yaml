@@ -7,7 +7,7 @@ data:
     {
       "port": 9000,
       "logfile": "/var/log/voice.log",
-      "PROD": true,
+      "PROD": "{% if environment == "prod" %}true{% else %}false{% endif %}",
       "DB_ROOT_USER": "{{ mysql_username }}",
       "DB_ROOT_PASS": "{{ mysql_password }}",
       "MYSQLUSER": "{{ mysql_username }}",
