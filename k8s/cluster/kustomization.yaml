@@ -16,3 +16,4 @@ resources:
 - github.com/mozilla-it/k8s-common/reloader
 - kube-monkey
 - app
+- calico
