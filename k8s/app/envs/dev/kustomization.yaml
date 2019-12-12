@@ -4,6 +4,7 @@ namespace: voice-dev
 bases:
 - ../../common
 - ../../common/elasticsearch
+- ../../common/kibana
 resources:
 - secret.yaml
 patchesStrategicMerge:
