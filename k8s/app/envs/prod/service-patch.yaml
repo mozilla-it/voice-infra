@@ -4,3 +4,4 @@ metadata:
   name: voice
   annotations:
     external-dns.alpha.kubernetes.io/hostname: voice.mozilla.org.,voice-prod.core.us-west-2.appsvcs-voice.nubis.allizom.org.
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-west-2:058419420086:certificate/901a0b9b-c6ce-4593-a192-d4253a0bf877
