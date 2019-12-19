@@ -59,10 +59,10 @@ data:
    tables = [
     "awards",
     #"clips",
-    #"custom_goals",
+    "custom_goals",
     #"downloaders",
     #"language_requests",
-    #"locales",
+    "locales",
     #"reported_clips",
     #"reported_sentences",
     #"requested_languages",
