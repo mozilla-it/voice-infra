@@ -48,11 +48,11 @@ spec:
           httpGet:
             port: 12800
             path: /stat
-          periodSeconds: 10
+          periodSeconds: 60
           initialDelaySeconds: 30
           successThreshold: 1
-          failureThreshold: 3
-          timeoutSeconds: 1
+          failureThreshold: 10
+          timeoutSeconds: 5
         volumeMounts:
         - mountPath: /config
           name: config
