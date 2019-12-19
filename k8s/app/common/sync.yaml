@@ -44,6 +44,15 @@ spec:
         image: gozer/go-mysql-elasticsearch:v0.0.3
         ports:
         - containerPort: 12800
+        livenessProbe:
+          httpGet:
+            port: 12800
+            path: /stat
+          periodSeconds: 10
+          initialDelaySeconds: 30
+          successThreshold: 1
+          failureThreshold: 3
+          timeoutSeconds: 1
         resources:
           limits:
             cpu: "1"
