@@ -53,13 +53,6 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           timeoutSeconds: 1
-        resources:
-          limits:
-            cpu: "1"
-            memory: 1024Mi
-          requests:
-            cpu: 125m
-            memory: 256Mi
         volumeMounts:
         - mountPath: /config
           name: config
