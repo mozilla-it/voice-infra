@@ -32,7 +32,8 @@ spec:
         app: voice-sync
     spec:
       containers:
-      - args:
+      - name: sync
+        args:
         - -config
         - /config/river.toml
         env:
@@ -41,7 +42,15 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: gozer/go-mysql-elasticsearch:v0.0.2
-        name: sync
+        livenessProbe:
+          httpGet:
+            port: 12801
+            path: /stats
+          periodSeconds: 10
+          initialDelaySeconds: 30
+          successThreshold: 1
+          failureThreshold: 3
+          timeoutSeconds: 1
         resources:
           limits:
             cpu: "1"
