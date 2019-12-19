@@ -1,17 +1,4 @@
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  labels:
-    app: voice-sync
-  name: voice-sync-state
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 128Mi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -97,7 +84,6 @@ spec:
         secret:
           secretName: voice
       - name: sync-state
-        persistentVolumeClaim:
-          claimName: voice-sync-state
+        emptyDir: null
       - name: config
         emptyDir: null
