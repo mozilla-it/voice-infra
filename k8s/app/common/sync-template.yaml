@@ -77,7 +77,3 @@ data:
    schema = "{{ mysql_dbname }}"
    table = "user_clients"
    filter = ["client_id", "age", "gender", "created_at"]
-
-   [[rule]]
-   schema = "{{ mysql_dbname }}"
-   table = "downloaders"
