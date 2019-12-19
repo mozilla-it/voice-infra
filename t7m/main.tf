@@ -5,9 +5,9 @@ locals {
       key_name                      = "nubis"
       subnets                       = "${data.terraform_remote_state.vpc.private_subnets}"
       autoscaling_enabled           = true
-      asg_desired_capacity          = 3
+      asg_desired_capacity          = 5
       asg_min_size                  = 3
-      asg_max_size                  = 5
+      asg_max_size                  = 10
       spot_price                    = "0.08"
       additional_userdata           = "${data.template_file.additional_userdata.rendered}"
       additional_security_group_ids = "${data.terraform_remote_state.vpc.instance_security_groups}"
