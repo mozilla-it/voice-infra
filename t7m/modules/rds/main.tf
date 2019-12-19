@@ -19,14 +19,36 @@ resource "random_string" "password" {
   special = false
 }
 
+resource "aws_db_parameter_group" "slow_query_enabled" {
+  count  = "${var.create ? 1 : 0 }"
+  name   = "${var.name}-slow-query"
+  family = "mysql5.7"
+
+  parameter {
+    name         = "slow_query_log"
+    value        = "1"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "binlog_format"
+    value        = "ROW"
+    apply_method = "immediate"
+  }
+}
+
 resource "aws_db_instance" "database" {
-  count          = "${var.create ? 1 : 0 }"
-  instance_class = "db.t3.medium"
-  identifier     = "${var.name}"
-  engine         = "mysql"
-  name           = "voice"
-  username       = "voice"
-  password       = "${random_string.password.result}"
+  count                   = "${var.create ? 1 : 0 }"
+  instance_class          = "db.t3.medium"
+  identifier              = "${var.name}"
+  engine                  = "mysql"
+  name                    = "voice"
+  username                = "voice"
+  password                = "${random_string.password.result}"
+  engine_version          = "5.7"
+  parameter_group_name    = "${aws_db_parameter_group.slow_query_enabled.name}"
+  ca_cert_identifier      = "rds-ca-2019"
+  backup_retention_period = "7"
 
   apply_immediately = true
 
