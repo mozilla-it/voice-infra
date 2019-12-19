@@ -9,6 +9,8 @@ resources:
 - hpa.yaml
 - service.yaml
 - config-template.yaml
+- sync.yaml
+- sync-template.yaml
 commonAnnotations:
   owner: gozer@mozilla.com
   team: itsre

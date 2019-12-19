@@ -5,8 +5,6 @@ bases:
 - ../../common
 resources:
 - secret.yaml
-- sync.yaml
-- sync-template.yaml
 patchesStrategicMerge:
 - deployment-patch.yaml
 - service-patch.yaml
