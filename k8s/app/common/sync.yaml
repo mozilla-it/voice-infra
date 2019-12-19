@@ -42,6 +42,8 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: gozer/go-mysql-elasticsearch:v0.0.2
+        ports:
+        - containerPort: 12801
         livenessProbe:
           httpGet:
             port: 12801
