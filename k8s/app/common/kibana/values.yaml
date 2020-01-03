@@ -1,0 +1,4 @@
+healthCheckPath: /kibana/app/kibana
+kibanaConfig:
+  kibana.yml: |
+    server.basePath: /kibana

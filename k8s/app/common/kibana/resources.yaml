@@ -1,4 +1,16 @@
 ---
+# Source: kibana/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-config
+  labels:
+    app: kibana
+    release: "kibana"
+data:
+  kibana.yml: |
+    server.basePath: /kibana
+---
 # Source: kibana/templates/service.yaml
 apiVersion: v1
 kind: Service
@@ -42,10 +54,14 @@ spec:
         release: "kibana"
       annotations:
 
+        configchecksum: 4cfa66e613130d487bf3b686077d9a490245e34089ec1c0e59fe77b1f1aace9
     spec:
       securityContext:
         fsGroup: 1000
       volumes:
+        - name: kibanaconfig
+          configMap:
+            name: kibana-config
       containers:
       - name: kibana
         securityContext:
@@ -90,7 +106,7 @@ spec:
                     exit 1
                 }
 
-                http "/app/kibana"
+                http "/kibana/app/kibana"
         ports:
         - containerPort: 5601
         resources:
@@ -101,3 +117,6 @@ spec:
             cpu: 100m
             memory: 500Mi
         volumeMounts:
+          - name: kibanaconfig
+            mountPath: /usr/share/kibana/config/kibana.yml
+            subPath: kibana.yml
