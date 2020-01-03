@@ -3,9 +3,9 @@ output "address" {
 }
 
 output "username" {
-  value = "${var.create ? "voice" : "read-only"}"
+  value = "${var.create ? "voice" : "voice"}"
 }
 
 output "password" {
-  value = "${var.create ? element(concat(random_string.password.*.result, list("")),0) : "read-only"}"
+  value = "${var.create ? element(concat(random_string.password.*.result, list("")),0) : "voice"}"
 }

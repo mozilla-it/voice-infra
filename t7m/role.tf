@@ -80,8 +80,7 @@ data "aws_iam_policy_document" "voice-stage" {
 
     # XXX: Read-only on purpose for now
     actions = [
-      "s3:Get*",
-      "s3:List*",
+      "s3:*",
     ]
 
     resources = [
