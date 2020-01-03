@@ -65,6 +65,7 @@ data "aws_iam_policy_document" "voice-sandbox" {
 
     actions = [
       "s3:ListBucket",
+      "s3:ListAllMyBuckets",
     ]
 
     resources = [
@@ -94,6 +95,7 @@ data "aws_iam_policy_document" "voice-stage" {
 
     actions = [
       "s3:ListBucket",
+      "s3:ListAllMyBuckets",
     ]
 
     resources = [
@@ -121,6 +123,7 @@ data "aws_iam_policy_document" "voice-dev" {
 
     actions = [
       "s3:ListBucket",
+      "s3:ListAllMyBuckets",
     ]
 
     resources = [
@@ -150,6 +153,7 @@ data "aws_iam_policy_document" "voice-prod" {
 
     actions = [
       "s3:ListBucket",
+      "s3:ListAllMyBuckets",
     ]
 
     resources = [
