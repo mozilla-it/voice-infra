@@ -10,6 +10,7 @@ metadata:
 data:
   kibana.yml: |
     server.basePath: /kibana
+    server.rewriteBasePath: true
 ---
 # Source: kibana/templates/service.yaml
 apiVersion: v1
@@ -54,7 +55,7 @@ spec:
         release: "kibana"
       annotations:
 
-        configchecksum: 4cfa66e613130d487bf3b686077d9a490245e34089ec1c0e59fe77b1f1aace9
+        configchecksum: acd17bca9182a5faeaf548a7ef809a2e46518cfeebc4f5a29982d9543b5097f
     spec:
       securityContext:
         fsGroup: 1000
