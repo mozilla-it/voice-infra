@@ -16,6 +16,10 @@ spec:
       - name: web
       containers:
       - name: web
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
         env:
         - name: ENVIRONMENT
           value: stage
