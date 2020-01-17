@@ -10,5 +10,5 @@ spec:
       $setElementOrder/containers:
       - name: web
       containers:
-      - image: itsre/voice-web:master-ca3214dcb5d8677dd6b9d851045862855f977e43
+      - image: itsre/voice-web:master-4a2faa805f67dfe9759cd6b98937fdd5ba0be2a5
         name: web
