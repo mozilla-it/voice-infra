@@ -10,7 +10,7 @@ As part of the Nubis bundle, there is a web interface which can be used to see r
 
 There are 3 different types of VMs used by Voice, each one with a different purpose: 
  - webserver: multiple instances, runs the Voice NodeJS application. Part of an AWS autoscaling group.
- - db-monitor-mysql: allows to query the database.
+ - db-monitor-mysql: this instance is only for monitoring purposes. It allows developers to ssh in and run queries against the database, it also has a Prometheus exporter getting metrics about MySQL status.
  - sync: runs a daemon which syncs some of the data stored in the MySQL database to Elasticsearch. That info later displayed in a Kibana instance inside Voice. Only used internally.
 
 ## Infra Access
