@@ -34,12 +34,89 @@ locals {
       role_arn = "arn:aws:iam::178589013767:role/ci-mdn-us-west-2"
       group    = "jenkins-access"
     },
+    {
+      username = "developers",
+      role_arn = "${aws_iam_role.developers.arn}"
+      group    = "developers"
+    },
   ]
 
   cluster_tags = {
     Region    = "${var.region}"
     Terraform = "true"
   }
+}
+
+data "aws_iam_policy_document" "developers_assume_role" {
+  statement {
+    sid = "devs"
+    actions = [
+      "sts:AssumeRole",
+    ]
+    principals {
+      type = "AWS"
+      identifiers = [
+        "${aws_iam_user.rshaw.arn}"
+      ]
+    }
+  }
+}
+
+resource "aws_iam_role" "developers" {
+  name = "developers"
+  assume_role_policy = "${data.aws_iam_policy_document.developers_assume_role.json}"
+}
+
+resource "aws_iam_user" "rshaw" {
+  name = "rshaw"
+  path = "/users/"
+}
+
+resource "aws_iam_user_policy" "rshaw" {
+  name = "rshaw"
+  user = "${aws_iam_user.rshaw.name}"
+
+  policy = "${data.aws_iam_policy_document.rshaw.json}"
+}
+
+resource "aws_iam_role_policy" "developers" {
+  name = "developers"
+  role = "${aws_iam_role.developers.name}"
+
+  policy = "${data.aws_iam_policy_document.developers.json}"
+}
+
+data "aws_iam_policy_document" "developers" {
+
+  statement {
+    sid = "eks"
+    actions = [ "eks:DescribeCluster" ]
+    resources = [ "*" ]
+  }
+}
+
+data "aws_iam_policy_document" "rshaw" {
+  statement {
+    sid = "sts"
+
+    actions = [
+      "sts:AssumeRole",
+    ]
+
+    resources = [
+      "${aws_iam_role.developers.arn}",
+    ]
+  }
+
+  statement {
+    sid = "eks"
+    actions = [ "eks:DescribeCluster" ]
+    resources = [ "*" ]
+  }
+}
+
+resource "aws_iam_access_key" "rshaw" {
+  user = "${aws_iam_user.rshaw.name}"
 }
 
 module "k8s" {
@@ -55,7 +132,7 @@ module "k8s" {
   worker_groups      = "${local.workers}"
   worker_group_count = "1"
   map_roles          = "${local.map_roles}"
-  map_roles_count    = "3"
+  map_roles_count    = "4"
   tags               = "${local.cluster_tags}"
 }
 

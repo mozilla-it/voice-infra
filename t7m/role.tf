@@ -86,6 +86,8 @@ data "aws_iam_policy_document" "voice-stage" {
     resources = [
       "${data.aws_s3_bucket.voice-stage.arn}/*",
       "${data.aws_s3_bucket.voice-stage.arn}",
+			"${data.aws_s3_bucket.voice-prod.arn}/*",
+      "${data.aws_s3_bucket.voice-prod.arn}",
     ]
   }
 
