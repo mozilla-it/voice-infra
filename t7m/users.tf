@@ -13,6 +13,11 @@ resource "aws_iam_user" "phire" {
   path = "/users/"
 }
 
+resource "aws_iam_user" "nemo" {
+  name = "nemo"
+  path = "/users/"
+}
+
 data "aws_iam_policy_document" "developers_assume_role" {
   statement {
     sid = "devs"
@@ -25,6 +30,7 @@ data "aws_iam_policy_document" "developers_assume_role" {
         "${aws_iam_user.rshaw.arn}",
         "${aws_iam_user.alberto.arn}",
         "${aws_iam_user.phire.arn}",
+        "${aws_iam_user.nemo.arn}",
       ]
     }
   }
@@ -54,6 +60,13 @@ resource "aws_iam_user_policy" "phire" {
   user = "${aws_iam_user.phire.name}"
 
   policy = "${data.aws_iam_policy_document.phire.json}"
+}
+
+resource "aws_iam_user_policy" "nemo" {
+  name = "nemo"
+  user = "${aws_iam_user.nemo.name}"
+
+  policy = "${data.aws_iam_policy_document.nemo.json}"
 }
 
 resource "aws_iam_role_policy" "developers" {
@@ -138,5 +151,30 @@ data "aws_iam_policy_document" "phire" {
 resource "aws_iam_access_key" "phire" {
   user = "${aws_iam_user.phire.name}"
 	pgp_key = "keybase:phirework"
+}
+
+data "aws_iam_policy_document" "nemo" {
+  statement {
+    sid = "sts"
+
+    actions = [
+      "sts:AssumeRole",
+    ]
+
+    resources = [
+      "${aws_iam_role.developers.arn}",
+    ]
+  }
+
+  statement {
+    sid = "eks"
+    actions = [ "eks:DescribeCluster" ]
+    resources = [ "*" ]
+  }
+}
+
+resource "aws_iam_access_key" "nemo" {
+  user = "${aws_iam_user.nemo.name}"
+	pgp_key = "keybase:nemo"
 }
 
