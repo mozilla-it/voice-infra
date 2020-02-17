@@ -1,0 +1,21 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: voice
+  namespace: voice-sandbox
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:sandbox-*
+spec:
+  releaseName: voice-sandbox
+  chart:
+    repository: https://mozilla-it.github.io/curated-helm-charts/
+    name: mozilla-common-voice
+    version: 0.0.25
+  values:
+    namespace: voice-sandbox
+    replicas: 1
+    redis:
+      cluster:
+        enabled: false
+        slaveCount: 0
