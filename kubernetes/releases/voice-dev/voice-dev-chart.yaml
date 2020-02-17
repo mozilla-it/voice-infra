@@ -1,0 +1,24 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: voice
+  namespace: voice-dev
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:master-*
+spec:
+  releaseName: voice-dev
+  chart:
+    repository: https://mozilla-it.github.io/curated-helm-charts/
+    name: mozilla-common-voice
+    version: 0.0.25
+  values:
+    namespace: voice-dev
+    redis:
+      enabled: false
+    elasticsearch:
+      enabled: false
+    kibana:
+      enabled: false
+    mysql:
+      enabled: false
