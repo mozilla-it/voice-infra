@@ -6,7 +6,8 @@ locals {
 }
 
 module "vpc" {
-  source = "github.com/mozilla-it/terraform-modules//vpc?ref=3c817675f294eb73ca4cd3764bedf73ad57a2d00"
+  # TODO: change source to upstream once PR#3 is merged
+  source = "github.com/mozilla-it/terraform-modules//vpc?ref=ab04f153857c058f361b38c97eea8029bd3c05ea"
   region = "us-west-2"
   name   = "voice-prod"
   tags   = merge(var.common-tags, local.vpc-tags)

@@ -7,7 +7,7 @@ variable "common-tags" {
   type = map(string)
 
   default = {
-    "cost-center"   = "1410"
+    "cost-center"   = "1003"
     "project-name"  = "voice"
     "project-desc"  = "voice.mozilla.org"
     "project-email" = "it-sre@mozilla.com"
