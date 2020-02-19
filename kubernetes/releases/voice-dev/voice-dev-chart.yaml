@@ -17,7 +17,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/curated-helm-charts/
     name: mozilla-common-voice
-    version: 0.0.28
+    version: 0.0.29
   values:
     namespace: voice-dev
     redis:
