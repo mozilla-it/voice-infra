@@ -5,13 +5,19 @@ metadata:
   namespace: voice-dev
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:master-*
+    #filter.fluxcd.io/chart-image: glob:master-*
 spec:
   releaseName: voice-dev
+  voice_web:
+    use_secrets_file: false
+    image: thesmoothoperator/voice:latest
+    config:
+      redis_url: "redis://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
+
   chart:
     repository: https://mozilla-it.github.io/curated-helm-charts/
     name: mozilla-common-voice
-    version: 0.0.25
+    version: 0.0.26
   values:
     namespace: voice-dev
     redis:
