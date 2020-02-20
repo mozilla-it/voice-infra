@@ -13,7 +13,7 @@ spec:
     image: thesmoothoperator/voice:latest
     service_account:
       annotations:
-        - "eks.amazonaws.com/role-arn: arn:aws:iam::058419420086:role/voice-dev"
+        eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-dev"
 
     config:
       redis_url: "redis://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
