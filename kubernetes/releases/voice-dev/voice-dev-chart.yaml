@@ -8,15 +8,6 @@ metadata:
     #filter.fluxcd.io/chart-image: glob:master-*
 spec:
   releaseName: voice-dev
-  voice_web:
-    use_secrets_file: false
-    image: thesmoothoperator/voice:latest
-    service_account:
-      annotations:
-        eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-dev"
-
-    config:
-      redis_url: "redis://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
 
   chart:
     repository: https://mozilla-it.github.io/curated-helm-charts/
@@ -24,6 +15,16 @@ spec:
     version: 0.0.32
   values:
     namespace: voice-dev
+    voice_web:
+      use_secrets_file: false
+      image: thesmoothoperator/voice:latest
+      service_account:
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-dev"
+
+      config:
+        redis_url: "redis://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
+
     redis:
       enabled: false
     elasticsearch:
