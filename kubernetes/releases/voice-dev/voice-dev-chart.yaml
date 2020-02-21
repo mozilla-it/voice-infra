@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.0.33
+    version: 0.0.34
   values:
     namespace: voice-dev
     voice_web:
@@ -26,6 +26,7 @@ spec:
         redis_url: "redis://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
         mysql:
           host: "voice-eks-dev.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
+          root_user: "voice"
 
 
     redis:
