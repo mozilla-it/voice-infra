@@ -17,7 +17,7 @@ spec:
     namespace: voice-dev
     voice_web:
       use_secrets_file: false
-      image: thesmoothoperator/voice:latest
+      image: jgiannelos/voice-web-dev:latest
       service_account:
         annotations:
           eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-web-dev"
