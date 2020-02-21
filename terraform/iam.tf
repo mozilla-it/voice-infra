@@ -1,7 +1,7 @@
 # Dev
 resource "aws_iam_role" "voice-dev" {
   name               = "voice-web-dev"
-	path               = "/voice/"
+  path               = "/voice/"
   assume_role_policy = data.aws_iam_policy_document.allow_assume_role_dev.json
 }
 
@@ -54,7 +54,7 @@ EOF
 # sandbox
 resource "aws_iam_role" "voice-sandbox" {
   name               = "voice-web-sandbox"
-	path               = "/voice/"
+  path               = "/voice/"
   assume_role_policy = data.aws_iam_policy_document.allow_assume_role_sandbox.json
 }
 
@@ -107,7 +107,7 @@ EOF
 # stage
 resource "aws_iam_role" "voice-stage" {
   name               = "voice-web-stage"
-	path               = "/voice/"
+  path               = "/voice/"
   assume_role_policy = data.aws_iam_policy_document.allow_assume_role_stage.json
 }
 
@@ -161,7 +161,7 @@ EOF
 # prod
 resource "aws_iam_role" "voice-prod" {
   name               = "voice-web-prod"
-	path               = "/voice/"
+  path               = "/voice/"
   assume_role_policy = data.aws_iam_policy_document.allow_assume_role_prod.json
 }
 
