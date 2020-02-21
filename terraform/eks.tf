@@ -58,6 +58,7 @@ module "eks" {
   kubeconfig_name  = local.cluster_name
   write_kubeconfig = "false"
   manage_aws_auth  = "true"
+  enable_irsa      = "true"
   tags = {
     Name      = local.cluster_name
     Terraform = "true"
