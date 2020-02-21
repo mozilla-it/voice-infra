@@ -9,7 +9,7 @@ metadata:
 spec:
   releaseName: voice-sandbox
   chart:
-    repository: https://mozilla-it.github.io/curated-helm-charts/
+    repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
     version: 0.0.25
   values:
