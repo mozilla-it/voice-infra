@@ -1,7 +1,6 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: ingress-controller-voice-dev
   namespace: voice-dev
 spec:
   chart:
