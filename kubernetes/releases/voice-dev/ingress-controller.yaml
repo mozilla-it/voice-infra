@@ -1,0 +1,23 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: 
+  namespace: voice-dev
+spec:
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: nginx-ingress
+    version: 1.31.0
+  values:
+    controller:
+      name: ingress-voice-dev
+      ingressClass: voice-dev # Value used for selecting Ingress objects
+      scope:
+        enabled: true
+        namespace: voice-dev
+      kind: Deployment
+      autoscalig: 
+        enabled: false
+      replicaCount: 1
+    defaultBackend:
+      enabled: true
