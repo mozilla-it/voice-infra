@@ -1,7 +1,8 @@
 locals {
   vpc-tags = {
-    Name   = "voice-prod"
-    Region = "us-west-2"
+    "Name"                             = "voice-prod"
+    "Region"                           = "us-west-2"
+    "kubernetes.io/cluster/voice-prod" = "shared"
   }
 }
 
