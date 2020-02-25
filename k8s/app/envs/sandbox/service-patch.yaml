@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: voice
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: voice-sandbox.allizom.org.,voice-sandbox.core.us-west-2.appsvcs-voice.nubis.allizom.org.,sandbox.voice.mozit.cloud.
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-west-2:058419420086:certificate/a5f5b0b9-46e2-4376-a551-b8de7b51cc6c
