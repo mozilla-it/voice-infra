@@ -7,7 +7,6 @@ resources:
 - secret.yaml
 patchesStrategicMerge:
 - deployment-patch.yaml
-- service-patch.yaml
 commonAnnotations:
   owner: gozer@mozilla.com
   team: itsre
