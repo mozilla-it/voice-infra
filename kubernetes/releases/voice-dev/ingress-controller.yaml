@@ -20,6 +20,8 @@ spec:
         enabled: false
       replicaCount: 1
       service:
+        targetPorts:
+          https: http
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
           service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
