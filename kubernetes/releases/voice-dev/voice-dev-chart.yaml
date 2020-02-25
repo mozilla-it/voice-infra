@@ -23,7 +23,7 @@ spec:
       ingress:
         enabled: true
         class: voice-dev
-        host: voice-dev.allizom.org
+        host: dev.voice.mozit.cloud
 
       service_account:
         annotations:
