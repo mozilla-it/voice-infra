@@ -5,17 +5,41 @@ metadata:
   namespace: voice-sandbox
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:sandbox-*
+    #filter.fluxcd.io/chart-image: glob:sandbox-*
 spec:
   releaseName: voice-sandbox
+
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.0.25
+    version: 0.0.37
   values:
     namespace: voice-sandbox
-    replicas: 1
+    voice_web:
+      use_secrets_file: true
+      use_default_secrets_file: false
+      image: jgiannelos/voice-web-dev:latest
+
+      ingress:
+        enabled: true
+        class: voice-sandbox
+        host: sandbox.voice.mozit.cloud
+
+      service_account:
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-web-sandbox"
+
+      config:
+        redis_url: "redis://master.sandbox-voice-eks.cljunw.usw2.cache.amazonaws.com"
+        mysql:
+          host: "voice-eks-sandbox.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
+          root_user: "voice"
+
     redis:
-      cluster:
-        enabled: false
-        slaveCount: 0
+      enabled: false
+    elasticsearch:
+      enabled: false
+    kibana:
+      enabled: false
+    mysql:
+      enabled: false
