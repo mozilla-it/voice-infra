@@ -25,6 +25,11 @@ locals {
       rolearn = "arn:aws:iam::178589013767:role/AdminRole"
       groups  = ["system:masters"]
     },
+    {
+      username = "voice-developers"
+      rolearn  = "arn:aws:iam::058419420086:role/developers"
+      groups   = ["voice-developers"]
+    },
   ]
 }
 
