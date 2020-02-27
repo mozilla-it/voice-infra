@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.0.37
+    version: 0.0.38
   values:
     namespace: voice-sandbox
     voice_web:
@@ -34,6 +34,9 @@ spec:
         mysql:
           host: "voice-eks-sandbox.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "voice"
+        new_relic:
+          enabled: true
+          app_name: voice-sandbox
 
     redis:
       enabled: false
