@@ -97,12 +97,6 @@ data "aws_iam_policy_document" "rshaw" {
       aws_iam_role.developers.arn,
     ]
   }
-
-  #statement {
-  #  sid = "eks"
-  #  actions = [ "eks:DescribeCluster" ]
-  #  resources = [ "*" ]
-  #}
 }
 
 resource "aws_iam_access_key" "rshaw" {
@@ -141,12 +135,6 @@ data "aws_iam_policy_document" "phire" {
       aws_iam_role.developers.arn
     ]
   }
-
-  #statement {
-  #  sid = "eks"
-  #  actions = [ "eks:DescribeCluster" ]
-  #  resources = [ "*" ]
-  #}
 }
 
 resource "aws_iam_access_key" "phire" {
@@ -166,12 +154,6 @@ data "aws_iam_policy_document" "nemo" {
       aws_iam_role.developers.arn,
     ]
   }
-
-  #statement {
-  #  sid = "eks"
-  #  actions = [ "eks:DescribeCluster" ]
-  #  resources = [ "*" ]
-  #}
 }
 
 resource "aws_iam_access_key" "nemo" {
