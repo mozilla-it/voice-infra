@@ -15,24 +15,18 @@ resource "aws_s3_bucket" "velero" {
 
 data "aws_iam_policy_document" "velero_role" {
   statement {
-    actions = [
-      "sts:AssumeRole",
-    ]
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
 
-    principals {
-      type = "Service"
-
-      identifiers = [
-        "ec2.amazonaws.com",
-      ]
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(module.eks.cluster_oidc_issuer_url, "https://", "")}:sub"
+      values   = ["system:serviceaccount:velero:velero-server"]
     }
 
     principals {
-      type = "AWS"
-
-      identifiers = [
-        module.eks.worker_iam_role_arn,
-      ]
+      identifiers = [module.eks.oidc_provider_arn]
+      type        = "Federated"
     }
   }
 }
