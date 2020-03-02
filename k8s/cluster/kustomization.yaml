@@ -8,7 +8,6 @@ resources:
 - github.com/mozilla-it/k8s-common/sealed-secrets?ref=v0.0.2
 - kubecost
 - github.com/mozilla-it/k8s-common/kube2iam?ref=v0.0.2
-- velero
 - github.com/mozilla-it/k8s-common/cluster-autoscaler?ref=v0.0.2
 - github.com/mozilla-it/k8s-common/external-dns?ref=v0.0.2
 - github.com/mozilla-it/k8s-common/dashboard?ref=v0.0.2

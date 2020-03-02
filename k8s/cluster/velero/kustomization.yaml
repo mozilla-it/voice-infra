@@ -1,5 +1,0 @@
-resources:
-  - deployment.yaml
-  - schedules.yaml
-patchesStrategicMerge:
-  - patch.yaml
