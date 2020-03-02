@@ -14,7 +14,7 @@ spec:
     version: 2.8.10
   values:
     podAnnotations:
-      - eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/velero"
+      eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/velero"
 
     initContainers:
       - name: velero-plugin-for-aws
