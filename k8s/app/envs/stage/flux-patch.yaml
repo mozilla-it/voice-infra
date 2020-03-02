@@ -10,5 +10,5 @@ spec:
       $setElementOrder/containers:
       - name: web
       containers:
-      - image: itsre/voice-web:staging-776f9e52b848005c356d77fc90796a8fc014c2f2
+      - image: itsre/voice-web:staging-v0.0.4-basket-throttle
         name: web
