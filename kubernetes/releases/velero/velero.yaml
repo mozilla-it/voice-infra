@@ -13,9 +13,6 @@ spec:
     name: velero
     version: 2.8.10
   values:
-    podAnnotations:
-      eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/velero"
-
     initContainers:
       - name: velero-plugin-for-aws
         image: velero/velero-plugin-for-aws:v1.0.0
@@ -23,6 +20,14 @@ spec:
         volumeMounts:
           - mountPath: /target
             name: plugins
+
+    # securityContext and serviceAccount blocks used for assuming IAM roles
+    securityContext:
+      fsGroup: 1337  
+    serviceAccount:
+      server:
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/velero"
 
     metrics:
       enabled: false
