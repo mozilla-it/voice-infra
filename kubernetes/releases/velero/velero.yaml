@@ -1,0 +1,31 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: velero
+
+  chart:
+    repository: https://vmware-tanzu.github.io/helm-charts
+    name: vmware-tanzu
+    version: 2.8.10
+  values:
+    podAnnotations:
+      - eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/velero"
+
+    initContainers:
+      - name: velero-plugin-for-aws
+        image: velero/velero-plugin-for-aws:v1.0.0
+
+    metrics:
+      enabled: false
+
+    configuration:
+      provider: aws
+      backupStorageLocation:
+        name: aws
+        bucket: velero-voice-prod-20200302103410938800000001
+        kmsKeyId: alias/velero
