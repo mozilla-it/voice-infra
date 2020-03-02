@@ -10,7 +10,7 @@ spec:
 
   chart:
     repository: https://vmware-tanzu.github.io/helm-charts
-    name: vmware-tanzu
+    name: velero
     version: 2.8.10
   values:
     podAnnotations:
