@@ -37,4 +37,6 @@ spec:
       backupStorageLocation:
         name: aws
         bucket: velero-voice-prod-20200302103410938800000001
-        kmsKeyId: alias/velero
+        config:
+          region: us-west-2
+          kmsKeyId: alias/velero
