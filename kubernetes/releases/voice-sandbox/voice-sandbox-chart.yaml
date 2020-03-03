@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.0.40
+    version: 0.1.1
   values:
     namespace: voice-sandbox
     voice_web:
@@ -24,6 +24,7 @@ spec:
         enabled: true
         class: voice-sandbox
         host: sandbox.voice.mozit.cloud
+        additional_host: voice-sandbox.allizom.org
 
       service_account:
         annotations:
@@ -34,6 +35,14 @@ spec:
         mysql:
           host: "voice-eks-sandbox.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "voice"
+
+      extra_containers:
+        - name: velero-plugin-for-aws
+          image: velero/velero-plugin-for-aws:v1.0.0
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /target
+              name: plugins
 
     new_relic:
       enabled: true
