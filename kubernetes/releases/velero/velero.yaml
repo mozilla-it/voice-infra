@@ -44,3 +44,7 @@ spec:
     # We are using IAM roles
     credentials:
       useSecret: false
+
+    schedules:
+      backup:
+        schedule: "45 * * * *" 
