@@ -5,7 +5,7 @@ metadata:
   namespace: voice-sandbox
   annotations:
     fluxcd.io/automated: "true"
-    #filter.fluxcd.io/chart-image: glob:sandbox-*
+    filter.fluxcd.io/chart-image: glob:sandbox-*
 spec:
   releaseName: voice-sandbox
 
@@ -18,7 +18,7 @@ spec:
     voice_web:
       use_secrets_file: true
       use_default_secrets_file: false
-      image: jgiannelos/voice-web-dev:latest
+      image: itsre/voice-web:master-022753e655559c2515a909d77208a99c692bfb1b
 
       ingress:
         enabled: true
@@ -41,10 +41,10 @@ spec:
           image: itsre/remote_syslog2:0.2
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - mountPath: /logs
-              name: logs
-            - mountPath: /etc/rs2
-              name: papertrail-conf
+          - mountPath: /logs
+            name: logs
+          - mountPath: /etc/rs2
+            name: papertrail-conf
 
       extra_volumes:
         - name: papertrail-conf
