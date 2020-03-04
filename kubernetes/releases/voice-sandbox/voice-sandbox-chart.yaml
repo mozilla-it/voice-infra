@@ -36,16 +36,6 @@ spec:
           host: "voice-eks-sandbox.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "voice"
 
-      extra_containers:
-        - name: logs-to-papertrail
-          image: itsre/remote_syslog2:0.2
-          imagePullPolicy: IfNotPresent
-          volumeMounts:
-          - mountPath: /logs
-            name: logs
-          - mountPath: /etc/rs2
-            name: papertrail-conf
-
       extra_volumes:
         - name: papertrail-conf
           secret:
