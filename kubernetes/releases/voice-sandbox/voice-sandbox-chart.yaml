@@ -1,3 +1,4 @@
+---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
@@ -18,7 +19,7 @@ spec:
     voice_web:
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-022753e655559c2515a909d77208a99c692bfb1b
+      image: itsre/voice-web:master-e1546c58712c1fe3ff96fdce6f59ecb0105fcd3a
 
       ingress:
         enabled: true
@@ -37,9 +38,9 @@ spec:
           root_user: "voice"
 
       extra_volumes:
-        - name: papertrail-conf
-          secret:
-            secretName: papertrail-secrets
+      - name: papertrail-conf
+        secret:
+          secretName: papertrail-secrets
 
     new_relic:
       enabled: true
