@@ -5,7 +5,7 @@ metadata:
   namespace: voice-dev
   annotations:
     fluxcd.io/automated: "true"
-    #filter.fluxcd.io/chart-image: glob:master-*
+    filter.fluxcd.io/chart-image: glob:master-*
 spec:
   releaseName: voice-dev
 
@@ -18,7 +18,7 @@ spec:
     voice_web:
       use_secrets_file: true
       use_default_secrets_file: false
-      image: jgiannelos/voice-web-dev:latest
+      image: itsre/voice-web:master-b2f15d05318bd01b44930412d80928099b41cfe6
 
       ingress:
         enabled: true
