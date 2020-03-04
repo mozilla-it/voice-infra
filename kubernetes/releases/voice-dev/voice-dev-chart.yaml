@@ -1,3 +1,4 @@
+---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
@@ -18,7 +19,7 @@ spec:
     voice_web:
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-b2f15d05318bd01b44930412d80928099b41cfe6
+      image: itsre/voice-web:master-022753e655559c2515a909d77208a99c692bfb1b
 
       ingress:
         enabled: true
