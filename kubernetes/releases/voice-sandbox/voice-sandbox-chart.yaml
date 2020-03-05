@@ -13,10 +13,13 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.3
+    version: 0.1.4
   values:
     namespace: voice-sandbox
     voice_web:
+      # Customize deployment name per environment to make hostnames differents, 
+      # allowing us to segregate logs in Papertrail
+      deployment_name: voice-sandbox 
       use_secrets_file: true
       use_default_secrets_file: false
       image: itsre/voice-web:master-ae8f286f4bd01e4cc5ce79012b9ab59c6bf3334c
@@ -41,7 +44,7 @@ spec:
       - name: papertrail-conf
         secret:
           secretName: papertrail-secrets
-
+          
       extra_containers:
       - name: logs-to-papertrail
         image: itsre/remote_syslog2:0.2
