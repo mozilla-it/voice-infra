@@ -19,7 +19,7 @@ spec:
     voice_web:
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-7eb59c53df781cffec7c493ee2123f1d6928e38a
+      image: itsre/voice-web:master-ae8f286f4bd01e4cc5ce79012b9ab59c6bf3334c
 
       ingress:
         enabled: true
@@ -41,7 +41,7 @@ spec:
       - name: papertrail-conf
         secret:
           secretName: papertrail-secrets
-          
+
       extra_containers:
       - name: logs-to-papertrail
         image: itsre/remote_syslog2:0.2
