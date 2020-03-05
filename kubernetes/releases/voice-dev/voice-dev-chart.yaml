@@ -6,7 +6,7 @@ metadata:
   namespace: voice-dev
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:master-*
+    filter.fluxcd.io/voice_web: glob:master-*
 spec:
   releaseName: voice-dev
 
