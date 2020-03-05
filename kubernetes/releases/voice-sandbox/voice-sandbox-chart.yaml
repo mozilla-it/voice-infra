@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-sandbox
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-aa0e9c9575d092fec8caf8eea1f485f914443347
+      image: itsre/voice-web:master-95020c795b985d3c1dd89346c8392c921fe903cb
 
       ingress:
         enabled: true
