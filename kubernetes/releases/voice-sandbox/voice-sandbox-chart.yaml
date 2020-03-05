@@ -55,7 +55,6 @@ spec:
         - mountPath: /etc/rs2
           name: papertrail-conf
 
-
     new_relic:
       enabled: true
       app_name: voice-sandbox

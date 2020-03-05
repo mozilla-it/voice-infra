@@ -13,10 +13,13 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.2
+    version: 0.1.4
   values:
     namespace: voice-dev
     voice_web:
+      # Customize deployment name per environment to make hostnames differents,
+      # allowing us to segregate logs in Papertrail
+      deployment_name: voice-dev
       use_secrets_file: true
       use_default_secrets_file: false
       image: itsre/voice-web:master-74d1066ea1449944546ff4deb853671e1d7cbf6f
@@ -36,6 +39,21 @@ spec:
         mysql:
           host: "voice-eks-dev.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "voice"
+
+      extra_volumes:
+      - name: papertrail-conf
+        secret:
+          secretName: papertrail-secrets
+
+      extra_containers:
+      - name: logs-to-papertrail
+        image: itsre/remote_syslog2:0.2
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /logs
+          name: logs
+        - mountPath: /etc/rs2
+          name: papertrail-conf
 
     new_relic:
       enabled: true
