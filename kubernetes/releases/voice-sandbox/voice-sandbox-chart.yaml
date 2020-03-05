@@ -19,7 +19,7 @@ spec:
     voice_web:
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-5c5d19f60a88ad597b05cf668ffd829f48defda3
+      image: itsre/voice-web:master-7eb59c53df781cffec7c493ee2123f1d6928e38a
 
       ingress:
         enabled: true
