@@ -41,6 +41,17 @@ spec:
       - name: papertrail-conf
         secret:
           secretName: papertrail-secrets
+          
+      extra_containers:
+      - name: logs-to-papertrail
+        image: itsre/remote_syslog2:0.2
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /logs
+          name: logs
+        - mountPath: /etc/rs2
+          name: papertrail-conf
+
 
     new_relic:
       enabled: true
