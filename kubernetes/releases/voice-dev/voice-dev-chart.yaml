@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-dev
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-08616c4ce4c8eaacc9e29c444b22acd0b3959f06
+      image: itsre/voice-web:master-dcbf0d53873b4a6ee65c75405586b328659afcd0
 
       ingress:
         enabled: true
