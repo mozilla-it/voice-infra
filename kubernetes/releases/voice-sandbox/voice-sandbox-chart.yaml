@@ -6,7 +6,7 @@ metadata:
   namespace: voice-sandbox
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:sandbox-*
+    filter.fluxcd.io/voice_web: glob:sandbox-*
 spec:
   releaseName: voice-sandbox
 
@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-sandbox
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-95020c795b985d3c1dd89346c8392c921fe903cb
+      image: itsre/voice-web:sandbox-v0.0.6
 
       ingress:
         enabled: true
