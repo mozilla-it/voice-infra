@@ -19,10 +19,10 @@ spec:
     voice_web:
       # Customize deployment name per environment to make hostnames differents, 
       # allowing us to segregate logs in Papertrail
-      deployment_name: voice-sandbox 
+      deployment_name: voice-sandbox
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:sandbox-v0.0.6
+      image: itsre/voice-web:master-ae8f286f4bd01e4cc5ce79012b9ab59c6bf3334c
 
       ingress:
         enabled: true
@@ -44,7 +44,7 @@ spec:
       - name: papertrail-conf
         secret:
           secretName: papertrail-secrets
-          
+
       extra_containers:
       - name: logs-to-papertrail
         image: itsre/remote_syslog2:0.2
