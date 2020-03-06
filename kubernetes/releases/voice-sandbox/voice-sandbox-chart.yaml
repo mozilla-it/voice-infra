@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.4
+    version: 0.1.5
   values:
     namespace: voice-sandbox
     voice_web:
@@ -23,6 +23,7 @@ spec:
       use_secrets_file: true
       use_default_secrets_file: false
       image: itsre/voice-web:sandbox-08616c4ce4c8eaacc9e29c444b22acd0b3959f06
+      replicas: 1
 
       ingress:
         enabled: true
@@ -54,6 +55,9 @@ spec:
           name: logs
         - mountPath: /etc/rs2
           name: papertrail-conf
+
+      es_sync:
+        enabled: true
 
     new_relic:
       enabled: true
