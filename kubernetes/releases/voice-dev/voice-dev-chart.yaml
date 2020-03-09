@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.4
+    version: 0.1.8
   values:
     namespace: voice-dev
     voice_web:
@@ -54,6 +54,9 @@ spec:
           name: logs
         - mountPath: /etc/rs2
           name: papertrail-conf
+
+      es_sync:
+        enabled: true
 
     new_relic:
       enabled: true
