@@ -32,7 +32,7 @@ data "aws_iam_policy_document" "velero_role" {
 }
 
 resource "aws_iam_role" "velero" {
-  name = "velero"
+  name               = "velero"
   assume_role_policy = data.aws_iam_policy_document.velero_role.json
 }
 
