@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-sandbox
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:sandbox-08616c4ce4c8eaacc9e29c444b22acd0b3959f06
+      image: itsre/voice-web:sandbox-v1.23-nemo-dev
       replicas: 1
 
       ingress:
