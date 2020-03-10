@@ -33,3 +33,21 @@ resource "aws_acm_certificate" "sandbox" {
     create_before_destroy = true
   }
 }
+
+resource "aws_acm_certificate" "stage" {
+  domain_name = "voice.allizom.org"
+
+  subject_alternative_names = [
+    "stage.voice.mozit.cloud",
+  ]
+
+  tags = {
+    Name = "voice-k8s-stage"
+  }
+
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
