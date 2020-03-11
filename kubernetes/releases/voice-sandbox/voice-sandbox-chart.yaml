@@ -36,7 +36,7 @@ spec:
           eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-web-sandbox"
 
       config:
-        redis_url: "redis://master.sandbox-voice-eks.cljunw.usw2.cache.amazonaws.com"
+        redis_url: "rediss://master.sandbox-voice-eks.cljunw.usw2.cache.amazonaws.com"
         mysql:
           host: "voice-eks-sandbox.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "voice"

@@ -35,7 +35,7 @@ spec:
           eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-web-dev"
 
       config:
-        redis_url: "redis://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
+        redis_url: "rediss://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
         mysql:
           host: "voice-eks-dev.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "voice"
