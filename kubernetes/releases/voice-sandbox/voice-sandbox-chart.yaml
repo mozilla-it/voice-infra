@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-sandbox
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:sandbox-v1.23-enable-sentences
+      image: itsre/voice-web:sandbox-v1.23-enable-sentences-1030d60f0c663deec8e0c9962f97df065a6b78c5
       replicas: 1
 
       ingress:
