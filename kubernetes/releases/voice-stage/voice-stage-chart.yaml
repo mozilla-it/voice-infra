@@ -1,0 +1,72 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: voice
+  namespace: voice-stage
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/voice_web: glob:stage-v*
+spec:
+  releaseName: voice-stage
+
+  chart:
+    repository: https://mozilla-it.github.io/helm-charts/
+    name: mozilla-common-voice
+    version: 0.1.9
+  values:
+    namespace: voice-stage
+    voice_web:
+      # Customize deployment name per environment to make hostnames differents,
+      # allowing us to segregate logs in Papertrail
+      deployment_name: voice-stage
+      use_secrets_file: true
+      use_default_secrets_file: false
+      image: itsre/voice-web:master-3b01d1e6bed78449d7ad3119d3fbdd4910f85487
+
+      ingress:
+        enabled: true
+        class: voice-stage
+        host: stage.voice.mozit.cloud
+        additional_host: voice.allizom.org
+
+      service_account:
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-web-stage"
+
+      config:
+        redis_url: "redis://master.stage-voice-eks.cljunw.usw2.cache.amazonaws.com"
+        mysql:
+          host: "voice-eks-stage.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
+          root_user: "admin"
+
+      extra_volumes:
+      - name: papertrail-conf
+        secret:
+          secretName: papertrail-secrets
+
+      extra_containers:
+      - name: logs-to-papertrail
+        image: itsre/remote_syslog2:0.2
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /logs
+          name: logs
+        - mountPath: /etc/rs2
+          name: papertrail-conf
+
+      es_sync:
+        enabled: true
+
+    new_relic:
+      enabled: true
+      app_name: voice-stage
+
+    redis:
+      enabled: false
+    elasticsearch:
+      enabled: false
+    kibana:
+      enabled: false
+    mysql:
+      enabled: false
