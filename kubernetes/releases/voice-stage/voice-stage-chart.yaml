@@ -39,6 +39,7 @@ spec:
         mysql:
           host: "voice-eks-stage.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "admin"
+          user: "admin"
 
       extra_volumes:
       - name: papertrail-conf
