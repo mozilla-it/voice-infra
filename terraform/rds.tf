@@ -5,7 +5,7 @@ module "db-stage" {
   username                = "admin"
   identifier              = "voice-eks-stage"
   instance                = "db.t3.medium"
-  storage_gb              = "32"
+  storage_gb              = "50"
   db_version              = "5.6"
   multi_az                = "false"
   vpc_id                  = module.vpc.vpc_id
