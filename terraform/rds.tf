@@ -4,7 +4,7 @@ module "db-stage" {
   name                    = "voice"
   username                = "admin"
   identifier              = "voice-eks-stage"
-  instance                = "db.t3.small"
+  instance                = "db.t3.large"
   storage_gb              = "32"
   db_version              = "5.6"
   multi_az                = "false"
@@ -13,6 +13,7 @@ module "db-stage" {
   parameter_group_name    = aws_db_parameter_group.voice_parameters.name
   backup_retention_period = 3
   replica_enabled         = "true"
+	instance_replica        = "db.t3.small"
 
   cost_center = "1003"
   project     = "voice"
@@ -34,6 +35,7 @@ module "db-dev" {
   parameter_group_name    = aws_db_parameter_group.voice_parameters.name
   backup_retention_period = 1
   replica_enabled         = "true"
+	instance_replica        = "db.t3.small"
 
   cost_center = "1003"
   project     = "voice"
@@ -55,6 +57,7 @@ module "db-sandbox" {
   parameter_group_name    = aws_db_parameter_group.voice_parameters.name
   backup_retention_period = 1
   replica_enabled         = "true"
+	instance_replica        = "db.t3.small"
 
   cost_center = "1003"
   project     = "voice"
