@@ -9,7 +9,7 @@ resource "aws_route53_record" "stage" {
 
   alias {
     name                   = "dualstack.${data.aws_elb.stage.dns_name}"
-    zone_id                = data.aws_elb.dev.zone_id
+    zone_id                = data.aws_elb.stage.zone_id
     evaluate_target_health = false
   }
 }
