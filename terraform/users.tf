@@ -83,6 +83,49 @@ data "aws_iam_policy_document" "developers" {
     actions   = ["eks:DescribeCluster"]
     resources = ["*"]
   }
+
+  statement {
+    sid       = "s3ObjectLevelPermissions"
+    resources = ["arn:aws:s3:::voice-*"]
+    actions = ["s3:AbortMultipartUpload",
+      "s3:DeleteObject",
+      "s3:DeleteObjectTagging",
+      "s3:DeleteObjectVersion",
+      "s3:DeleteObjectVersionTagging",
+      "s3:GetObject",
+      "s3:GetObjectAcl",
+      "s3:GetObjectRetention",
+      "s3:GetObjectTagging",
+      "s3:GetObjectVersion",
+      "s3:GetObjectVersionAcl",
+      "s3:GetObjectVersionTagging",
+      "s3:ListMultipartUploadParts",
+      "s3:PutObject",
+      "s3:PutObjectAcl",
+      "s3:PutObjectRetention",
+      "s3:PutObjectTagging",
+      "s3:PutObjectVersionAcl",
+      "s3:PutObjectVersionTagging",
+    "s3:RestoreObject"]
+  }
+
+  statement {
+    sid       = "s3ListBucket"
+    resources = ["arn:aws:s3:::*"]
+    actions   = ["s3:ListAllMyBuckets", "s3:ListBucket"]
+  }
+
+  statement {
+    sid       = "redisClusterList"
+    resources = ["arn:aws:elasticache:::*"]
+    actions   = ["elasticache:DescribeCacheClusters", "elasticache:RebootCacheCluster"]
+  }
+
+  statement {
+    sid       = "rdsDescribe"
+    resources = ["arn:aws:rds:::*"]
+    actions   = ["rds:Describe*"]
+  }
 }
 
 data "aws_iam_policy_document" "rshaw" {
