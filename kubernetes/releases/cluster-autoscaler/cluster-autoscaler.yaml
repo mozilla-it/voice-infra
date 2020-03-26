@@ -1,0 +1,20 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: cluster-autoscaler
+  namespace: cluster-autoscaler
+spec:
+  releaseName: cluster-autoscaler
+
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: cluster-autoscaler
+    version: 7.2.0
+  values:
+    awsRegion: us-west-2
+    autoDiscovery:
+      clusterName: voice-prod
+    rbac:
+      create: true
+      serviceAccountAnnotations: 
+        eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/cluster-autoscaler"
