@@ -2,7 +2,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: cluster-autoscaler
-  namespace: cluster-autoscaler
+  namespace: kube-system
 spec:
   releaseName: cluster-autoscaler
 
