@@ -51,3 +51,21 @@ resource "aws_acm_certificate" "stage" {
     create_before_destroy = true
   }
 }
+
+resource "aws_acm_certificate" "prod" {
+  domain_name = "voice.mozilla.org"
+
+  subject_alternative_names = [
+    "prod.voice.mozit.cloud",
+  ]
+
+  tags = {
+    Name = "voice-k8s-prod"
+  }
+
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
