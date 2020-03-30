@@ -32,7 +32,7 @@ spec:
 
       service_account:
         annotations:
-          eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice-web-dev"
+          eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice/voice-web-dev"
 
       config:
         redis_url: "rediss://dev-voice-eks-001.dev-voice-eks.cljunw.usw2.cache.amazonaws.com"
