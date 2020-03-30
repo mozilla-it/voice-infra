@@ -1,6 +1,6 @@
 locals {
   cluster_name    = "voice-prod"
-  cluster_version = "1.14"
+  cluster_version = "1.15"
 
   cluster_tags = {
     Region    = var.region
@@ -49,6 +49,9 @@ resource "aws_eks_node_group" "nodes" {
   labels = {
     node            = "managed"
     node_group_name = "${local.cluster_name}_worker"
+  }
+  tags = {
+    Name = "voice-prod-eks-node"
   }
 }
 
