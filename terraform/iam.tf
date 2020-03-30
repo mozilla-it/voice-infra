@@ -27,28 +27,39 @@ resource "aws_iam_role_policy" "voice-dev" {
   name = "voice-web-dev"
   role = aws_iam_role.voice-dev.id
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-	    {
-      "Effect": "Allow",
-      "Action": [
-        "ssm:GetParameters",
-        "ssm:GetParameter"
-      ],
-      "Resource": "arn:aws:ssm:us-west-2:058419420086:parameter/voice/dev/*"
-      },
-	    {
-      "Effect": "Allow",
-      "Action": [
-				"kms:Decrypt"
-      ],
-      "Resource": "${aws_kms_key.voice-dev.arn}"
-      }
-  ]
+  policy = data.aws_iam_policy_document.voice_dev.json
 }
-EOF
+
+data "aws_iam_policy_document" "voice_dev" {
+  statement {
+    sid = "voiceDevAllowSSM"
+
+    actions = [
+      "ssm:GetParameters",
+      "ssm:GetParameter"
+    ]
+
+    resources = ["arn:aws:ssm:us-west-2:058419420086:parameter/voice/dev/*"]
+  }
+
+  statement {
+    sid = "voiceDevAllowKMS"
+
+    actions = ["kms:Decrypt"]
+
+    resources = ["${aws_kms_key.voice-dev.arn}"]
+  }
+
+  statement {
+    sid = "voiceDevS3"
+
+    actions = ["s3:*"]
+
+    resources = [
+      "${aws_s3_bucket.voice-dev.arn}/*",
+      "${aws_s3_bucket.voice-dev.arn}",
+    ]
+  }
 }
 
 # sandbox
@@ -80,28 +91,39 @@ resource "aws_iam_role_policy" "voice-sandbox" {
   name = "voice-web-sandbox"
   role = aws_iam_role.voice-sandbox.id
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-	    {
-      "Effect": "Allow",
-      "Action": [
-        "ssm:GetParameters",
-        "ssm:GetParameter"
-      ],
-      "Resource": "arn:aws:ssm:us-west-2:058419420086:parameter/voice/sandbox/*"
-      },
-	    {
-      "Effect": "Allow",
-      "Action": [
-				"kms:Decrypt"
-      ],
-      "Resource": "${aws_kms_key.voice-sandbox.arn}"
-      }
-  ]
+  policy = data.aws_iam_policy_document.voice_sandbox.json
 }
-EOF
+
+data "aws_iam_policy_document" "voice_sandbox" {
+  statement {
+    sid = "voiceSandboxAllowSSM"
+
+    actions = [
+      "ssm:GetParameters",
+      "ssm:GetParameter"
+    ]
+
+    resources = ["arn:aws:ssm:us-west-2:058419420086:parameter/voice/sandbox/*"]
+  }
+
+  statement {
+    sid = "voiceSandboxAllowKMS"
+
+    actions = ["kms:Decrypt"]
+
+    resources = ["${aws_kms_key.voice-sandbox.arn}"]
+  }
+
+  statement {
+    sid = "voiceSandboxS3"
+
+    actions = ["s3:*"]
+
+    resources = [
+      "${aws_s3_bucket.voice-sandbox.arn}/*",
+      "${aws_s3_bucket.voice-sandbox.arn}",
+    ]
+  }
 }
 
 # stage
@@ -130,32 +152,43 @@ data "aws_iam_policy_document" "allow_assume_role_stage" {
 }
 
 resource "aws_iam_role_policy" "voice-stage" {
-  name = "voice-web-stage"
-  role = aws_iam_role.voice-stage.id
+  name   = "voice-web-stage"
+  role   = aws_iam_role.voice-stage.id
+  policy = data.aws_iam_policy_document.voice_stage.json
+}
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-	    {
-      "Effect": "Allow",
-      "Action": [
-        "ssm:GetParameters",
-        "ssm:GetParameter"
-      ],
-      "Resource": "arn:aws:ssm:us-west-2:058419420086:parameter/voice/stage/*"
-      },
-	    {
-      "Effect": "Allow",
-      "Action": [
-				"kms:Decrypt"
-      ],
-      "Resource": "${aws_kms_key.voice-stage.arn}"
-      }
-  ]
+data "aws_iam_policy_document" "voice_stage" {
+  statement {
+    sid = "voiceStageAllowSSM"
+
+    actions = [
+      "ssm:GetParameters",
+      "ssm:GetParameter"
+    ]
+
+    resources = ["arn:aws:ssm:us-west-2:058419420086:parameter/voice/stage/*"]
+  }
+
+  statement {
+    sid = "voiceStageAllowKMS"
+
+    actions = ["kms:Decrypt"]
+
+    resources = ["${aws_kms_key.voice-stage.arn}"]
+  }
+
+  statement {
+    sid = "voiceStageS3"
+
+    actions = ["s3:*"]
+
+    resources = [
+      "${data.aws_s3_bucket.voice-stage.arn}/*",
+      "${data.aws_s3_bucket.voice-stage.arn}",
+    ]
+  }
 }
-EOF
-}
+
 
 
 # prod
@@ -187,26 +220,37 @@ resource "aws_iam_role_policy" "voice-prod" {
   name = "voice-web-prod"
   role = aws_iam_role.voice-prod.id
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-	    {
-      "Effect": "Allow",
-      "Action": [
-        "ssm:GetParameters",
-        "ssm:GetParameter"
-      ],
-      "Resource": "arn:aws:ssm:us-west-2:058419420086:parameter/voice/prod/*"
-      },
-	    {
-      "Effect": "Allow",
-      "Action": [
-				"kms:Decrypt"
-      ],
-      "Resource": "${aws_kms_key.voice-prod.arn}"
-      }
-  ]
+  policy = data.aws_iam_policy_document.voice_prod.json
 }
-EOF
+
+data "aws_iam_policy_document" "voice_prod" {
+  statement {
+    sid = "voiceProdAllowSSM"
+
+    actions = [
+      "ssm:GetParameters",
+      "ssm:GetParameter"
+    ]
+
+    resources = ["arn:aws:ssm:us-west-2:058419420086:parameter/voice/prod/*"]
+  }
+
+  statement {
+    sid = "voiceProdAllowKMS"
+
+    actions = ["kms:Decrypt"]
+
+    resources = ["${aws_kms_key.voice-prod.arn}"]
+  }
+
+  statement {
+    sid = "voiceProdS3"
+
+    actions = ["s3:*"]
+
+    resources = [
+      "${data.aws_s3_bucket.voice-prod.arn}/*",
+      "${data.aws_s3_bucket.voice-prod.arn}",
+    ]
+  }
 }
