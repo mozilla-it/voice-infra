@@ -40,6 +40,9 @@ spec:
           host: "voice-eks-stage.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "admin"
           user: "admin"
+        s3:
+          bucket_name: "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
+          location: "us-west-2"
 
       extra_volumes:
       - name: papertrail-conf
