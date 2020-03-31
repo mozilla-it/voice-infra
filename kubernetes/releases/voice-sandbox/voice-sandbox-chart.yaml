@@ -40,6 +40,9 @@ spec:
         mysql:
           host: "voice-eks-sandbox.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
           root_user: "voice"
+        s3:
+          bucket_name: "voice-sandbox-clips-20191211013626583100000001"
+          location: "us-west-2"
 
       extra_volumes:
       - name: papertrail-conf
