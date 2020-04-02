@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-stage
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:stage-v1.25.0-jz-db-test-3
+      image: itsre/voice-web:stage-v1.25.0-ios-recording-web
 
       ingress:
         enabled: true
