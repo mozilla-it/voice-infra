@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.10
+    version: 0.1.11
   values:
     namespace: voice-stage
     voice_web:
@@ -43,6 +43,8 @@ spec:
         s3:
           bucket_name: "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
           location: "us-west-2"
+        extra_vars:
+          CV_ENVIRONMENT: "stage"
 
       extra_volumes:
       - name: papertrail-conf
