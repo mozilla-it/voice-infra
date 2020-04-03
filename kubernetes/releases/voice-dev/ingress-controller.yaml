@@ -23,6 +23,7 @@ spec:
         X-Frame-Options: "DENY"
         X-Content-Type-Options: "nosniff"
         X-XSS-Protection: "1; mode=block"
+        Strict-Transport-Security: "max-age=31536000"
 
       service:
         targetPorts:
@@ -35,8 +36,6 @@ spec:
         use-forwarded-headers: "true"
         ssl-redirect: "true"
         force-ssl-redirect: "true"
-        hsts: "true"
-        hsts-include-subdomains: "true"
 
     defaultBackend:
       enabled: false
