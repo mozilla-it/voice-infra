@@ -19,7 +19,7 @@ data "aws_route53_zone" "voice_mozit_cloud" {
 }
 
 data "aws_elb" "dev" {
-  name = "a173022d857d011eabf210a8061d9461"
+  name = "abfff7c3a181b427f8562c769e84e7ab"
 }
 
 resource "aws_route53_record" "dev" {
