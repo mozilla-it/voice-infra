@@ -30,6 +30,8 @@ spec:
         use-forwarded-headers: "true"
         ssl-redirect: "true"
         force-ssl-redirect: "true"
+        hsts: "true"
+        hsts-include-subdomains: "true"
 
     defaultBackend:
       enabled: false
