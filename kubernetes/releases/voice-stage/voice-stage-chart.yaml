@@ -6,7 +6,7 @@ metadata:
   namespace: voice-stage
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/voice_web: glob:stage-v*
+    filter.fluxcd.io/voice_web: glob:stage-
 spec:
   releaseName: voice-stage
 
