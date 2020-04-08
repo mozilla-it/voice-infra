@@ -14,6 +14,6 @@ module "elasticsearch-prod" {
 	subnet_ids              = [element(module.vpc.private_subnets[0], 0)]
 	vpc_id                  = module.vpc.vpc_id
 	ingress_security_groups = "sg-0b42a7cfbb3ccb3bc"
-	ebs_volume_size         = 80
-	es_instance_type        = "m3.medium.elasticsearch"
+	ebs_volume_size         = 200
+	es_instance_type        = "m3.large.elasticsearch"
 }
