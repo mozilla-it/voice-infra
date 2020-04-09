@@ -1,0 +1,78 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: voice
+  namespace: voice-prod
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/voice_web: glob:release-v*
+spec:
+  releaseName: voice-prod
+
+  chart:
+    repository: https://mozilla-it.github.io/helm-charts/
+    name: mozilla-common-voice
+    version: 0.1.12
+  values:
+    namespace: voice-prod
+    voice_web:
+      # Customize deployment name per environment to make hostnames differents,
+      # allowing us to segregate logs in Papertrail
+      deployment_name: voice-prod
+      use_secrets_file: true
+      use_default_secrets_file: false
+      image: itsre/voice-web:production-latest
+
+      ingress:
+        enabled: true
+        class: voice-prod
+        host: voice.mozilla.org
+        additional_host: prod.voice.mozit.cloud
+
+      service_account:
+        annotations:
+          eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice/voice-web-prod"
+
+      config:
+        redis_url: "rediss://master.prod-voice-eks.cljunw.usw2.cache.amazonaws.com"
+        mysql:
+          host: "voice-eks-prod.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
+          root_user: "admin"
+          user: "admin"
+        s3:
+          bucket_name: "not-yet-configured"
+          location: "us-west-2"
+        extra_vars:
+          CV_ENVIRONMENT: "prod"
+
+      extra_volumes:
+      - name: papertrail-conf
+        secret:
+          secretName: papertrail-secrets
+
+      extra_containers:
+      - name: logs-to-papertrail
+        image: itsre/remote_syslog2:0.2
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /logs
+          name: logs
+        - mountPath: /etc/rs2
+          name: papertrail-conf
+
+      es_sync:
+        enabled: true
+
+    new_relic:
+      enabled: false
+      app_name: voice-prod
+
+    redis:
+      enabled: false
+    elasticsearch:
+      enabled: false
+    kibana:
+      enabled: false
+    mysql:
+      enabled: false
