@@ -26,6 +26,11 @@ locals {
       groups  = ["system:masters"]
     },
     {
+      username = "maws-admin"
+      rolearn  = "arn:aws:iam::058419420086:role/maws-admin"
+      groups   = ["system:masters"]
+    },
+    {
       username = "voice-developers"
       rolearn  = "arn:aws:iam::058419420086:role/developers"
       groups   = ["voice-developers"]
