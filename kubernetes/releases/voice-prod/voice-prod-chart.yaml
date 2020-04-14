@@ -5,7 +5,7 @@ metadata:
   name: voice
   namespace: voice-prod
   annotations:
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
     filter.fluxcd.io/voice_web: glob:release-v*
 spec:
   releaseName: voice-prod
@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-prod
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:production-latest
+      image: itsre/voice-web:master-041dc7a53571da19043da203bfa8c28c5eefd9a3
 
       ingress:
         enabled: true
