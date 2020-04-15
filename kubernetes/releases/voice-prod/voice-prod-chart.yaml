@@ -41,8 +41,9 @@ spec:
           root_user: "admin"
           user: "admin"
         s3:
-          bucket_name: "not-yet-configured"
+          bucket_name: "voice-prod-clips-393eefd0cba28c270ced0f9587a4f6ae601ca91e"
           location: "us-west-2"
+        prod: true
         extra_vars:
           CV_ENVIRONMENT: "prod"
 
