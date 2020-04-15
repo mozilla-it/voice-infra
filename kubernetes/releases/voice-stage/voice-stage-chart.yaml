@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-stage
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:stage-v1.26.09-ios-plus-migration-test
+      image: itsre/voice-web:master-82ccdcd5059aa0fea1f6446a5fe88f00608376b4
 
       ingress:
         enabled: true
