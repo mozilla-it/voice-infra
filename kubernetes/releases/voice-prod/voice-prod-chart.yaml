@@ -66,7 +66,7 @@ spec:
         enabled: true
 
     new_relic:
-      enabled: false
+      enabled: true
       app_name: voice-prod
 
     redis:

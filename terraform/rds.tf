@@ -4,7 +4,7 @@ module "db-prod" {
   name                                   = "voice"
   username                               = "admin"
   identifier                             = "voice-eks-prod"
-  instance                               = "db.t3.medium"
+  instance                               = "db.m5.large"
   storage_gb                             = "100"
   db_version                             = "5.6.46"
   multi_az                               = "false"
@@ -13,11 +13,12 @@ module "db-prod" {
   parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
   backup_retention_period                = 30
   replica_enabled                        = "true"
-  instance_replica                       = "db.m5.large"
+  instance_replica                       = "db.t3.large"
   replica_db_version                     = "5.6.46"
   performance_insights_enabled           = "true"
   performance_insights_retention         = 7
   replica_performance_insights_retention = 0
+  snapshot_identifier                    = "k8s-migration"
 
   cost_center = "1003"
   project     = "voice"
