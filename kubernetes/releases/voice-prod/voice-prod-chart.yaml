@@ -23,7 +23,7 @@ spec:
       replicas: 10
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-041dc7a53571da19043da203bfa8c28c5eefd9a3
+      image: itsre/voice-web:master-5761997cfe90ca27dbf8daff654065ace2eb858b
 
       ingress:
         enabled: true
