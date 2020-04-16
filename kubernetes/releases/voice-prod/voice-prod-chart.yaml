@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.12
+    version: 0.1.13
   values:
     namespace: voice-prod
     voice_web:
@@ -23,7 +23,7 @@ spec:
       replicas: 10
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-041dc7a53571da19043da203bfa8c28c5eefd9a3
+      image: itsre/voice-web:master-5761997cfe90ca27dbf8daff654065ace2eb858b
 
       ingress:
         enabled: true
@@ -45,7 +45,12 @@ spec:
           bucket_name: "voice-prod-clips-393eefd0cba28c270ced0f9587a4f6ae601ca91e"
           location: "us-west-2"
         prod: true
+        admin_emails: [\"adelbarrio@mozilla.com\",\"aklepel@mozilla.com\",\"jennyzhang@mozilla.com\",\"lsaunders@mozilla.com\",\"martin@mozilla.com\",\"mbranson@mozilla.com\",\"rshaw@mozilla.com\"],
+        kibana:
+          url: https://vpc-voice-eks-prod-uwpqjoqwaji4cplc5r7du6pgbq.us-west-2.es.amazonaws.com/_plugin/kibana/
+          admins: [\"henrik.mitsch@gmx.at\",\"steveparmar6nov2011@gmail.com\",\"manel.rhaiem92@gmail.com\",\"shambhavimishra26@gmail.com\", \"mte90net@gmail.com\", \"fryskefirefox@gmail.com\"]
         extra_vars:
+          # Note: extra_vars have to be always quoted
           CV_ENVIRONMENT: "prod"
 
       extra_volumes:
