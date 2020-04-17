@@ -16,4 +16,5 @@ module "elasticsearch-prod" {
 	ingress_security_groups = "sg-0b42a7cfbb3ccb3bc"
 	ebs_volume_size         = 200
 	es_instance_type        = "m3.large.elasticsearch"
+	es_instance_count       = 3
 }
