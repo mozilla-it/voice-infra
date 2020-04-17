@@ -46,7 +46,7 @@ spec:
           location: "us-west-2"
         prod: true
         environment: prod
-        admin_emails: "[\"adelbarrio@mozilla.com\",\"aklepel@mozilla.com\",\"jennyzhang@mozilla.com\",\"lsaunders@mozilla.com\",\"martin@mozilla.com\",\"mbranson@mozilla.com\",\"rshaw@mozilla.com\"]"
+        admin_emails: [\"adelbarrio@mozilla.com\",\"aklepel@mozilla.com\",\"jennyzhang@mozilla.com\",\"lsaunders@mozilla.com\",\"martin@mozilla.com\",\"mbranson@mozilla.com\",\"rshaw@mozilla.com\"]
         kibana:
           url: https://vpc-voice-eks-prod-uwpqjoqwaji4cplc5r7du6pgbq.us-west-2.es.amazonaws.com/_plugin/kibana/
           admins: [\"henrik.mitsch@gmx.at\",\"steveparmar6nov2011@gmail.com\",\"manel.rhaiem92@gmail.com\",\"shambhavimishra26@gmail.com\", \"mte90net@gmail.com\", \"fryskefirefox@gmail.com\"]
