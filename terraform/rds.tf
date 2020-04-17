@@ -10,7 +10,7 @@ module "db-prod" {
   multi_az                               = "false"
   vpc_id                                 = module.vpc.vpc_id
   subnets                                = module.vpc.private_subnets.0
-  parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
+  parameter_group_name                   = aws_db_parameter_group.voice_parameters_prod.name
   backup_retention_period                = 30
   replica_enabled                        = "true"
   instance_replica                       = "db.t3.large"
@@ -114,6 +114,29 @@ resource "aws_db_parameter_group" "voice_parameters" {
   parameter {
     name         = "binlog_format"
     value        = "ROW"
+    apply_method = "immediate"
+  }
+}
+
+resource "aws_db_parameter_group" "voice_parameters_prod" {
+  name   = "voice-db-parameters"
+  family = "mysql5.6"
+
+  parameter {
+    name         = "slow_query_log"
+    value        = "1"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "binlog_format"
+    value        = "ROW"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "innodb_read_io_threads"
+    value        = "16"
     apply_method = "immediate"
   }
 }
