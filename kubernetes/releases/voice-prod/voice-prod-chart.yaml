@@ -45,11 +45,12 @@ spec:
           bucket_name: "voice-prod-clips-393eefd0cba28c270ced0f9587a4f6ae601ca91e"
           location: "us-west-2"
         prod: true
-        environment: true
+        environment: prod
         admin_emails: "[\"adelbarrio@mozilla.com\",\"aklepel@mozilla.com\",\"jennyzhang@mozilla.com\",\"lsaunders@mozilla.com\",\"martin@mozilla.com\",\"mbranson@mozilla.com\",\"rshaw@mozilla.com\"]"
         kibana:
           url: https://vpc-voice-eks-prod-uwpqjoqwaji4cplc5r7du6pgbq.us-west-2.es.amazonaws.com/_plugin/kibana/
           admins: [\"henrik.mitsch@gmx.at\",\"steveparmar6nov2011@gmail.com\",\"manel.rhaiem92@gmail.com\",\"shambhavimishra26@gmail.com\", \"mte90net@gmail.com\", \"fryskefirefox@gmail.com\"]
+          prefix: "/app/kibana"
         extra_vars:
           # Note: extra_vars have to be always quoted
           CV_ENVIRONMENT: "prod"
