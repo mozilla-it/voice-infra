@@ -46,7 +46,7 @@ spec:
         prod: true # we need this also for stage
         kibana:
           url: https://vpc-voice-eks-stage-mzlpwmunhbpmddyrg5pasjkh4y.us-west-2.es.amazonaws.com/_plugin/kibana/
-          prefix: "/app/kibana"
+          prefix: "/_plugin/kibana"
         extra_vars:
           CV_ENVIRONMENT: "stage"
 

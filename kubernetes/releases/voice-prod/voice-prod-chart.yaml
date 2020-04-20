@@ -50,7 +50,7 @@ spec:
         kibana:
           url: https://vpc-voice-eks-prod-uwpqjoqwaji4cplc5r7du6pgbq.us-west-2.es.amazonaws.com/_plugin/kibana/
           admins: [\"henrik.mitsch@gmx.at\",\"steveparmar6nov2011@gmail.com\",\"manel.rhaiem92@gmail.com\",\"shambhavimishra26@gmail.com\", \"mte90net@gmail.com\", \"fryskefirefox@gmail.com\"]
-          prefix: "/app/kibana"
+          prefix: "/_plugin/kibana"
         extra_vars:
           # Note: extra_vars have to be always quoted
           CV_ENVIRONMENT: "prod"
