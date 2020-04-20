@@ -1,3 +1,10 @@
+module "devs_ro" {
+  source       = "github.com/mozilla-it/terraform-modules//aws/maws-roles?ref=master"
+  role_name    = "maws-devs-ro"
+  role_mapping = [ "voice-dev" ]
+  policy_arn   = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+}
+
 module "devs_role" {
   source       = "github.com/mozilla-it/terraform-modules//aws/maws-roles?ref=master"
   role_name    = "maws-developers"
@@ -48,17 +55,5 @@ data "aws_iam_policy_document" "devs_policy" {
     sid       = "s3ListBucket"
     resources = ["arn:aws:s3:::*"]
     actions   = ["s3:ListAllMyBuckets", "s3:ListBucket"]
-  }
-
-  statement {
-    sid       = "redisClusterList"
-    resources = ["arn:aws:elasticache:::*"]
-    actions   = ["elasticache:DescribeCacheClusters", "elasticache:RebootCacheCluster"]
-  }
-
-  statement {
-    sid       = "rdsDescribe"
-    resources = ["arn:aws:rds:::*"]
-    actions   = ["rds:Describe*"]
   }
 }
