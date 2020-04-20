@@ -44,6 +44,9 @@ spec:
           bucket_name: "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
           location: "us-west-2"
         prod: true # we need this also for stage
+        kibana:
+          url: https://vpc-voice-eks-stage-mzlpwmunhbpmddyrg5pasjkh4y.us-west-2.es.amazonaws.com/_plugin/kibana/
+          prefix: "/app/kibana"
         extra_vars:
           CV_ENVIRONMENT: "stage"
 
