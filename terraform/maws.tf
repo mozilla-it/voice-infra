@@ -7,7 +7,7 @@ module "devs_ro" {
 
 module "devs_role" {
   source       = "github.com/mozilla-it/terraform-modules//aws/maws-roles?ref=master"
-  role_name    = "maws-developers"
+  role_name    = "maws-devs-rw"
   role_mapping = [ "voice-dev" ]
   policy_arn   = aws_iam_policy.devs_policy.arn
 }
