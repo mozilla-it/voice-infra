@@ -5,8 +5,7 @@ metadata:
   name: voice
   namespace: voice-sandbox
   annotations:
-    fluxcd.io/automated: "true"
-    filter.fluxcd.io/voice_web: glob:sandbox-*
+    fluxcd.io/automated: "false"
 spec:
   releaseName: voice-sandbox
 
