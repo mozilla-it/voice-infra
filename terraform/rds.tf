@@ -109,7 +109,13 @@ resource "aws_db_parameter_group" "voice_parameters" {
 
   parameter {
     name         = "binlog_format"
-    value        = "ROW"
+    value        = "row"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "log_queries_not_using_indexes"
+    value        = "1"
     apply_method = "immediate"
   }
 }
