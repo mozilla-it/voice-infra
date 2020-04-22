@@ -65,11 +65,9 @@ module "db-dev" {
   subnets                                = module.vpc.private_subnets.0
   parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
   backup_retention_period                = 1
-  replica_enabled                        = "true"
-  instance_replica                       = "db.t3.small"
-  replica_db_version                     = "5.6.46"
+  performance_insights_enabled           = "false"
   performance_insights_retention         = 0
-  replica_performance_insights_retention = 0
+  replica_enabled                        = "false"
 
   cost_center = "1003"
   project     = "voice"
@@ -90,11 +88,9 @@ module "db-sandbox" {
   subnets                                = module.vpc.private_subnets.0
   parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
   backup_retention_period                = 1
-  replica_enabled                        = "true"
-  instance_replica                       = "db.t3.small"
-  replica_db_version                     = "5.6.46"
+  performance_insights_enabled           = "false"
   performance_insights_retention         = 0
-  replica_performance_insights_retention = 0
+  replica_enabled                        = "false"
 
   cost_center = "1003"
   project     = "voice"
