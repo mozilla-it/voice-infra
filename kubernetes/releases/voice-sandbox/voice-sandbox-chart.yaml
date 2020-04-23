@@ -67,7 +67,7 @@ spec:
           name: papertrail-conf
 
       es_sync:
-        enabled: true
+        enabled: false
 
     new_relic:
       enabled: true
