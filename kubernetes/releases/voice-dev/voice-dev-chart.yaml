@@ -31,6 +31,11 @@ spec:
         additional_host: voice-dev.allizom.org
         extra_annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+          nginx.ingress.kubernetes.io/server-snippet: |
+            location /firefox-voice {
+              add_header Content-Security-Policy "default-src 'none'; connect-src https://www.google-analytics.com https://sentry.prod.mozaws.net; style-src 'self' https://fonts.googleapis.com; font    -src 'self' https://fonts.googleapis.com; script-src 'self' https://www.google-analytics.com; img-src 'self' data:; child-src https://www.youtube.com" ;
+              proxy_pass https://mozilla.github.io/firefox-voice/homepage;
+            }
 
       service_account:
         annotations:
