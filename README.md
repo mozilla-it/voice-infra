@@ -1,7 +1,7 @@
 # voice-infra
 This repository contains the infrastructure code for running voice.mozilla.org
 
-# Table of content
+# Table of Contents
 
  - [Environments](#environments)
  - [FAQ](#faq)
