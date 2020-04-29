@@ -1,5 +1,5 @@
 module "db-prod" {
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database"
+  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
   type                                   = "mysql"
   name                                   = "voice"
   username                               = "admin"
@@ -26,22 +26,22 @@ module "db-prod" {
 }
 
 module "db-stage" {
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database"
+  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
   type                                   = "mysql"
   name                                   = "voice"
   username                               = "admin"
   identifier                             = "voice-eks-stage"
   instance                               = "db.m5.large"
   storage_gb                             = "50"
-  db_version                             = "5.6.46"
+  db_version                             = "5.7.28"
   multi_az                               = "false"
   vpc_id                                 = module.vpc.vpc_id
   subnets                                = module.vpc.private_subnets.0
-  parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
+  parameter_group_name                   = aws_db_parameter_group.stage_parameters_57.name
   backup_retention_period                = 3
   replica_enabled                        = "true"
   instance_replica                       = "db.t3.small"
-  replica_db_version                     = "5.6.46"
+  replica_db_version                     = "5.7.28"
   performance_insights_enabled           = "true"
   performance_insights_retention         = 7
   replica_performance_insights_retention = 0
@@ -52,22 +52,23 @@ module "db-stage" {
 }
 
 module "db-dev" {
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database"
+  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
   type                                   = "mysql"
   name                                   = "voice"
   username                               = "voice"
   identifier                             = "voice-eks-dev"
   instance                               = "db.t3.small"
   storage_gb                             = "35"
-  db_version                             = "5.6.46"
+  db_version                             = "5.7.28"
   multi_az                               = "false"
   vpc_id                                 = module.vpc.vpc_id
   subnets                                = module.vpc.private_subnets.0
-  parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
+  parameter_group_name                   = aws_db_parameter_group.dev_parameters_57.name
   backup_retention_period                = 1
   performance_insights_enabled           = "false"
   performance_insights_retention         = 0
   replica_enabled                        = "false"
+	allow_major_version_upgrade            = "true"
 
   cost_center = "1003"
   project     = "voice"
@@ -75,26 +76,102 @@ module "db-dev" {
 }
 
 module "db-sandbox" {
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database"
+  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
   type                                   = "mysql"
   name                                   = "voice"
   username                               = "voice"
   identifier                             = "voice-eks-sandbox"
   instance                               = "db.t3.small"
   storage_gb                             = "35"
-  db_version                             = "5.6.46"
+  db_version                             = "5.7.28"
   multi_az                               = "false"
   vpc_id                                 = module.vpc.vpc_id
   subnets                                = module.vpc.private_subnets.0
-  parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
+	parameter_group_name                   = aws_db_parameter_group.sandbox_parameters_57.name
   backup_retention_period                = 1
   performance_insights_enabled           = "false"
   performance_insights_retention         = 0
   replica_enabled                        = "false"
+	allow_major_version_upgrade            = "true"
 
   cost_center = "1003"
   project     = "voice"
   environment = "sandbox"
+}
+
+resource "aws_db_parameter_group" "stage_parameters_57" {
+  name   = "stage-parameters-57"
+  family = "mysql5.7"
+
+  parameter {
+    name         = "slow_query_log"
+    value        = "1"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "binlog_format"
+    value        = "row"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "log_queries_not_using_indexes"
+    value        = "1"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "innodb_read_io_threads"
+    value        = "32"
+    apply_method = "pending-reboot"
+  }
+}
+
+resource "aws_db_parameter_group" "sandbox_parameters_57" {
+  name   = "sandbox-parameters-57"
+  family = "mysql5.7"
+
+  parameter {
+    name         = "slow_query_log"
+    value        = "1"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "binlog_format"
+    value        = "row"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "log_queries_not_using_indexes"
+    value        = "1"
+    apply_method = "immediate"
+  }
+}
+
+resource "aws_db_parameter_group" "dev_parameters_57" {
+  name   = "dev-parameters-57"
+  family = "mysql5.7"
+
+  parameter {
+    name         = "slow_query_log"
+    value        = "1"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "binlog_format"
+    value        = "row"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "log_queries_not_using_indexes"
+    value        = "1"
+    apply_method = "immediate"
+  }
 }
 
 resource "aws_db_parameter_group" "voice_parameters" {
