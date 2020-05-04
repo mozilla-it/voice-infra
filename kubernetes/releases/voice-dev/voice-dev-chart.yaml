@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.15
+    version: 0.1.17
   values:
     namespace: voice-dev
     voice_web:
