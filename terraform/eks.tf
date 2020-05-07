@@ -51,7 +51,7 @@ resource "aws_eks_node_group" "nodes" {
   instance_types  = ["m5.large"]
 
   scaling_config {
-    desired_size = 8
+    desired_size = 9
     max_size     = 15
     min_size     = 3
   }
