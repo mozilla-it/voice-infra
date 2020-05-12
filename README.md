@@ -80,6 +80,14 @@ You can verify if Flux is autodeploying for an environment looking at the HelmRe
 
 Once you are sure the environment doesn't have automatic deploys enabled, manually deploying is as easy as editing the Kubernetes Deployment object for the desired environment. When the editor is open, modify the line `container: voice-web/my-tag-xxxx` changing the tag for the container you want deployed. After saving and quitting the edit, Kubernetes will start a rolling update of the pods. This is an example command for changing the image in production: `kubectl edit deployment voice-prod -n=voice-prod`.
 
+Note that this approach is ont valid for production, because it leaves no traces in code of the realease history, thus makes debugging problems harder. Instructions for deploying to production are explained in the next section.
+
+## Production Deployment
+The deployment of a new production release it's done manually and not completelly automated using FluxCD.  
+In order to deploy a new version of the code to production, we need to have a Docker container built. This can be achieved as explained in previous sections, we recommend tagging a commit with `release-v*`, TravisCI will build and upload to Dockerhub the container. 
+
+After, modify the HelmRelease object specifying the tag for the new Docker image. The HelmRelease file to modify is [here](https://github.com/mozilla-it/voice-infra/blob/master/kubernetes/releases/voice-prod/voice-prod-chart.yaml#L26), commit the changes. In less than 5 minutes FluxCD will reflect the change in the HelmRelease deploying the specified Docker container.
+
 # Monitoring
 This section describes different ways to check the application health and status.
 
