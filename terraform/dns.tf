@@ -66,14 +66,18 @@ data "aws_route53_zone" "voice_mozit_cloud" {
   name = "voice.mozit.cloud"
 }
 
+data "aws_elb" "stats" {
+  name = "ad41d8bbcde144558a28b097f452d3be"
+}
+
 resource "aws_route53_record" "stats" {
   zone_id = data.aws_route53_zone.voice_mozit_cloud.zone_id
   name    = "stats.voice.mozit.cloud"
   type    = "A"
 
   alias {
-    name                   = data.aws_elb.stage.dns_name
-    zone_id                = data.aws_elb.stage.zone_id
+    name                   = data.aws_elb.stats.dns_name
+    zone_id                = data.aws_elb.stats.zone_id
     evaluate_target_health = false
   }
 }
