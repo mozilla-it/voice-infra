@@ -80,7 +80,7 @@ You can verify if Flux is autodeploying for an environment looking at the HelmRe
 
 Once you are sure the environment doesn't have automatic deploys enabled, manually deploying is as easy as editing the Kubernetes Deployment object for the desired environment. When the editor is open, modify the line `container: voice-web/my-tag-xxxx` changing the tag for the container you want deployed. After saving and quitting the edit, Kubernetes will start a rolling update of the pods. This is an example command for changing the image in production: `kubectl edit deployment voice-prod -n=voice-prod`.
 
-Note that this approach is ont valid for production, because it leaves no traces in code of the realease history, thus makes debugging problems harder. Instructions for deploying to production are explained in the next section.
+Note that this approach is not valid for production, because it leaves no traces in code of the release history, thus makes debugging problems harder. Instructions for deploying to production are explained in the next section.
 
 ## Production Deployment
 The deployment of a new production release it's done manually and not completelly automated using FluxCD.  
