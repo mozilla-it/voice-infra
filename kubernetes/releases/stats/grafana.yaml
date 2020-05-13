@@ -21,4 +21,5 @@ spec:
     grafana.ini:
       server:
         domain: stats.voice.mozit.cloud
+        root_url: https://stats.voice.mozit.cloud
     envFromSecret: grafana-auth0-secrets
