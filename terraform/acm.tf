@@ -69,3 +69,17 @@ resource "aws_acm_certificate" "prod" {
     create_before_destroy = true
   }
 }
+
+resource "aws_acm_certificate" "stats" {
+  domain_name = "stats.voice.mozit.cloud"
+
+  tags = {
+    Name = "stats-voice"
+  }
+
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
