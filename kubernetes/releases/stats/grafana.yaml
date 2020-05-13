@@ -1,0 +1,22 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: stats
+spec:
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: grafana
+    version: 5.0.24
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "stats"
+      hosts:
+        - "stats.voice.mozit.cloud"
+    persistence:
+      enabled: true
+      size: 10Gi
+    grafana.ini:
+      domain: stats.voice.mozit.cloud
