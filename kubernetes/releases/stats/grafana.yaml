@@ -19,4 +19,5 @@ spec:
       enabled: true
       size: 10Gi
     grafana.ini:
-      domain: stats.voice.mozit.cloud
+      server:
+        domain: stats.voice.mozit.cloud
