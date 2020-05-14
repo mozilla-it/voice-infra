@@ -9,9 +9,23 @@ data "aws_s3_bucket" "voice-stage" {
 resource "aws_s3_bucket" "voice-dev" {
   bucket = "voice-dev-clips-20191211013626583200000002"
   acl    = "public-read"
+
+  cors_rule {
+    allowed_headers = ["Authorization"]
+    allowed_methods = ["GET"]
+    allowed_origins = ["https://dev.voice.mozit.cloud"]
+    max_age_seconds = 0
+  }
 }
 
 resource "aws_s3_bucket" "voice-sandbox" {
   bucket = "voice-sandbox-clips-20191211013626583100000001"
   acl    = "public-read"
+
+  cors_rule {
+    allowed_headers = ["Authorization"]
+    allowed_methods = ["GET"]
+    allowed_origins = ["https://sandbox.voice.mozit.cloud"]
+    max_age_seconds = 0
+  }
 }
