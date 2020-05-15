@@ -16,8 +16,6 @@ spec:
         enabled: true
         namespace: voice-dev
       kind: Deployment
-      autoscalig: 
-        enabled: false
       replicaCount: 1
       addHeaders:
         X-Frame-Options: "DENY"
