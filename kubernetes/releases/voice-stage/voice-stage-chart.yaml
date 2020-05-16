@@ -22,7 +22,7 @@ spec:
       deployment_name: voice-stage
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:stage-7ce328f8a316b79cbc465ff59627ed12cd0ef0d4
+      image: itsre/voice-web:stage-1514baf36f6768c1c12b3bc0d63e805df40a1f9c
 
       ingress:
         enabled: true
