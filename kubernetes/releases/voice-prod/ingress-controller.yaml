@@ -35,6 +35,7 @@ spec:
         use-forwarded-headers: "true"
         ssl-redirect: "true"
         force-ssl-redirect: "true"
+        enable-underscores-in-headers: "true"
 
     defaultBackend:
       enabled: false
