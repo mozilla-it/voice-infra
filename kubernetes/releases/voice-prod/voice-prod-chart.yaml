@@ -23,7 +23,7 @@ spec:
       replicas: 10
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:production-294a7dd95f41513598a4496d6026fc4b9d302252
+      image: itsre/voice-web:production-7b7541eb9d92c485ae373d86fe5ab39279a8127a
 
       ingress:
         enabled: true
@@ -64,6 +64,7 @@ spec:
           # Note: extra_vars have to be always quoted
           CV_ENVIRONMENT: "prod"
           CV_BENCHMARK_LIVE: "false"
+          CV_SENTRY_DSN: "https://08902ca27fb24d448975e88d3da5c96b@sentry.prod.mozaws.net/503"
 
       extra_volumes:
       - name: papertrail-conf
