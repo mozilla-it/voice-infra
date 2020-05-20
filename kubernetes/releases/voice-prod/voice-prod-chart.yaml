@@ -63,7 +63,7 @@ spec:
         extra_vars:
           # Note: extra_vars have to be always quoted
           CV_ENVIRONMENT: "prod"
-          CV_BENCHMARK_LIVE: "false"
+          CV_BENCHMARK_LIVE: "true"
           CV_SENTRY_DSN: "https://08902ca27fb24d448975e88d3da5c96b@sentry.prod.mozaws.net/503"
 
       extra_volumes:
