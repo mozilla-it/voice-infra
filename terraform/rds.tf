@@ -31,7 +31,7 @@ module "db-stage" {
   name                                   = "voice"
   username                               = "admin"
   identifier                             = "voice-eks-stage"
-  instance                               = "db.m5.large"
+  instance                               = "db.t3.medium"
   storage_gb                             = "50"
   db_version                             = "5.7.28"
   multi_az                               = "false"
