@@ -23,7 +23,7 @@ spec:
       replicas: 10
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:release-v1.28.0
+      image: itsre/voice-web:production-6eaa9ea3b2b1c58f7158ab5e31725a314cec8466
 
       ingress:
         enabled: true
