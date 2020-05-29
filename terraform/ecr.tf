@@ -14,3 +14,10 @@ resource "aws_ecr_repository" "go-mysql-elasticsearch" {
   }
 }
 
+resource "aws_ecr_repository" "common-voice-bundler" {
+  name                 = "common-voice-bundler"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
