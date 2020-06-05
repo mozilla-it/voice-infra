@@ -179,7 +179,6 @@ data "aws_iam_policy_document" "voice_stage" {
 
   statement {
     sid = "voiceStageS3"
-
     actions = ["s3:*"]
 
     resources = [
@@ -251,6 +250,58 @@ data "aws_iam_policy_document" "voice_prod" {
     resources = [
       "${data.aws_s3_bucket.voice-prod.arn}/*",
       "${data.aws_s3_bucket.voice-prod.arn}",
+    ]
+  }
+}
+
+
+# Voice Dataset Bundler
+# stage
+resource "aws_iam_role" "voice-bundler-stage" {
+  name               = "voice-bundler-stage"
+  path               = "/voice/"
+  assume_role_policy = data.aws_iam_policy_document.allow_assume_role_bundler_stage.json
+}
+
+data "aws_iam_policy_document" "allow_assume_role_bundler_stage" {
+  statement {
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect  = "Allow"
+
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(module.eks.cluster_oidc_issuer_url, "https://", "")}:sub"
+      values   = ["system:serviceaccount:voice-stage:voice-bundler-stage"]
+    }
+
+    principals {
+      identifiers = [module.eks.oidc_provider_arn]
+      type        = "Federated"
+    }
+  }
+}
+
+resource "aws_iam_role_policy" "voice-bundler-stage" {
+  name   = "voice-bundler-stage"
+  role   = aws_iam_role.voice-bundler-stage.id
+  policy = data.aws_iam_policy_document.voice_bundler_stage.json
+}
+
+data "aws_iam_policy_document" "voice_bundler_stage" {
+  statement {
+    sid = "voiceStageBundlerS3"
+
+    actions = ["s3:GetObject"]
+
+    resources = [
+      "${data.aws_s3_bucket.voice-stage.arn}/*",
+    ]
+  }
+  statement {
+    actions = ["s3:Put*", "s3:GetObject"]
+
+    resources = [
+      "arn:aws:s3:::test-corpus/*",
     ]
   }
 }
