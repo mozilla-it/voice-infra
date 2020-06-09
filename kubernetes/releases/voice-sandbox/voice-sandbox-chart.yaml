@@ -62,7 +62,7 @@ spec:
 
       extra_containers:
       - name: logs-to-papertrail
-        image: itsre/remote_syslog2:0.2
+        image: 058419420086.dkr.ecr.us-west-2.amazonaws.com/remote_syslog2:0.2
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - mountPath: /logs
