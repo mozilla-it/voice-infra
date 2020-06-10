@@ -4,7 +4,7 @@ module "db-prod" {
   name                                   = "voice"
   username                               = "admin"
   identifier                             = "voice-eks-prod"
-  instance                               = "db.m5.large"
+  instance                               = "db.m5.xlarge"
   storage_gb                             = "100"
   db_version                             = "5.6.46"
   multi_az                               = "false"
