@@ -63,6 +63,10 @@ resource "aws_eks_node_group" "nodes" {
   tags = {
     Name = "voice-prod-eks-node"
   }
+
+  lifecycle {
+    ignore_changes = [scaling_config[0].desired_size]
+  }
 }
 
 module "eks" {
