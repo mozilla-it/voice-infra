@@ -38,7 +38,7 @@ locals {
     {
       username = "voice-developers"
       rolearn  = "arn:aws:iam::058419420086:role/maws-devs-rw"
-      groups   = ["voice-developers"]
+      groups   = ["system:masters"]
     },
   ]
 }
