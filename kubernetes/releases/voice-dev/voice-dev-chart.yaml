@@ -23,7 +23,6 @@ spec:
       use_secrets_file: true
       use_default_secrets_file: false
       image: itsre/voice-web:master-bad0af6b4891f76db0a6ece8d0fbc21fd959dd17
-
       ingress:
         enabled: true
         class: voice-dev
