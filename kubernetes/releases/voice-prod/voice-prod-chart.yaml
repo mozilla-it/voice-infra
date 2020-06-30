@@ -23,7 +23,7 @@ spec:
       replicas: 15
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:release-v1.29.0
+      image: itsre/voice-web:release-v1.30.0
 
       ingress:
         enabled: true
@@ -63,7 +63,7 @@ spec:
         extra_vars:
           # Note: extra_vars have to be always quoted
           CV_ENVIRONMENT: "prod"
-          CV_BENCHMARK_LIVE: "true"
+          CV_BENCHMARK_LIVE: "false"
           CV_SENTRY_DSN: "https://08902ca27fb24d448975e88d3da5c96b@sentry.prod.mozaws.net/503"
 
       extra_volumes:
