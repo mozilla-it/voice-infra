@@ -1,14 +1,14 @@
 module "devs_ro" {
   source       = "github.com/mozilla-it/terraform-modules//aws/maws-roles?ref=master"
   role_name    = "maws-devs-ro"
-  role_mapping = [ "voice-dev" ]
+  role_mapping = ["voice-dev"]
   policy_arn   = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 }
 
 module "devs_role" {
   source       = "github.com/mozilla-it/terraform-modules//aws/maws-roles?ref=master"
   role_name    = "maws-devs-rw"
-  role_mapping = [ "voice-dev" ]
+  role_mapping = ["voice-dev"]
   policy_arn   = aws_iam_policy.devs_policy.arn
 }
 
