@@ -23,7 +23,7 @@ spec:
       replicas: 15
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:release-v1.30.0
+      image: itsre/voice-web:release-v1.30.1-fxvoice-link
 
       ingress:
         enabled: true
