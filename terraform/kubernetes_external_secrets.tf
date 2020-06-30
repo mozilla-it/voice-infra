@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "kubernetes_external_secrets" {
     ]
 
     resources = [
-      "arn:aws:secretsmanager:us-west-2:${data.aws_caller_identity.current.account_id}:secret:/voice/*",
+      "arn:aws:secretsmanager:us-west-2:${data.aws_caller_identity.current.account_id}:secret:/commonvoice/*",
     ]
   }
 
