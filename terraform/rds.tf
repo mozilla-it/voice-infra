@@ -52,23 +52,23 @@ module "db-stage" {
 }
 
 module "db-dev" {
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
-  type                                   = "mysql"
-  name                                   = "voice"
-  username                               = "voice"
-  identifier                             = "voice-eks-dev"
-  instance                               = "db.t3.small"
-  storage_gb                             = "35"
-  db_version                             = "5.7.28"
-  multi_az                               = "false"
-  vpc_id                                 = module.vpc.vpc_id
-  subnets                                = module.vpc.private_subnets.0
-  parameter_group_name                   = aws_db_parameter_group.dev_parameters_57.name
-  backup_retention_period                = 1
-  performance_insights_enabled           = "false"
-  performance_insights_retention         = 0
-  replica_enabled                        = "false"
-	allow_major_version_upgrade            = "true"
+  source                         = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
+  type                           = "mysql"
+  name                           = "voice"
+  username                       = "voice"
+  identifier                     = "voice-eks-dev"
+  instance                       = "db.t3.small"
+  storage_gb                     = "35"
+  db_version                     = "5.7.28"
+  multi_az                       = "false"
+  vpc_id                         = module.vpc.vpc_id
+  subnets                        = module.vpc.private_subnets.0
+  parameter_group_name           = aws_db_parameter_group.dev_parameters_57.name
+  backup_retention_period        = 1
+  performance_insights_enabled   = "false"
+  performance_insights_retention = 0
+  replica_enabled                = "false"
+  allow_major_version_upgrade    = "true"
 
   cost_center = "1003"
   project     = "voice"
@@ -76,23 +76,23 @@ module "db-dev" {
 }
 
 module "db-sandbox" {
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
-  type                                   = "mysql"
-  name                                   = "voice"
-  username                               = "voice"
-  identifier                             = "voice-eks-sandbox"
-  instance                               = "db.t3.small"
-  storage_gb                             = "35"
-  db_version                             = "5.7.28"
-  multi_az                               = "false"
-  vpc_id                                 = module.vpc.vpc_id
-  subnets                                = module.vpc.private_subnets.0
-	parameter_group_name                   = aws_db_parameter_group.sandbox_parameters_57.name
-  backup_retention_period                = 1
-  performance_insights_enabled           = "false"
-  performance_insights_retention         = 0
-  replica_enabled                        = "false"
-	allow_major_version_upgrade            = "true"
+  source                         = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
+  type                           = "mysql"
+  name                           = "voice"
+  username                       = "voice"
+  identifier                     = "voice-eks-sandbox"
+  instance                       = "db.t3.small"
+  storage_gb                     = "35"
+  db_version                     = "5.7.28"
+  multi_az                       = "false"
+  vpc_id                         = module.vpc.vpc_id
+  subnets                        = module.vpc.private_subnets.0
+  parameter_group_name           = aws_db_parameter_group.sandbox_parameters_57.name
+  backup_retention_period        = 1
+  performance_insights_enabled   = "false"
+  performance_insights_retention = 0
+  replica_enabled                = "false"
+  allow_major_version_upgrade    = "true"
 
   cost_center = "1003"
   project     = "voice"

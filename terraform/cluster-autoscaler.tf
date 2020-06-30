@@ -26,12 +26,12 @@ data "aws_iam_policy_document" "cluster_autoscaler" {
     sid = "clusterAutoscaler"
 
     actions = [
-			"autoscaling:DescribeAutoScalingGroups",
+      "autoscaling:DescribeAutoScalingGroups",
       "autoscaling:DescribeAutoScalingInstances",
       "autoscaling:DescribeLaunchConfigurations",
       "autoscaling:SetDesiredCapacity",
       "autoscaling:TerminateInstanceInAutoScalingGroup",
-			"autoscaling:DescribeTags",
+      "autoscaling:DescribeTags",
     ]
 
     resources = [

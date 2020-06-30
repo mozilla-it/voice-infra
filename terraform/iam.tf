@@ -178,7 +178,7 @@ data "aws_iam_policy_document" "voice_stage" {
   }
 
   statement {
-    sid = "voiceStageS3"
+    sid     = "voiceStageS3"
     actions = ["s3:*"]
 
     resources = [
