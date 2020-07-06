@@ -192,6 +192,12 @@ resource "aws_db_parameter_group" "voice_parameters" {
 
   parameter {
     name         = "log_queries_not_using_indexes"
+    value        = "0"
+    apply_method = "immediate"
+  }
+
+  parameter {
+    name         = "long_query_time"
     value        = "1"
     apply_method = "immediate"
   }
