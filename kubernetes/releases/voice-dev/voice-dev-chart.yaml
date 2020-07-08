@@ -13,13 +13,14 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.1.17
+    version: 0.2.0
   values:
-    namespace: voice-dev
+    service_account_name: voice-dev
     voice_web:
       # Customize deployment name per environment to make hostnames differents,
       # allowing us to segregate logs in Papertrail
       deployment_name: voice-dev
+      replicas: 3
       use_secrets_file: true
       use_default_secrets_file: false
       image: itsre/voice-web:master-b865efec55bf6e9aeba3caa495f04cce4951bc2d
