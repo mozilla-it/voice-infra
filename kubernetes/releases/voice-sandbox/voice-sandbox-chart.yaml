@@ -20,7 +20,7 @@ spec:
       deployment_name: voice-sandbox
       use_secrets_file: true
       use_default_secrets_file: false
-      image: itsre/voice-web:sandbox-v1.24.0-test-analytics-cors
+      image: itsre/voice-web:sandbox-demo-v0.1
       replicas: 1
       service_account_name: voice-sandbox
 
