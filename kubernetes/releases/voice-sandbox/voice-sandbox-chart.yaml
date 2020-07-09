@@ -14,7 +14,6 @@ spec:
     name: mozilla-common-voice
     version: 0.2.1
   values:
-    service_account_name: voice-sandbox
     voice_web:
       # Customize deployment name per environment to make hostnames differents, 
       # allowing us to segregate logs in Papertrail
@@ -23,6 +22,7 @@ spec:
       use_default_secrets_file: false
       image: itsre/voice-web:sandbox-v1.24.0-test-analytics-cors
       replicas: 1
+      service_account_name: voice-sandbox
 
       ingress:
         enabled: true
