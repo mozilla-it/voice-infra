@@ -12,13 +12,13 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.2.1
+    version: 0.2.2
   values:
     voice_web:
       # Customize deployment name per environment to make hostnames differents, 
       # allowing us to segregate logs in Papertrail
       deployment_name: voice-sandbox
-      use_secrets_file: true
+      use_external_secrets: true
       use_default_secrets_file: false
       image: itsre/voice-web:sandbox-demo-v0.1
       replicas: 1
@@ -44,6 +44,7 @@ spec:
           eks.amazonaws.com/role-arn: "arn:aws:iam::058419420086:role/voice/voice-web-sandbox"
 
       config:
+        environment: sandbox
         redis_url: "rediss://master.sandbox-voice-eks.cljunw.usw2.cache.amazonaws.com"
         mysql:
           host: "voice-eks-sandbox.cd5od9qtbvp0.us-west-2.rds.amazonaws.com"
