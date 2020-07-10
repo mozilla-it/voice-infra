@@ -150,7 +150,8 @@ After adding the variable, manually (this might change in the future) restart th
 
 
 # Secrets
-Secrets used by the application are stored in AWS Secret Manager and fetched by the application during start time.
+Secrets used by the application are stored in AWS Secrets Manager. Each environment has a secret file containing a set of key/value pairs in /commonvoice/{environment}.
+Using kubernetes-external-secrets, the secret stored in AWS Secrets Manager is rendered as a Kubernetes secret and its content is exposed to the application via environment variables.
 These secrets are manually placed there by an SRE engineer.
 
 
