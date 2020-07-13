@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: reloader
+  namespace: reloader
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: reloader
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: reloader
+    version: 1.2.0
