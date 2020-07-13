@@ -81,3 +81,55 @@ resource "aws_route53_record" "stats" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_zone" "commonvoice_mozit_cloud" {
+  name = "commonvoice.mozit.cloud"
+}
+
+resource "aws_route53_record" "dev_commonvoice_mozit_cloud" {
+  zone_id = aws_route53_zone.commonvoice_mozit_cloud.zone_id
+  name    = "dev.commonvoice.mozit.cloud"
+  type    = "A"
+
+  alias {
+    name                   = data.aws_elb.dev.dns_name
+    zone_id                = data.aws_elb.dev.zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "sandbox_commonvoice_mozit_cloud" {
+  zone_id = aws_route53_zone.commonvoice_mozit_cloud.zone_id
+  name    = "sandbox.commonvoice.mozit.cloud"
+  type    = "A"
+
+  alias {
+    name                   = data.aws_elb.sandbox.dns_name
+    zone_id                = data.aws_elb.sandbox.zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "stage_commonvoice_mozit_cloud" {
+  zone_id = aws_route53_zone.commonvoice_mozit_cloud.zone_id
+  name    = "stage.commonvoice.mozit.cloud"
+  type    = "A"
+
+  alias {
+    name                   = data.aws_elb.stage.dns_name
+    zone_id                = data.aws_elb.stage.zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "prod_commonvoice_mozit_cloud" {
+  zone_id = aws_route53_zone.commonvoice_mozit_cloud.zone_id
+  name    = "prod.commonvoice.mozit.cloud"
+  type    = "A"
+
+  alias {
+    name                   = data.aws_elb.prod.dns_name
+    zone_id                = data.aws_elb.prod.zone_id
+    evaluate_target_health = false
+  }
+}
