@@ -176,5 +176,10 @@ This section lists the different resources needed to build, deploy and run Voice
 
 # DB access
 The databases used by Voice are created using RDS, inside a VPC without public access. This means that they are not getting a public IP, so in order to talk to them you have to be in the same VPC network.
-To bypass this problem without creating a VPN which adds more complexity to the architecture. We decided to create a DB monitor pod in each namespace. The pod has preinstalled mysql and other CLI utilities, and it gets the right user and password set in `/etc/my.cnf`.
-In order to access the database, exec into the db monitor pod and run the desired mysql command. You can exec into the db-monitor for stage running the next command `kubectl -n=voice-stage exec -ti $(kubectl get po -n=voice-stage -l=app=db-monitor |  tail -1 | cut -d' ' -f 1) bash`. Change the namespace for connecting to other db-monitor pods.
+To bypass this problem without creating a VPN which adds more complexity to the architecture we decided to create a DB monitor pod to access stage and prod databases. The pod has preinstalled mysql and other CLI utilities. It is preconfigured to use connect to the right databases.
+
+In order to connect to the database server, run:
+ * Stage: `kubectl -n=voice-stage exec -ti $(kubectl get po -n=voice-stage -l=app=db-monitor |  tail -1 | cut -d' ' -f 1) bash`
+ * Prod: `kubectl -n=voice-prod exec -ti $(kubectl get po -n=voice-prod -l=app=db-monitor |  tail -1 | cut -d' ' -f 1) bash`
+
+Once you are inside the pod, just run `mysql` to connect to the database server.

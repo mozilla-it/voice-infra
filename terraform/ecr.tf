@@ -23,7 +23,13 @@ resource "aws_ecr_repository" "common-voice-bundler" {
 }
 
 module "ecr" {
-  source      = "github.com/mozilla-it/terraform-modules//aws/ecr?ref=5df4a370339b04193938a5d3455015c0e1c6b247"
+  source      = "github.com/mozilla-it/terraform-modules//aws/ecr?ref=master"
   repo_name   = "remote_syslog2"
+  create_user = false
+}
+
+module "db-monitor-ecr" {
+  source      = "github.com/mozilla-it/terraform-modules//aws/ecr?ref=master"
+  repo_name   = "db-monitor"
   create_user = false
 }
