@@ -22,7 +22,7 @@ spec:
       replicas: 3
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-bff82acb11760a6bd7ae6062cc1dd350f912d2bd
+      image: itsre/voice-web:master-a38708b694c902fe623cf65809bff25fd1f4f9e7
       service_account_name: voice-dev
 
       ingress:
