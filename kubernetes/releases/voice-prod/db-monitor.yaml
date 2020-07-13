@@ -1,0 +1,51 @@
+apiVersion: kubernetes-client.io/v1
+kind: ExternalSecret
+metadata:
+  name: db-monitor
+  namespace: voice-prod
+spec:
+  backendType: secretsManager
+  data:
+    - key: /commonvoice/prod
+      property: CV_DB_ROOT_PASS
+      name: CV_MYSQL_PASS
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: db-monitor
+  name: db-monitor
+  namespace: voice-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-monitor
+  template:
+    metadata:
+      labels:
+        app: db-monitor
+    spec:
+      containers:
+      - args:
+        - -c
+        - while true; do echo hello; sleep 100;done
+        command:
+        - /bin/sh
+        image: 058419420086.dkr.ecr.us-west-2.amazonaws.com/db-monitor:0.0.2
+        imagePullPolicy: Always
+        name: aws-cli
+        resources:
+          requests:
+            cpu: 20m
+            memory: 32Mi
+          limits:
+            cpu: 100m
+            memory: 256Mi
+        envFrom:
+          - configMapRef:
+              name: voice-config
+          - secretRef:
+              name: db-monitor
