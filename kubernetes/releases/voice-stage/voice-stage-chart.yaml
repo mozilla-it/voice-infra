@@ -24,6 +24,9 @@ spec:
       image: itsre/voice-web:stage-bad0af6b4891f76db0a6ece8d0fbc21fd959dd17
       replicas: 3
       service_account_name: voice-stage
+      extra_annotations:
+        configmap.reloader.stakater.com/reload: "voice-config"
+        secret.reloader.stakater.com/reload: "voice"
 
       ingress:
         enabled: true
