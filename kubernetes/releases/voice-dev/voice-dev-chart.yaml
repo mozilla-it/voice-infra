@@ -22,7 +22,7 @@ spec:
       replicas: 3
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-542b99b6eb54af8d013b0e9511fcb3c865d492ce
+      image: itsre/voice-web:master-461d08740bd939618464f74cc5c122f76e66351a
       service_account_name: voice-dev
       extra_annotations:
         configmap.reloader.stakater.com/reload: "voice-config"
