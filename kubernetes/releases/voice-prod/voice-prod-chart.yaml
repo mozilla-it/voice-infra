@@ -22,7 +22,7 @@ spec:
       replicas: 15
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:release-v1.30.2-null-clip-locales
+      image: itsre/voice-web:release-v1.31.0
       service_account_name: voice-prod
 
       ingress:
