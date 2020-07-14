@@ -23,6 +23,9 @@ spec:
       image: itsre/voice-web:sandbox-demo-v0.1
       replicas: 1
       service_account_name: voice-sandbox
+      extra_annotations:
+        configmap.reloader.stakater.com/reload: "voice-config"
+        secret.reloader.stakater.com/reload: "voice"
 
       ingress:
         enabled: true

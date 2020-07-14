@@ -24,6 +24,9 @@ spec:
       use_default_secrets_file: false
       image: itsre/voice-web:master-fbfb20b6b5eae238582dd08c4be23e917cf0b39a
       service_account_name: voice-dev
+      extra_annotations:
+        configmap.reloader.stakater.com/reload: "voice-config"
+        secret.reloader.stakater.com/reload: "voice"
 
       ingress:
         enabled: true
