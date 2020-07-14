@@ -21,7 +21,7 @@ spec:
       deployment_name: voice-stage
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:stage-v1.31.0-rc2
+      image: itsre/voice-web:stage-461d08740bd939618464f74cc5c122f76e66351a
       replicas: 3
       service_account_name: voice-stage
       extra_annotations:
