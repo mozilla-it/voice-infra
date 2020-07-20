@@ -99,6 +99,27 @@ module "db-sandbox" {
   environment = "sandbox"
 }
 
+module "sentence_collector_stage" {
+  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
+  type                                   = "mysql"
+  name                                   = "sentencecollector"
+  username                               = "sentencecollector"
+  identifier                             = "sentencecollector"
+  instance                               = "db.t3.micro"
+  storage_gb                             = "8"
+  db_version                             = "8.0.19"
+  multi_az                               = "false"
+  vpc_id                                 = module.vpc.vpc_id
+  subnets                                = module.vpc.private_subnets.0
+  parameter_group_name                   = aws_db_parameter_group.sentence_collector.name
+  backup_retention_period                = 30
+  replica_enabled                        = "false"
+
+  cost_center = "1003"
+  project     = "voice"
+  environment = "stage"
+}
+
 resource "aws_db_parameter_group" "stage_parameters_57" {
   name   = "stage-parameters-57"
   family = "mysql5.7"
@@ -201,4 +222,9 @@ resource "aws_db_parameter_group" "voice_parameters" {
     value        = "1"
     apply_method = "immediate"
   }
+}
+
+resource "aws_db_parameter_group" "sentence_collector" {
+  name   = "sentence-collector-params"
+  family = "mysql8.0"
 }
