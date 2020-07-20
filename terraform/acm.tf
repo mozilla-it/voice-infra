@@ -74,9 +74,9 @@ resource "aws_acm_certificate" "dev_ssl_cert" {
   domain_name = "voice-dev.allizom.org"
 
   subject_alternative_names = [
-    "dev.voice.mozit.cloud",
     "commonvoice-dev.allizom.org",
     "dev.commonvoice.mozit.cloud",
+    "dev.voice.mozit.cloud",
   ]
 
   validation_method = "DNS"
@@ -96,8 +96,8 @@ resource "aws_acm_certificate" "sandbox_ssl_cert" {
   subject_alternative_names = [
     "sandbox.voice.mozit.cloud",
     "dev.commonvoice.mozit.cloud",
-    "commonvoice-sandbox.allizom.org",
     "sandbox.commonvoice.mozit.cloud",
+    "commonvoice-sandbox.allizom.org",
   ]
 
   tags = {
@@ -115,9 +115,9 @@ resource "aws_acm_certificate" "stage_ssl_cert" {
   domain_name = "voice.allizom.org"
 
   subject_alternative_names = [
+    "stage.commonvoice.mozit.cloud",
     "stage.voice.mozit.cloud",
     "commonvoice.allizom.org",
-    "stage.commonvoice.mozit.cloud",
   ]
 
   tags = {
@@ -135,9 +135,9 @@ resource "aws_acm_certificate" "prod_ssl_cert" {
   domain_name = "voice.mozilla.org"
 
   subject_alternative_names = [
-    "prod.voice.mozit.cloud",
-    "commonvoice.mozilla.org",
     "prod.commonvoice.mozit.cloud",
+    "commonvoice.mozilla.org",
+    "prod.voice.mozit.cloud",
   ]
 
   tags = {
