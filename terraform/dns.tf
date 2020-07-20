@@ -82,6 +82,10 @@ resource "aws_route53_record" "stats" {
   }
 }
 
+
+####################
+#   Common Voice   #
+####################
 resource "aws_route53_zone" "commonvoice_mozit_cloud" {
   name = "commonvoice.mozit.cloud"
 }
@@ -132,4 +136,12 @@ resource "aws_route53_record" "prod_commonvoice_mozit_cloud" {
     zone_id                = data.aws_elb.prod.zone_id
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_zone" "commonvoice_allizom_org" {
+  name = "commonvoice.allizom.org"
+}
+
+resource "aws_route53_zone" "commonvoice_mozilla_org" {
+  name = "commonvoice.mozilla.org"
 }
