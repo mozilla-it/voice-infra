@@ -22,7 +22,7 @@ spec:
       replicas: 3
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:master-22e2b086862466b274441744ebf22b36f9162e36
+      image: itsre/voice-web:master-6ddd512af49c76146f9ca0bb09dc25b17b3d2c71
       service_account_name: voice-dev
       extra_annotations:
         configmap.reloader.stakater.com/reload: "voice-config"
@@ -32,9 +32,9 @@ spec:
         enabled: true
         class: voice-dev
         hosts:
-          - dev.commonvoice.allizom.org
-          - dev.voice.mozit.cloud
-          - voice-dev.allizom.org
+        - dev.commonvoice.allizom.org
+        - dev.voice.mozit.cloud
+        - voice-dev.allizom.org
         extra_annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
           nginx.ingress.kubernetes.io/server-snippet: |
