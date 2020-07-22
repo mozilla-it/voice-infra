@@ -33,7 +33,6 @@ spec:
         hosts:
           - sandbox.commonvoice.allizom.org
           - sandbox.voice.mozit.cloud
-          - voice-sandbox.allizom.org
         extra_annotations:
           nginx.ingress.kubernetes.io/server-snippet: |
             location /firefox-voice {

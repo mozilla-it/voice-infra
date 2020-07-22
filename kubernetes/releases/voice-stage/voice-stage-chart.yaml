@@ -32,7 +32,6 @@ spec:
         enabled: true
         class: voice-stage
         hosts:
-          - commonvoice.allizom.org
           - stage.voice.mozit.cloud
           - voice.allizom.org
         extra_annotations:

@@ -34,7 +34,6 @@ spec:
         hosts:
         - dev.commonvoice.allizom.org
         - dev.voice.mozit.cloud
-        - voice-dev.allizom.org
         extra_annotations:
           nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
           nginx.ingress.kubernetes.io/server-snippet: |
