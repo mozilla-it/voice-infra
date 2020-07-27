@@ -10,4 +10,4 @@ metadata:
         return 302 https://commonvoice.allizom.org$request_uri;
 spec:
   rules:
-  - host: commonvoice.allizom.org
+  - host: voice.allizom.org

@@ -33,7 +33,7 @@ spec:
         class: voice-stage
         hosts:
           - stage.voice.mozit.cloud
-          - voice.allizom.org
+          - commonvoice.allizom.org
         extra_annotations:
           nginx.ingress.kubernetes.io/server-snippet: |
             location /firefox-voice/ {
