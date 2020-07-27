@@ -133,3 +133,16 @@ resource "aws_route53_record" "stage_commonvoice_allizom_org" {
     evaluate_target_health = false
   }
 }
+
+# Prod record
+resource "aws_route53_record" "commonvoice_mozilla_org" {
+  zone_id = aws_route53_zone.commonvoice_mozilla_org.zone_id
+  name    = "commonvoice.mozilla.org"
+  type    = "A"
+
+  alias {
+    name                   = data.aws_elb.prod.dns_name
+    zone_id                = data.aws_elb.prod.zone_id
+    evaluate_target_health = false
+  }
+}
