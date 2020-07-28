@@ -29,7 +29,6 @@ spec:
         enabled: true
         class: voice-prod
         hosts:
-          - voice.mozilla.org
           - prod.voice.mozit.cloud
           - commonvoice.mozilla.org
         extra_annotations:
