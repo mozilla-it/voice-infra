@@ -22,7 +22,7 @@ spec:
       replicas: 15
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:release-1.32.0
+      image: itsre/voice-web:release-v1.32.0
       service_account_name: voice-prod
 
       ingress:
