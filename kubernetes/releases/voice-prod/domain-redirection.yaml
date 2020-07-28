@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: voice-prod
+  name: voice-redirect
+  annotations:
+    kubernetes.io/ingress.class: "voice-prod"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+        return 302 https://commonvoice.mozilla.org$request_uri;
+spec:
+  rules:
+  - host: voice.mozilla.org
