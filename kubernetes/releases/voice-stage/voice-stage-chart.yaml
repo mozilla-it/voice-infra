@@ -21,7 +21,7 @@ spec:
       deployment_name: voice-stage
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:stage-461d08740bd939618464f74cc5c122f76e66351a
+      image: itsre/voice-web:stage-v1.32.0-rc1
       replicas: 3
       service_account_name: voice-stage
       extra_annotations:
@@ -32,8 +32,8 @@ spec:
         enabled: true
         class: voice-stage
         hosts:
-          - stage.voice.mozit.cloud
-          - commonvoice.allizom.org
+        - stage.voice.mozit.cloud
+        - commonvoice.allizom.org
         extra_annotations:
           nginx.ingress.kubernetes.io/server-snippet: |
             location /firefox-voice/ {
