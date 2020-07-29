@@ -2,13 +2,13 @@
 
 ## Voice Production overview
 The application lives in the `appsvcs-voice` AWS account. Currently, the production site is running in "Nubis", this means that it's running as an old school application running in EC2 instances.
-Stage is running in Kubernetes (EKS) inside the same account, all the documentation above talks about the current production deployment in Nubis. 
+Stage is running in Kubernetes (EKS) inside the same account, all the documentation above talks about the current production deployment in Nubis.
 
-The configuration of the different components it's done via Puppet, see the code [here](https://github.com/mozilla/voice-web/tree/master/nubis/puppet)
-The infrastructure components are created using Terraform, see the code [here](https://github.com/mozilla/voice-web/tree/master/nubis/terraform)
+The configuration of the different components it's done via Puppet, see the code [here](https://github.com/mozilla/common-voice/tree/main/nubis/puppet)
+The infrastructure components are created using Terraform, see the code [here](https://github.com/mozilla/common-voice/tree/main/nubis/terraform)
 As part of the Nubis bundle, there is a web interface which can be used to see recent deployments (Jenkins), metrics (Prometheus + Grafana), to login in the AWS account, to see the application logs (Kibana), and few other things. This is behing SSO and can be reached [here](https://sso.core.us-west-2.appsvcs-voice.nubis.allizom.org/)
 
-There are 3 different types of VMs used by Voice, each one with a different purpose: 
+There are 3 different types of VMs used by Voice, each one with a different purpose:
  - webserver: multiple instances, runs the Voice NodeJS application. Part of an AWS autoscaling group.
  - db-monitor-mysql: this instance is only for monitoring purposes. It allows developers to ssh in and run queries against the database, it also has a Prometheus exporter getting metrics about MySQL status.
  - sync: runs a daemon which syncs some of the data stored in the MySQL database to Elasticsearch. That info later displayed in a Kibana instance inside Voice. Only used internally.
@@ -20,7 +20,7 @@ There are 3 different types of VMs used by Voice, each one with a different purp
 
 ## Source Repos
 Infrastructure repo (this repo) [voice-infra](https://github.com/mozilla-it/voice-infra)
-Voice application code: [voice-web](https://github.com/mozilla/voice-web)
+Voice application code: [common-voice](https://github.com/mozilla/common-voice)
 
 ## Monitoring
 [Grafana External Metrics](https://biff-5adb6e55.influxcloud.net/d/i4bXkqAZz/voice?orgId=1)
