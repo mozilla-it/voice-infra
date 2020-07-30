@@ -36,7 +36,7 @@ spec:
         - commonvoice.allizom.org
         extra_annotations:
           nginx.ingress.kubernetes.io/server-snippet: |
-            location /firefox-voice/ {
+            location /firefox-voice {
               if ($http_x_forwarded_proto = 'http') {
                 rewrite ^ https://$host$request_uri? permanent;
               }
