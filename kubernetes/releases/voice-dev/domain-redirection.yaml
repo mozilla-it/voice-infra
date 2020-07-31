@@ -6,7 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "voice-dev"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/server-configuration: |
+    nginx.ingress.kubernetes.io/configuration-snippet: |
       return 302 https://dev.commonvoice.allizom.org$request_uri;
     nginx.ingress.kubernetes.io/server-snippet: |
       location /firefox-voice {
