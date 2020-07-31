@@ -28,3 +28,4 @@ spec:
       auth.basic:
         enabled: false
     envFromSecret: grafana-auth0-secrets
+    plugins: ["grafana-piechart-panel"]
