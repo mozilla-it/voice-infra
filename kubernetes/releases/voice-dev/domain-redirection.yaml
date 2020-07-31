@@ -1,10 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: voice-sandbox
+  namespace: voice-dev
   name: voice-redirect
   annotations:
-    kubernetes.io/ingress.class: "voice-sandbox"
+    kubernetes.io/ingress.class: "voice-dev"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/server-snippet: |
       location /firefox-voice {
@@ -14,9 +14,9 @@ metadata:
         add_header Content-Security-Policy "default-src 'none'; connect-src https://www.google-analytics.com https://sentry.prod.mozaws.net; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.googleapis.com; script-src 'self' https://www.google-analytics.com; img-src 'self' data:; child-src https://www.youtube.com" ;
         proxy_pass https://mozilla-extensions.github.io/firefox-voice/homepage;
       }
-      location / {
-        return 302 https://sandbox.commonvoice.allizom.org$request_uri;
+      location / { 
+        return 302 https://dev.commonvoice.allizom.org$request_uri;
       }
 spec:
   rules:
-  - host: voice-sandbox.allizom.org
+  - host: voice-dev.allizom.org
