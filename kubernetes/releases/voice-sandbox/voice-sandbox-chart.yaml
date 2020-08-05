@@ -20,7 +20,7 @@ spec:
       deployment_name: voice-sandbox
       use_external_secrets: true
       use_default_secrets_file: false
-      image: itsre/voice-web:sandbox-demo-v0.1
+      image: mozilla/commonvoice:sandbox-demo-v0.1
       replicas: 1
       service_account_name: voice-sandbox
       extra_annotations:
