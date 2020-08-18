@@ -1,0 +1,32 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: sentence-collector
+  namespace: voice-stage
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: sentence-collector-stage
+  chart:
+    repository: https://mozilla-it.github.io/helm-charts/
+    name: sentence-collector
+    version: 0.1.0
+  values:
+    environment: stage
+    image:
+      repository: mozilla/sentencecollector
+      tag: 2.0.10
+    ingress:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$1
+        kubernetes.io/ingress.class: voice-stage
+      hosts:
+        - host: commonvoice.allizom.org
+          paths:
+          - /sentence-collector/(.*)
+    externalSecret:
+      create: true
+    mysql:
+      enabled: false
