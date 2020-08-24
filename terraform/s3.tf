@@ -29,3 +29,11 @@ resource "aws_s3_bucket" "voice-sandbox" {
     max_age_seconds = 0
   }
 }
+
+resource "aws_s3_bucket" "voice-permalink" {
+  # This bucket contains old corpus datasets which we must keep
+  # because some papers are referencing it.
+  # Moved from legacy account 763061450761
+  bucket = "common-voice-data-download"
+  acl    = "public-read"
+}
