@@ -23,8 +23,12 @@ spec:
         domain: stats.voice.mozit.cloud
         root_url: https://stats.voice.mozit.cloud
       auth:
-        disable_login_form: true
-        oauth_auto_login: true
+        disable_login_form: false
+        oauth_auto_login: false
+      auth.anonymous:
+        enabled: true
+        org_name: Mozilla Common Voice
+        org_role: Viewer
       auth.basic:
         enabled: false
     envFromSecret: grafana-auth0-secrets
