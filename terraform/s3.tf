@@ -6,6 +6,10 @@ data "aws_s3_bucket" "voice-stage" {
   bucket = "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
 }
 
+data "aws_s3_bucket" "voice_bundler_stage" {
+  bucket = "voice-stage-bundler-b48466793fa3bc69b1a8b77d6456532fd376be66"
+}
+
 resource "aws_s3_bucket" "voice-dev" {
   bucket = "voice-dev-clips-20191211013626583200000002"
   acl    = "public-read"

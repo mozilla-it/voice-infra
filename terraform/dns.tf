@@ -146,3 +146,15 @@ resource "aws_route53_record" "commonvoice_mozilla_org" {
     evaluate_target_health = false
   }
 }
+
+# CDN Records:
+
+# Stage 
+resource "aws_route53_record" "cdn_commonvoice_allizom_org" {
+  zone_id = aws_route53_zone.commonvoice_allizom_org.zone_id
+  name    = var.cdn_stage_url
+  type    = "CNAME"
+  records = [aws_cloudfront_distribution.stage.domain_name]
+  ttl     = 60
+}
+

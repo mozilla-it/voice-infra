@@ -202,3 +202,30 @@ resource "aws_route53_record" "prod_validation" {
   records = [aws_acm_certificate.prod_ssl_cert.domain_validation_options.0.resource_record_value]
   ttl     = 60
 }
+
+# CDN Certificates
+resource "aws_acm_certificate" "cdn_stage" {
+  domain_name       = var.cdn_stage_url
+  validation_method = "DNS"
+  # Certs used by CF must reside in us-east-1
+  provider = aws.us-east-1
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_route53_record" "cdn_cert_validation_stage" {
+  name    = aws_acm_certificate.cdn_stage.domain_validation_options[0].resource_record_name
+  type    = aws_acm_certificate.cdn_stage.domain_validation_options[0].resource_record_type
+  zone_id = aws_route53_zone.commonvoice_allizom_org.zone_id
+  records = [aws_acm_certificate.cdn_stage.domain_validation_options[0].resource_record_value]
+  ttl     = 60
+}
+
+resource "aws_acm_certificate_validation" "cdn_stage" {
+  certificate_arn         = aws_acm_certificate.cdn_stage.arn
+  validation_record_fqdns = [aws_route53_record.cdn_cert_validation_stage.fqdn]
+  # Certs used by CF must reside in us-east-1
+  provider = aws.us-east-1
+}
