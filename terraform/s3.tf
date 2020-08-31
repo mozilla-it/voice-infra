@@ -6,6 +6,10 @@ data "aws_s3_bucket" "voice-stage" {
   bucket = "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
 }
 
+data "aws_s3_bucket" "voice_bundler_prod" {
+  bucket = "voice-prod-bundler-ee1969a6ce8178826482b88e843c335139bd3fb4"
+}
+
 data "aws_s3_bucket" "voice_bundler_stage" {
   bucket = "voice-stage-bundler-b48466793fa3bc69b1a8b77d6456532fd376be66"
 }

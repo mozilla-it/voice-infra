@@ -158,3 +158,11 @@ resource "aws_route53_record" "cdn_commonvoice_allizom_org" {
   ttl     = 60
 }
 
+# Prod
+resource "aws_route53_record" "cdn_commonvoice_mozilla_org" {
+  zone_id = aws_route53_zone.commonvoice_mozilla_org.zone_id
+  name    = var.cdn_prod_url
+  type    = "CNAME"
+  records = [aws_cloudfront_distribution.prod.domain_name]
+  ttl     = 60
+}
