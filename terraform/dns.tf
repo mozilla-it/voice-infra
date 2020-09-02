@@ -152,7 +152,7 @@ resource "aws_route53_record" "commonvoice_mozilla_org" {
 # Stage 
 resource "aws_route53_record" "cdn_commonvoice_allizom_org" {
   zone_id = aws_route53_zone.commonvoice_allizom_org.zone_id
-  name    = var.cdn_stage_url
+  name    = local.cdn_stage_url
   type    = "CNAME"
   records = [aws_cloudfront_distribution.stage.domain_name]
   ttl     = 60
@@ -161,7 +161,7 @@ resource "aws_route53_record" "cdn_commonvoice_allizom_org" {
 # Prod
 resource "aws_route53_record" "cdn_commonvoice_mozilla_org" {
   zone_id = aws_route53_zone.commonvoice_mozilla_org.zone_id
-  name    = var.cdn_prod_url
+  name    = local.cdn_prod_url
   type    = "CNAME"
   records = [aws_cloudfront_distribution.prod.domain_name]
   ttl     = 60

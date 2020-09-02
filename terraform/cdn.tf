@@ -11,7 +11,7 @@ resource "aws_cloudfront_distribution" "stage" {
   enabled         = true
   is_ipv6_enabled = true
 
-  aliases = [var.cdn_stage_url]
+  aliases = [local.cdn_stage_url]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -61,7 +61,7 @@ resource "aws_cloudfront_distribution" "prod" {
   enabled         = true
   is_ipv6_enabled = true
 
-  aliases = [var.cdn_prod_url]
+  aliases = [local.cdn_prod_url]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
