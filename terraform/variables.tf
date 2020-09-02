@@ -14,12 +14,3 @@ variable "common-tags" {
     "deploy-method" = "terraform"
   }
 }
-
-variable "cdn_stage_url" {
-  type    = string
-  default = "cdn.commonvoice.allizom.org"
-}
-variable "cdn_prod_url" {
-  type    = string
-  default = "cdn.commonvoice.mozilla.org"
-}

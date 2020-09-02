@@ -205,7 +205,7 @@ resource "aws_route53_record" "prod_validation" {
 
 # CDN Certificates
 resource "aws_acm_certificate" "cdn_stage" {
-  domain_name       = var.cdn_stage_url
+  domain_name       = local.cdn_stage_url
   validation_method = "DNS"
   # Certs used by CF must reside in us-east-1
   provider = aws.us-east-1
@@ -231,7 +231,7 @@ resource "aws_acm_certificate_validation" "cdn_stage" {
 }
 
 resource "aws_acm_certificate" "cdn_prod" {
-  domain_name       = var.cdn_prod_url
+  domain_name       = local.cdn_prod_url
   validation_method = "DNS"
   # Certs used by CF must reside in us-east-1
   provider = aws.us-east-1
