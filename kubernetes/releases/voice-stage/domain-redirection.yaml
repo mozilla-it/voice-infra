@@ -23,7 +23,7 @@ metadata:
         if ($http_x_forwarded_proto = 'http') {
           rewrite ^ https://$host$request_uri? permanent;
         }
-        proxy_pass https://voice-dev-tools.netlify.app;
+        proxy_pass https://voice-devtools-website.netlify.app;
       }
 spec:
   rules:
