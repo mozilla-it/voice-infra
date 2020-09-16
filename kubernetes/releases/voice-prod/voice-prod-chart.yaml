@@ -22,7 +22,7 @@ spec:
       replicas: 15
       use_external_secrets: true
       use_default_secrets_file: false
-      image: mozilla/commonvoice:release-v1.34.1-ga-hash
+      image: mozilla/commonvoice:release-v1.34.3-singleword-update
       service_account_name: voice-prod
 
       ingress:
