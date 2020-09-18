@@ -1,6 +1,6 @@
 locals {
   cluster_name    = "voice-prod"
-  cluster_version = "1.16"
+  cluster_version = "1.17"
 
   cluster_tags = {
     Region    = var.region
