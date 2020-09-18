@@ -19,7 +19,7 @@ metadata:
       # Serving Mozilla Voice website when visiting /
       # and falling back to CommonVoice to maintain compatibility
       # with links spreaded in the web
-      location ~ ^(/$|/about|/news|/partners|/community|/voice-devtools-) {
+      location ~ ^(/$|/about|/news|/partners|/community|/stt|/tts|/voice-devtools-) {
         if ($http_x_forwarded_proto = 'http') {
           rewrite ^ https://$host$request_uri? permanent;
         }
