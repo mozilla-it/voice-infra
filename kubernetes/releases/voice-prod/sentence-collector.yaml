@@ -1,0 +1,36 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: sentence-collector
+  namespace: voice-prod
+  annotations:
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: sentence-collector-prod
+  chart:
+    repository: https://mozilla-it.github.io/helm-charts/
+    name: sentence-collector
+    version: 0.1.0
+  values:
+    environment: prod
+    image:
+      repository: mozilla/sentencecollector
+      tag: 2.0.14
+    ingress:
+      enabled: true
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$1
+        kubernetes.io/ingress.class: voice-prod
+        nginx.ingress.kubernetes.io/server-snippet: |
+          location = /sentence-collector {
+            rewrite ^(.*[^/])$ $1/ permanent;
+          }
+      hosts:
+        - host: commonvoice.mozilla.org
+          paths:
+          - /sentence-collector/(.*)
+    externalSecret:
+      create: true
+    mysql:
+      enabled: false
