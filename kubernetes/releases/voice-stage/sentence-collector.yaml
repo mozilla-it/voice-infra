@@ -22,6 +22,10 @@ spec:
       annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$1
         kubernetes.io/ingress.class: voice-stage
+        nginx.ingress.kubernetes.io/server-snippet: |
+          location = /sentence-collector {
+            rewrite ^(.*[^/])$ $1/ permanent;
+          }
       hosts:
         - host: commonvoice.allizom.org
           paths:
