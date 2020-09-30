@@ -65,4 +65,14 @@ data "aws_iam_policy_document" "devs_policy" {
       "s3:ListBucket"
     ]
   }
+
+  statement {
+    sid       = "secretsmanagerAccess"
+    resources = ["*"]
+    actions = [
+      "secretsmanager:List*",
+      "secretsmanager:Get*",
+      "secretsmanager:Describe*",
+    ]
+  }
 }
