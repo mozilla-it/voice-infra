@@ -21,7 +21,7 @@ spec:
       deployment_name: voice-stage
       use_external_secrets: true
       use_default_secrets_file: false
-      image: mozilla/commonvoice:stage-2042e242bdc2366b305b7bdc3b1aae71ef16efb1
+      image: mozilla/commonvoice:stage-v1.36.0-rc0-metadata-prerelease
       replicas: 3
       service_account_name: voice-stage
       extra_annotations:
