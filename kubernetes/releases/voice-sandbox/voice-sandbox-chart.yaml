@@ -50,6 +50,7 @@ spec:
         extra_vars:
           CV_ENVIRONMENT: "sandbox"
           CV_BENCHMARK_LIVE: "true"
+          CV_IMPORT_SENTENCES: "true"
 
       extra_volumes:
       - name: papertrail-conf
