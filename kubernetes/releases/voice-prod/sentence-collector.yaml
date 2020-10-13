@@ -5,7 +5,8 @@ metadata:
   name: sentence-collector
   namespace: voice-prod
   annotations:
-    fluxcd.io/automated: "false"
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/voice_web: glob:v*
 spec:
   releaseName: sentence-collector-prod
   chart:
