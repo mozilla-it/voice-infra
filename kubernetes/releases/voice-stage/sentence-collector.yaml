@@ -6,7 +6,7 @@ metadata:
   namespace: voice-stage
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/voice_web: glob:main-*
+    filter.fluxcd.io/chart-image: glob:main-*
 spec:
   releaseName: sentence-collector-stage
   chart:
