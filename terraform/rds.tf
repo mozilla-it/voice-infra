@@ -1,28 +1,31 @@
 module "db-prod" {
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
+  # Use master after #PR125 is merged
+  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=8889594dff87ce438d9c7891f320a34958d27398"
   type                                   = "mysql"
   name                                   = "voice"
   username                               = "admin"
   identifier                             = "voice-eks-prod"
   instance                               = "db.m5.xlarge"
   storage_gb                             = "100"
-  db_version                             = "5.6.46"
+  db_version                             = "5.7.28"
   multi_az                               = "false"
   vpc_id                                 = module.vpc.vpc_id
   subnets                                = module.vpc.private_subnets.0
-  parameter_group_name                   = aws_db_parameter_group.voice_parameters.name
+  parameter_group_name                   = aws_db_parameter_group.voice_parameters_57.name
   backup_retention_period                = 30
   replica_enabled                        = "true"
   instance_replica                       = "db.t3.large"
-  replica_db_version                     = "5.6.46"
+  replica_db_version                     = "5.7.31"
   performance_insights_enabled           = "true"
   performance_insights_retention         = 7
   replica_performance_insights_retention = 0
   snapshot_identifier                    = "k8s-migration"
+  allow_major_version_upgrade            = "true"
+  allow_auto_minor_version_upgrade       = "false"
 
   cost_center = "1003"
   project     = "voice"
-  environment = "stage"
+  environment = "prod"
 }
 
 module "db-stage" {
@@ -105,7 +108,7 @@ module "sentence_collector_prod" {
   name                    = "sentencecollector"
   identifier              = "sentencecollector-prod"
   username                = "sentencecollector"
-  instance                = "db.t3.micro"
+  instance                = "db.t3.small"
   storage_gb              = "8"
   db_version              = "8.0.19"
   multi_az                = "false"
@@ -216,9 +219,9 @@ resource "aws_db_parameter_group" "dev_parameters_57" {
   }
 }
 
-resource "aws_db_parameter_group" "voice_parameters" {
-  name   = "voice-db-parameters"
-  family = "mysql5.6"
+resource "aws_db_parameter_group" "voice_parameters_57" {
+  name   = "voice-prod-db-parameters-57"
+  family = "mysql5.7"
 
   parameter {
     name         = "slow_query_log"
