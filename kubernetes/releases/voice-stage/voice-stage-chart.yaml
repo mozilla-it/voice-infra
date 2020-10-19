@@ -50,9 +50,6 @@ spec:
           bucket_name: "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
           location: "us-west-2"
         prod: true # we need this also for stage
-        kibana:
-          url: https://vpc-voice-eks-stage-mzlpwmunhbpmddyrg5pasjkh4y.us-west-2.es.amazonaws.com/_plugin/kibana/
-          prefix: "/_plugin/kibana"
         extra_vars:
           CV_ENVIRONMENT: "stage"
           CV_BENCHMARK_LIVE: "false"
@@ -72,18 +69,11 @@ spec:
         - mountPath: /etc/rs2
           name: papertrail-conf
 
-      es_sync:
-        enabled: true
-
     new_relic:
       enabled: true
       app_name: voice-stage
 
     redis:
-      enabled: false
-    elasticsearch:
-      enabled: false
-    kibana:
       enabled: false
     mysql:
       enabled: false
