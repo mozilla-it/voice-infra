@@ -12,6 +12,7 @@ This repository contains the infrastructure code for running voice.mozilla.org
  - [Secrets](#secrets)
  - [Dependencies](#dependencies)
  - [Database access](#db-access)
+ - [Sentence Collector](#sentence-collector)
 
 # Environments
 Voice is deployed in 4 different environments: Production (prod), Stage (stage), Development (dev), and Sandbox (sandbox).
@@ -183,3 +184,19 @@ In order to connect to the database server, run:
  * Prod: `kubectl -n=voice-prod exec -ti $(kubectl get po -n=voice-prod -l=app=db-monitor |  tail -1 | cut -d' ' -f 1) bash`
 
 Once you are inside the pod, just run `mysql` to connect to the database server.
+
+
+# Sentence Collector
+[Sentence Collector](https://github.com/Common-Voice/sentence-collector) is an application used to collect sentences from users, which will be later used in Common Voice.
+Sentence Collector is deployed alongside common-voice, in stage and production environments.
+
+## Dependencies
+Sentence Collector uses an RDS MySQL 8 Database, created using the Terraform code in this repository.
+
+## Deployment
+The deployment of Sentence Collector is automated via FluxCD and Helm charts, using the same strategy as Common Voice does.
+There is a Github action in the source repository which will build and push a container when there are new commits to `main` or a new tagged commit following semantics version `vX.X.X`.
+
+Deploy to stage merging a commit to `main` branch.
+
+Deploy to production tagging a commit with `vX.X.X`.
