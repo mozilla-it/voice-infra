@@ -45,3 +45,8 @@ resource "aws_s3_bucket" "voice-permalink" {
   bucket = "common-voice-data-download"
   acl    = "public-read"
 }
+
+resource "aws_s3_bucket" "voice-dataset-download-logs" {
+  bucket = "voice-dataset-download-logs"
+  acl    = "private"
+}
