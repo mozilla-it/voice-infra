@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "voice-dev" {
   cors_rule {
     allowed_headers = ["Authorization"]
     allowed_methods = ["GET"]
-    allowed_origins = ["https://dev.voice.mozit.cloud", "https://voice-dev.allizom.org"]
+    allowed_origins = ["https://dev.voice.mozit.cloud", "https://voice-dev.allizom.org", "https://dev.commonvoice.allizom.org"]
     max_age_seconds = 0
   }
 }
@@ -33,7 +33,7 @@ resource "aws_s3_bucket" "voice-sandbox" {
   cors_rule {
     allowed_headers = ["Authorization"]
     allowed_methods = ["GET"]
-    allowed_origins = ["https://sandbox.voice.mozit.cloud", "https://voice-sandbox.allizom.org"]
+    allowed_origins = ["https://sandbox.voice.mozit.cloud", "https://voice-sandbox.allizom.org", "https://sandbox.commonvoice.allizom.org"]
     max_age_seconds = 0
   }
 }
