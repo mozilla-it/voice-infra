@@ -52,6 +52,7 @@ spec:
           location: "us-west-2"
         extra_vars:
           CV_ENVIRONMENT: "dev"
+          CV_IMPORT_SENTENCES: "true"
 
       extra_volumes:
       - name: papertrail-conf
