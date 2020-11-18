@@ -192,9 +192,10 @@ data "aws_iam_policy_document" "voice_stage" {
 
 # prod
 resource "aws_iam_role" "voice-prod" {
-  name               = "voice-web-prod"
-  path               = "/voice/"
-  assume_role_policy = data.aws_iam_policy_document.allow_assume_role_prod.json
+  name                 = "voice-web-prod"
+  path                 = "/voice/"
+  assume_role_policy   = data.aws_iam_policy_document.allow_assume_role_prod.json
+  max_session_duration = 43200
 }
 
 data "aws_iam_policy_document" "allow_assume_role_prod" {
