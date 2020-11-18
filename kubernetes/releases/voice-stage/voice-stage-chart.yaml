@@ -52,7 +52,7 @@ spec:
         prod: true # we need this also for stage
         extra_vars:
           CV_ENVIRONMENT: "stage"
-          CV_BENCHMARK_LIVE: "false"
+          CV_BENCHMARK_LIVE: "true"
 
       extra_volumes:
       - name: papertrail-conf
