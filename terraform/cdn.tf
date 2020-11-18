@@ -42,8 +42,8 @@ resource "aws_cloudfront_distribution" "stage" {
   }
 
   viewer_certificate {
-    acm_certificate_arn            = aws_acm_certificate.cdn_stage.arn
-    ssl_support_method             = "sni-only"
+    acm_certificate_arn = aws_acm_certificate.cdn_stage.arn
+    ssl_support_method  = "sni-only"
   }
 }
 
@@ -92,7 +92,7 @@ resource "aws_cloudfront_distribution" "prod" {
   }
 
   viewer_certificate {
-    acm_certificate_arn            = aws_acm_certificate.cdn_prod.arn
-    ssl_support_method             = "sni-only"
+    acm_certificate_arn = aws_acm_certificate.cdn_prod.arn
+    ssl_support_method  = "sni-only"
   }
 }
