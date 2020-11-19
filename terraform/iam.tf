@@ -3,6 +3,7 @@ resource "aws_iam_role" "voice-dev" {
   name               = "voice-web-dev"
   path               = "/voice/"
   assume_role_policy = data.aws_iam_policy_document.allow_assume_role_dev.json
+  max_session_duration = 43200
 }
 
 data "aws_iam_policy_document" "allow_assume_role_dev" {
@@ -67,6 +68,7 @@ resource "aws_iam_role" "voice-sandbox" {
   name               = "voice-web-sandbox"
   path               = "/voice/"
   assume_role_policy = data.aws_iam_policy_document.allow_assume_role_sandbox.json
+  max_session_duration = 43200
 }
 
 data "aws_iam_policy_document" "allow_assume_role_sandbox" {
@@ -131,6 +133,7 @@ resource "aws_iam_role" "voice-stage" {
   name               = "voice-web-stage"
   path               = "/voice/"
   assume_role_policy = data.aws_iam_policy_document.allow_assume_role_stage.json
+  max_session_duration = 43200
 }
 
 data "aws_iam_policy_document" "allow_assume_role_stage" {
