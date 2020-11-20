@@ -1,8 +1,8 @@
 # Dev
 resource "aws_iam_role" "voice-dev" {
-  name               = "voice-web-dev"
-  path               = "/voice/"
-  assume_role_policy = data.aws_iam_policy_document.allow_assume_role_dev.json
+  name                 = "voice-web-dev"
+  path                 = "/voice/"
+  assume_role_policy   = data.aws_iam_policy_document.allow_assume_role_dev.json
   max_session_duration = 43200
 }
 
@@ -59,15 +59,17 @@ data "aws_iam_policy_document" "voice_dev" {
     resources = [
       "${aws_s3_bucket.voice-dev.arn}/*",
       "${aws_s3_bucket.voice-dev.arn}",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}/*",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}",
     ]
   }
 }
 
 # sandbox
 resource "aws_iam_role" "voice-sandbox" {
-  name               = "voice-web-sandbox"
-  path               = "/voice/"
-  assume_role_policy = data.aws_iam_policy_document.allow_assume_role_sandbox.json
+  name                 = "voice-web-sandbox"
+  path                 = "/voice/"
+  assume_role_policy   = data.aws_iam_policy_document.allow_assume_role_sandbox.json
   max_session_duration = 43200
 }
 
@@ -124,15 +126,17 @@ data "aws_iam_policy_document" "voice_sandbox" {
     resources = [
       "${aws_s3_bucket.voice-sandbox.arn}/*",
       "${aws_s3_bucket.voice-sandbox.arn}",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}/*",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}",
     ]
   }
 }
 
 # stage
 resource "aws_iam_role" "voice-stage" {
-  name               = "voice-web-stage"
-  path               = "/voice/"
-  assume_role_policy = data.aws_iam_policy_document.allow_assume_role_stage.json
+  name                 = "voice-web-stage"
+  path                 = "/voice/"
+  assume_role_policy   = data.aws_iam_policy_document.allow_assume_role_stage.json
   max_session_duration = 43200
 }
 
@@ -187,6 +191,8 @@ data "aws_iam_policy_document" "voice_stage" {
     resources = [
       "${data.aws_s3_bucket.voice-stage.arn}/*",
       "${data.aws_s3_bucket.voice-stage.arn}",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}/*",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}",
     ]
   }
 }

@@ -50,3 +50,13 @@ resource "aws_s3_bucket" "voice-dataset-download-logs" {
   bucket = "voice-dataset-download-logs"
   acl    = "private"
 }
+
+resource "aws_s3_bucket" "voice-dataset-private" {
+  bucket = "mozilla-common-voice-datasets"
+  acl    = "private"
+}
+
+resource "aws_s3_bucket" "voice-dataset-private-stage" {
+  bucket = "mozilla-common-voice-datasets-stage"
+  acl    = "private"
+}
