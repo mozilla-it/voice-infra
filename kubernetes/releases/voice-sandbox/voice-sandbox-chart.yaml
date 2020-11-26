@@ -46,6 +46,8 @@ spec:
           root_user: "voice"
         s3:
           bucket_name: "voice-sandbox-clips-20191211013626583100000001"
+          clip_bucket_name: "voice-sandbox-clips-20191211013626583100000001"
+          dataset_bucket_name: "mozilla-common-voice-datasets-stage"
           location: "us-west-2"
         extra_vars:
           CV_ENVIRONMENT: "sandbox"
