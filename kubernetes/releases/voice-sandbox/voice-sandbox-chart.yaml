@@ -20,7 +20,7 @@ spec:
       deployment_name: voice-sandbox
       use_external_secrets: true
       use_default_secrets_file: false
-      image: mozilla/commonvoice:sandbox-blank-v0.1
+      image: mozilla/commonvoice:sandbox-v1.38.1-buckets
       replicas: 1
       service_account_name: voice-sandbox
       extra_annotations:
@@ -51,6 +51,7 @@ spec:
           location: "us-west-2"
         extra_vars:
           CV_ENVIRONMENT: "sandbox"
+          CV_DATASET_BUCKET: "mozilla-common-voice-datasets-stage"  
 
       extra_volumes:
       - name: papertrail-conf
