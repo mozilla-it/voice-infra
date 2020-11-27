@@ -49,10 +49,13 @@ spec:
           root_user: "voice"
         s3:
           bucket_name: "voice-dev-clips-20191211013626583200000002"
+          clip_bucket_name: "voice-dev-clips-20191211013626583200000002"
+          dataset_bucket_name: "mozilla-common-voice-datasets-stage"
           location: "us-west-2"
         extra_vars:
           CV_ENVIRONMENT: "dev"
           CV_IMPORT_SENTENCES: "true"
+          CV_DATASET_BUCKET_NAME: "mozilla-common-voice-datasets-stage"
 
       extra_volumes:
       - name: papertrail-conf

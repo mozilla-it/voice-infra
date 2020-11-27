@@ -48,11 +48,14 @@ spec:
           user: "admin"
         s3:
           bucket_name: "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
+          clip_bucket_name: "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
+          dataset_bucket_name: "mozilla-common-voice-datasets-stage"
           location: "us-west-2"
         prod: true # we need this also for stage
         extra_vars:
           CV_ENVIRONMENT: "stage"
           CV_BENCHMARK_LIVE: "true"
+          CV_DATASET_BUCKET_NAME: "mozilla-common-voice-datasets-stage"
 
       extra_volumes:
       - name: papertrail-conf
