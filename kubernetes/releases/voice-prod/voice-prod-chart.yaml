@@ -22,7 +22,7 @@ spec:
       replicas: 15
       use_external_secrets: true
       use_default_secrets_file: false
-      image: mozilla/commonvoice:release-v1.37.0
+      image: mozilla/commonvoice:release-v1.38.1
       service_account_name: voice-prod
 
       ingress:
@@ -57,6 +57,7 @@ spec:
           CV_BENCHMARK_LIVE: "true"
           CV_SENTRY_DSN: "https://08902ca27fb24d448975e88d3da5c96b@sentry.prod.mozaws.net/503"
           CV_DATASET_BUCKET_NAME: "mozilla-common-voice-datasets"
+          CV_CLIP_BUCKET_NAME: "voice-prod-clips-393eefd0cba28c270ced0f9587a4f6ae601ca91e"
 
       extra_volumes:
       - name: papertrail-conf
