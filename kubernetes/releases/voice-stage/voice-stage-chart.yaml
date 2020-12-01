@@ -56,6 +56,7 @@ spec:
           CV_ENVIRONMENT: "stage"
           CV_BENCHMARK_LIVE: "true"
           CV_DATASET_BUCKET_NAME: "mozilla-common-voice-datasets"
+          CV_CLIP_BUCKET_NAME: "voice-stage-clips-934a7753ac94c18242c82ed71d5088b24b02bdd6"
 
       extra_volumes:
       - name: papertrail-conf
