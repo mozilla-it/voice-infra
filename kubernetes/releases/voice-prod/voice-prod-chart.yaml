@@ -22,7 +22,7 @@ spec:
       replicas: 15
       use_external_secrets: true
       use_default_secrets_file: false
-      image: mozilla/commonvoice:release-v1.37.0
+      image: mozilla/commonvoice:release-v1.38.1
       service_account_name: voice-prod
 
       ingress:
@@ -44,6 +44,8 @@ spec:
           user: "admin"
         s3:
           bucket_name: "voice-prod-clips-393eefd0cba28c270ced0f9587a4f6ae601ca91e"
+          clip_bucket_name: "voice-prod-clips-393eefd0cba28c270ced0f9587a4f6ae601ca91e"
+          dataset_bucket_name: "mozilla-common-voice-datasets"
           location: "us-west-2"
         prod: true
         environment: prod
@@ -54,6 +56,7 @@ spec:
           CV_IMPORT_SENTENCES: "true"
           CV_BENCHMARK_LIVE: "true"
           CV_SENTRY_DSN: "https://08902ca27fb24d448975e88d3da5c96b@sentry.prod.mozaws.net/503"
+          CV_DATASET_BUCKET_NAME: "mozilla-common-voice-datasets"
 
       extra_volumes:
       - name: papertrail-conf
