@@ -191,6 +191,8 @@ data "aws_iam_policy_document" "voice_stage" {
     resources = [
       "${data.aws_s3_bucket.voice-stage.arn}/*",
       "${data.aws_s3_bucket.voice-stage.arn}",
+      "${aws_s3_bucket.voice-dataset-private.arn}/*",
+      "${aws_s3_bucket.voice-dataset-private.arn}",
       "${aws_s3_bucket.voice-dataset-private-stage.arn}/*",
       "${aws_s3_bucket.voice-dataset-private-stage.arn}",
     ]
@@ -260,6 +262,10 @@ data "aws_iam_policy_document" "voice_prod" {
     resources = [
       "${data.aws_s3_bucket.voice-prod.arn}/*",
       "${data.aws_s3_bucket.voice-prod.arn}",
+      "${aws_s3_bucket.voice-dataset-private.arn}/*",
+      "${aws_s3_bucket.voice-dataset-private.arn}",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}/*",
+      "${aws_s3_bucket.voice-dataset-private-stage.arn}",
     ]
   }
 }
