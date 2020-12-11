@@ -317,3 +317,41 @@ data "aws_iam_policy_document" "voice_bundler_stage" {
     ]
   }
 }
+
+# Bundler user: used for releasing datasets
+resource "aws_iam_user" "dataset_bundler_prod" {
+  name = "commonvoice-dataset-bundler-prod"
+}
+
+resource "aws_iam_access_key" "dataset_bundler_prod" {
+  user = aws_iam_user.dataset_bundler_prod.name
+}
+
+
+data "aws_iam_policy_document" "dataset_bundler_prod" {
+  statement {
+    actions = [
+      "s3:HeadObject",
+      "s3:PutObject",
+      "s3:ListObject",
+      "s3:ListBucket",
+      "s3:DeleteObject",
+    ]
+
+    resources = [
+      "${aws_s3_bucket.voice-dataset-private.arn}/*",
+      "${aws_s3_bucket.voice-dataset-private.arn}"
+    ]
+  }
+}
+
+resource "aws_iam_policy" "dataset_bundler_prod" {
+  name        = "dataset_bundler_prod"
+  description = "Policy used by the dataset bundler user"
+  policy      = data.aws_iam_policy_document.dataset_bundler_prod.json
+}
+
+resource "aws_iam_user_policy_attachment" "dataset_bundler_prod" {
+  user       = aws_iam_user.dataset_bundler_prod.name
+  policy_arn = aws_iam_policy.dataset_bundler_prod.arn
+}
