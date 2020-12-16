@@ -54,7 +54,7 @@ spec:
           location: "us-west-2"
         extra_vars:
           CV_ENVIRONMENT: "dev"
-          COVID19_LIVE: "true"
+          CV_COVID19_LIVE: "true"
           CV_IMPORT_SENTENCES: "true"
 
       extra_volumes:
