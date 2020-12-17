@@ -8,23 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/configuration-snippet: |
         return 302 https://commonvoice.mozilla.org$request_uri;
-    nginx.ingress.kubernetes.io/server-snippet: |
-      location /firefox-voice {
-        if ($http_x_forwarded_proto = 'http') {
-          rewrite ^ https://$host$request_uri? permanent;
-        }
-        add_header Content-Security-Policy "default-src 'none'; connect-src https://www.google-analytics.com https://sentry.prod.mozaws.net; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.googleapis.com; script-src 'self' https://www.google-analytics.com; img-src 'self' data:; child-src https://www.youtube.com" ;
-        proxy_pass https://mozilla-extensions.github.io/firefox-voice/homepage;
-      }
-      # Serving Mozilla Voice website when visiting /
-      # and falling back to CommonVoice to maintain compatibility
-      # with links spreaded in the web
-      location ~ ^(/$|/about|/news|/partners|/community|/stt|/tts|/voice-devtools-) {
-        if ($http_x_forwarded_proto = 'http') {
-          rewrite ^ https://$host$request_uri? permanent;
-        }
-        proxy_pass https://voice-devtools-website.netlify.app;
-      }
+
 spec:
   rules:
   - host: voice.mozilla.org
