@@ -55,6 +55,7 @@ spec:
         extra_vars:
           CV_ENVIRONMENT: "stage"
           CV_BENCHMARK_LIVE: "true"
+          CV_COVID19_LIVE: "true"
 
       extra_volumes:
       - name: papertrail-conf
