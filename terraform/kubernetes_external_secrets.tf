@@ -1,6 +1,6 @@
 module "role_kubernetes_external_secrets" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "~> v2.10.0"
+  version                       = "~> v3.7.0"
   create_role                   = true
   role_name                     = "${local.cluster_name}-kubernetes-external-secrets"
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
