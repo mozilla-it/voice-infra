@@ -110,10 +110,19 @@ resource "aws_acm_certificate" "dev_ssl_cert" {
 }
 
 resource "aws_route53_record" "dev_validation" {
-  name    = aws_acm_certificate.dev_ssl_cert.domain_validation_options.0.resource_record_name
-  type    = aws_acm_certificate.dev_ssl_cert.domain_validation_options.0.resource_record_type
-  zone_id = aws_route53_zone.commonvoice_allizom_org.zone_id
-  records = [aws_acm_certificate.dev_ssl_cert.domain_validation_options.0.resource_record_value]
+  for_each = {
+    for dvo in aws_acm_certificate.dev_ssl_cert.domain_validation_options : dvo.domain_name => {
+      name        = dvo.resource_record_name
+      record      = dvo.resource_record_value
+      type        = dvo.resource_record_type
+      domain_name = dvo.domain_name
+    }
+  }
+
+  name    = each.value.name
+  records = [each.value.record]
+  type    = each.value.type
+  zone_id = aws_route53_zone.commonvoice_allizom_org.id
   ttl     = 60
 }
 
@@ -139,10 +148,19 @@ resource "aws_acm_certificate" "sandbox_ssl_cert" {
 }
 
 resource "aws_route53_record" "sandbox_validation" {
-  name    = aws_acm_certificate.sandbox_ssl_cert.domain_validation_options.0.resource_record_name
-  type    = aws_acm_certificate.sandbox_ssl_cert.domain_validation_options.0.resource_record_type
-  zone_id = aws_route53_zone.commonvoice_allizom_org.zone_id
-  records = [aws_acm_certificate.sandbox_ssl_cert.domain_validation_options.0.resource_record_value]
+  for_each = {
+    for dvo in aws_acm_certificate.sandbox_ssl_cert.domain_validation_options : dvo.domain_name => {
+      name        = dvo.resource_record_name
+      record      = dvo.resource_record_value
+      type        = dvo.resource_record_type
+      domain_name = dvo.domain_name
+    }
+  }
+
+  name    = each.value.name
+  records = [each.value.record]
+  type    = each.value.type
+  zone_id = aws_route53_zone.commonvoice_allizom_org.id
   ttl     = 60
 }
 
@@ -168,10 +186,19 @@ resource "aws_acm_certificate" "stage_ssl_cert" {
 }
 
 resource "aws_route53_record" "stage_validation" {
-  name    = aws_acm_certificate.stage_ssl_cert.domain_validation_options.0.resource_record_name
-  type    = aws_acm_certificate.stage_ssl_cert.domain_validation_options.0.resource_record_type
-  zone_id = aws_route53_zone.commonvoice_allizom_org.zone_id
-  records = [aws_acm_certificate.stage_ssl_cert.domain_validation_options.0.resource_record_value]
+  for_each = {
+    for dvo in aws_acm_certificate.stage_ssl_cert.domain_validation_options : dvo.domain_name => {
+      name        = dvo.resource_record_name
+      record      = dvo.resource_record_value
+      type        = dvo.resource_record_type
+      domain_name = dvo.domain_name
+    }
+  }
+
+  name    = each.value.name
+  records = [each.value.record]
+  type    = each.value.type
+  zone_id = aws_route53_zone.commonvoice_allizom_org.id
   ttl     = 60
 }
 
@@ -196,10 +223,19 @@ resource "aws_acm_certificate" "prod_ssl_cert" {
 }
 
 resource "aws_route53_record" "prod_validation" {
-  name    = aws_acm_certificate.prod_ssl_cert.domain_validation_options.0.resource_record_name
-  type    = aws_acm_certificate.prod_ssl_cert.domain_validation_options.0.resource_record_type
-  zone_id = aws_route53_zone.commonvoice_mozilla_org.zone_id
-  records = [aws_acm_certificate.prod_ssl_cert.domain_validation_options.0.resource_record_value]
+  for_each = {
+    for dvo in aws_acm_certificate.prod_ssl_cert.domain_validation_options : dvo.domain_name => {
+      name        = dvo.resource_record_name
+      record      = dvo.resource_record_value
+      type        = dvo.resource_record_type
+      domain_name = dvo.domain_name
+    }
+  }
+
+  name    = each.value.name
+  records = [each.value.record]
+  type    = each.value.type
+  zone_id = aws_route53_zone.commonvoice_mozilla_org.id
   ttl     = 60
 }
 
@@ -216,16 +252,25 @@ resource "aws_acm_certificate" "cdn_stage" {
 }
 
 resource "aws_route53_record" "cdn_cert_validation_stage" {
-  name    = aws_acm_certificate.cdn_stage.domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.cdn_stage.domain_validation_options[0].resource_record_type
-  zone_id = aws_route53_zone.commonvoice_allizom_org.zone_id
-  records = [aws_acm_certificate.cdn_stage.domain_validation_options[0].resource_record_value]
+  for_each = {
+    for dvo in aws_acm_certificate.cdn_stage.domain_validation_options : dvo.domain_name => {
+      name        = dvo.resource_record_name
+      record      = dvo.resource_record_value
+      type        = dvo.resource_record_type
+      domain_name = dvo.domain_name
+    }
+  }
+
+  name    = each.value.name
+  records = [each.value.record]
+  type    = each.value.type
+  zone_id = aws_route53_zone.commonvoice_allizom_org.id
   ttl     = 60
 }
 
 resource "aws_acm_certificate_validation" "cdn_stage" {
   certificate_arn         = aws_acm_certificate.cdn_stage.arn
-  validation_record_fqdns = [aws_route53_record.cdn_cert_validation_stage.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.cdn_cert_validation_stage : record.fqdn]
   # Certs used by CF must reside in us-east-1
   provider = aws.us-east-1
 }
@@ -242,16 +287,25 @@ resource "aws_acm_certificate" "cdn_prod" {
 }
 
 resource "aws_route53_record" "cdn_cert_validation_prod" {
-  name    = aws_acm_certificate.cdn_prod.domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.cdn_prod.domain_validation_options[0].resource_record_type
-  zone_id = aws_route53_zone.commonvoice_mozilla_org.zone_id
-  records = [aws_acm_certificate.cdn_prod.domain_validation_options[0].resource_record_value]
+  for_each = {
+    for dvo in aws_acm_certificate.cdn_prod.domain_validation_options : dvo.domain_name => {
+      name        = dvo.resource_record_name
+      record      = dvo.resource_record_value
+      type        = dvo.resource_record_type
+      domain_name = dvo.domain_name
+    }
+  }
+
+  name    = each.value.name
+  records = [each.value.record]
+  type    = each.value.type
+  zone_id = aws_route53_zone.commonvoice_mozilla_org.id
   ttl     = 60
 }
 
 resource "aws_acm_certificate_validation" "cdn_prod" {
   certificate_arn         = aws_acm_certificate.cdn_prod.arn
-  validation_record_fqdns = [aws_route53_record.cdn_cert_validation_prod.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.cdn_cert_validation_prod : record.fqdn]
   # Certs used by CF must reside in us-east-1
   provider = aws.us-east-1
 }

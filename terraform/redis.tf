@@ -1,10 +1,10 @@
 module "redis-prod" {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.16.0"
+  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.27.3"
   stage                   = "prod"
   name                    = "voice-eks"
   vpc_id                  = module.vpc.vpc_id
   allowed_security_groups = ["sg-0b42a7cfbb3ccb3bc"]
-  subnets                 = module.vpc.private_subnets.0
+  subnets                 = module.vpc.private_subnets
   cluster_size            = 1
   instance_type           = "cache.t3.micro"
   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
@@ -14,12 +14,12 @@ module "redis-prod" {
 }
 
 module "redis-stage" {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.16.0"
+  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.27.3"
   stage                   = "stage"
   name                    = "voice-eks"
   vpc_id                  = module.vpc.vpc_id
   allowed_security_groups = ["sg-0b42a7cfbb3ccb3bc"]
-  subnets                 = module.vpc.private_subnets.0
+  subnets                 = module.vpc.private_subnets
   cluster_size            = 1
   instance_type           = "cache.t3.micro"
   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
@@ -29,12 +29,12 @@ module "redis-stage" {
 }
 
 module "redis-dev" {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.16.0"
+  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.27.3"
   stage                   = "dev"
   name                    = "voice-eks"
   vpc_id                  = module.vpc.vpc_id
   allowed_security_groups = ["sg-0b42a7cfbb3ccb3bc"]
-  subnets                 = module.vpc.private_subnets.0
+  subnets                 = module.vpc.private_subnets
   cluster_size            = 1
   instance_type           = "cache.t3.micro"
   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
@@ -44,12 +44,12 @@ module "redis-dev" {
 }
 
 module "redis-sandbox" {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.16.0"
+  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticache-redis.git?ref=tags/0.27.3"
   stage                   = "sandbox"
   name                    = "voice-eks"
   vpc_id                  = module.vpc.vpc_id
   allowed_security_groups = ["sg-0b42a7cfbb3ccb3bc"]
-  subnets                 = module.vpc.private_subnets.0
+  subnets                 = module.vpc.private_subnets
   cluster_size            = 1
   instance_type           = "cache.t3.micro"
   availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]

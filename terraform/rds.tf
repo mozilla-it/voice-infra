@@ -1,6 +1,5 @@
 module "db-prod" {
-  # Use master after #PR125 is merged
-  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=8889594dff87ce438d9c7891f320a34958d27398"
+  source                                 = "github.com/mozilla-it/terraform-modules//aws/database?ref=master"
   type                                   = "mysql"
   name                                   = "voice"
   username                               = "admin"
@@ -10,7 +9,7 @@ module "db-prod" {
   db_version                             = "5.7.28"
   multi_az                               = "false"
   vpc_id                                 = module.vpc.vpc_id
-  subnets                                = module.vpc.private_subnets.0
+  subnets                                = module.vpc.private_subnets
   parameter_group_name                   = aws_db_parameter_group.voice_parameters_57.name
   backup_retention_period                = 30
   replica_enabled                        = "true"
@@ -39,8 +38,8 @@ module "db-stage" {
   db_version                             = "5.7.28"
   multi_az                               = "false"
   vpc_id                                 = module.vpc.vpc_id
-  subnets                                = module.vpc.private_subnets.0
   parameter_group_name                   = aws_db_parameter_group.stage_parameters_57.name
+  subnets                                = module.vpc.private_subnets
   backup_retention_period                = 3
   replica_enabled                        = "true"
   instance_replica                       = "db.t3.small"
@@ -65,7 +64,7 @@ module "db-dev" {
   db_version                     = "5.7.28"
   multi_az                       = "false"
   vpc_id                         = module.vpc.vpc_id
-  subnets                        = module.vpc.private_subnets.0
+  subnets                        = module.vpc.private_subnets
   parameter_group_name           = aws_db_parameter_group.dev_parameters_57.name
   backup_retention_period        = 1
   performance_insights_enabled   = "false"
@@ -89,7 +88,7 @@ module "db-sandbox" {
   db_version                     = "5.7.28"
   multi_az                       = "false"
   vpc_id                         = module.vpc.vpc_id
-  subnets                        = module.vpc.private_subnets.0
+  subnets                        = module.vpc.private_subnets
   parameter_group_name           = aws_db_parameter_group.sandbox_parameters_57.name
   backup_retention_period        = 1
   performance_insights_enabled   = "false"
@@ -113,7 +112,7 @@ module "sentence_collector_prod" {
   db_version              = "8.0.19"
   multi_az                = "false"
   vpc_id                  = module.vpc.vpc_id
-  subnets                 = module.vpc.private_subnets.0
+  subnets                 = module.vpc.private_subnets
   parameter_group_name    = aws_db_parameter_group.sentence_collector.name
   backup_retention_period = 30
   replica_enabled         = "false"
@@ -134,7 +133,7 @@ module "sentence_collector_stage" {
   db_version              = "8.0.19"
   multi_az                = "false"
   vpc_id                  = module.vpc.vpc_id
-  subnets                 = module.vpc.private_subnets.0
+  subnets                 = module.vpc.private_subnets
   parameter_group_name    = aws_db_parameter_group.sentence_collector.name
   backup_retention_period = 30
   replica_enabled         = "false"

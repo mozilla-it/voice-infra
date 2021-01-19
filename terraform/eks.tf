@@ -47,8 +47,9 @@ resource "aws_eks_node_group" "nodes" {
   cluster_name    = local.cluster_name
   node_group_name = "${local.cluster_name}_worker"
   node_role_arn   = module.eks.worker_iam_role_arn
-  subnet_ids      = module.vpc.private_subnets.0
-  instance_types  = ["m5.large"]
+  subnet_ids      = module.vpc.private_subnets
+
+  instance_types = ["m5.large"]
 
   scaling_config {
     desired_size = 9
@@ -75,7 +76,7 @@ module "eks" {
   cluster_name     = local.cluster_name
   cluster_version  = local.cluster_version
   vpc_id           = module.vpc.vpc_id
-  subnets          = module.vpc.private_subnets.0
+  subnets          = module.vpc.private_subnets
   map_roles        = local.roles
   kubeconfig_name  = local.cluster_name
   write_kubeconfig = "false"

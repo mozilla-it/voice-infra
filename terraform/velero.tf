@@ -1,7 +1,6 @@
 resource "aws_s3_bucket" "velero" {
   bucket_prefix = "velero-voice-prod-"
   acl           = "private"
-  region        = var.region
 
   server_side_encryption_configuration {
     rule {
