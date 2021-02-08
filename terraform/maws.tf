@@ -16,6 +16,15 @@ module "devs_role" {
   ]
 }
 
+module "admins_role" {
+  source       = "github.com/mozilla-it/terraform-modules//aws/maws-roles?ref=master"
+  role_name    = "maws-commonvoice-admin"
+  role_mapping = ["mozilliansorg_voice_aws_admin_access"]
+  policy_arn = [
+    "arn:aws:iam::aws:policy/AdministratorAccess"
+  ]
+}
+
 resource "aws_iam_policy" "devs_policy" {
   name   = "voiceDevelopersPolicy"
   path   = "/"
