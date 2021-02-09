@@ -63,9 +63,9 @@ The deployment pipeline created has 2 clearly differentiated steps: building a c
 The next two sections explain each process in detail.
 
 ## Continuous Integration (CI)
-Continuous Integration from common-voice is done via Travis CI. You can read the public Travis script [here](https://github.com/mozilla/common-voice/blob/main/.travis.yml)
-The general strategy here is to create container images with tags matching the desired deployment environment. For example tagging a commit with "stage-v" will start a Travis build, resulting in a new container image tagged `common-voice:stage-vxxx`. Travis runs with each merge to main, production or stage branches.
-For more information about the precise tags, please read the Travis script. You can also look at the "Environments" section, for an overview.
+Continuous Integration in the common-voice application repo is done using Github Actions. The action builds a docker container with the latests code and pushes it to Dockerhub mozilla/commonvoice Docker Registry.  You can read the public Github Action script [here](https://github.com/mozilla/common-voice/blob/main/.github/workflows/build.yaml)
+The general strategy here is to create container images with tags matching the desired deployment environment. For example tagging a commit with "stage-v" will start a Travis build, resulting in a new container image tagged `common-voice:stage-vxxx`. And action runs with each merge to main, production or stage branches.
+For more information about the precise tags, please read the Github Action definition. You can also look at the "Environments" section, for an overview.
 
 ## Continuous Delivery (CD)
 Continuous Delivery, or deploying into the cluster, is done by FluxCD using Helm Releases.
@@ -85,7 +85,7 @@ Note that this approach is not valid for production, because it leaves no traces
 
 ## Production Deployment
 The deployment of a new production release it's done manually and not completelly automated using FluxCD.  
-In order to deploy a new version of the code to production, we need to have a Docker container built. This can be achieved as explained in previous sections, we recommend tagging a commit with `release-v*`, TravisCI will build and upload to Dockerhub the container. 
+In order to deploy a new version of the code to production, we need to have a Docker container built. This can be achieved as explained in previous sections, we recommend tagging a commit with `release-v*`, Github Actions will build and upload to Dockerhub the container.
 
 After, modify the HelmRelease object specifying the tag for the new Docker image. The HelmRelease file to modify is [here](https://github.com/mozilla-it/voice-infra/blob/master/kubernetes/releases/voice-prod/voice-prod-chart.yaml#L26), commit the changes. In less than 5 minutes FluxCD will reflect the change in the HelmRelease deploying the specified Docker container.
 
@@ -163,7 +163,6 @@ This section lists the different resources needed to build, deploy and run Voice
  - MySQL: primary database
  - Redis: caching layer
  - S3: stores user submitted clips (primarily)
- - Elasticsearch: using the Kibana visualizations, privileged users can see various metrics
 
 ### Other AWS resources needed
  - Route53 domains
