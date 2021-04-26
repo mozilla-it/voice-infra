@@ -22,7 +22,7 @@ spec:
       replicas: 3
       use_external_secrets: true
       use_default_secrets_file: false
-      image: mozilla/commonvoice:main-b1c32d619292b6d8586b4ba4c34ca6b5f3ef5921
+      image: mozilla/commonvoice:main-7bb5bdcc630e21e1a2c3c1f7ebc8dcc0a76a509b
       service_account_name: voice-dev
       extra_annotations:
         configmap.reloader.stakater.com/reload: "voice-config"
