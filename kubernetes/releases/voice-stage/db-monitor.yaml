@@ -13,7 +13,6 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
   labels:
     app: db-monitor
   name: db-monitor
@@ -34,7 +33,7 @@ spec:
         - while true; do echo hello; sleep 100;done
         command:
         - /bin/sh
-        image: 058419420086.dkr.ecr.us-west-2.amazonaws.com/db-monitor:0.0.2
+        image: 058419420086.dkr.ecr.us-west-2.amazonaws.com/db-monitor:0.0.3
         imagePullPolicy: Always
         name: aws-cli
         resources:
