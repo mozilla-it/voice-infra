@@ -14,6 +14,8 @@ RUN wget http://download.redis.io/redis-stable.tar.gz \
     && cd redis-stable \
     && make BUILD_TLS=yes \
     && cp src/redis-cli /usr/local/bin/ \
-    && chmod +x /usr/local/bin/redis-cli
+    && chmod +x /usr/local/bin/redis-cli \
+    && cd .. \
+    && rm -rf redis-stable redis-stable.tar.gz
 
 RUN echo 'alias mysql="mysql --host $CV_MYSQLHOST --user $CV_MYSQLUSER --database voice -p$CV_MYSQL_PASS"' >> /root/.bashrc
