@@ -59,6 +59,7 @@ spec:
           CV_SENTRY_DSN: "https://08902ca27fb24d448975e88d3da5c96b@sentry.prod.mozaws.net/503"
           CV_DATASET_BUCKET_NAME: "mozilla-common-voice-datasets"
           CV_CLIP_BUCKET_NAME: "voice-prod-clips-393eefd0cba28c270ced0f9587a4f6ae601ca91e"
+          CV_FLAG_BUFFER_STREAM_ENABLED: "true"
 
       extra_volumes:
       - name: papertrail-conf
