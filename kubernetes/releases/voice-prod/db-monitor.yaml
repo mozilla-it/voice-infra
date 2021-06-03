@@ -10,7 +10,7 @@ spec:
       property: CV_DB_ROOT_PASS
       name: CV_MYSQL_PASS
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
