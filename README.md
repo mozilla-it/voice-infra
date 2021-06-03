@@ -184,6 +184,24 @@ In order to connect to the database server, run:
 
 Once you are inside the pod, just run `mysql` to connect to the database server.
 
+The db-monitor pod is manually managed. In order to update & deploy the DB monitor pod, there are two possible steps:
+
+1. Update, build, and push the Docker Image (058419420086.dkr.ecr.us-west-2.amazonaws.com/db-monitor). 
+
+```
+maws  # log into AWS account appsvcs-voice via MAWS or however you prefer, as maws-commonvoice-admin
+aws ecr get-login-password | docker login --username AWS --password-stdin 058419420086.dkr.ecr.us-west-2.amazonaws.com
+docker build -t 058419420086.dkr.ecr.us-west-2.amazonaws.com/db-monitor:0.0.3 dockerfiles/db-monitor/  # uptick tagged version as relevant, will require update in k8s manifest mentioned below
+docker push 058419420086.dkr.ecr.us-west-2.amazonaws.com/db-monitor:0.0.3
+```
+
+2. Redeploy the db-monitor deployment:
+```
+vi kubernetes/releases/voice-stage/db-monitor.yaml  # change anything that might need changing, like docker image for stage environment
+vi kubernetes/releases/voice-prod/db-monitor.yaml  # ditto for prod environment
+kubectl apply -f kubernetes/releases/voice-stage/db-monitor.yaml
+kubectl apply -f kubernetes/releases/voice-prod/db-monitor.yaml
+```
 
 # Sentence Collector
 [Sentence Collector](https://github.com/Common-Voice/sentence-collector) is an application used to collect sentences from users, which will be later used in Common Voice.
