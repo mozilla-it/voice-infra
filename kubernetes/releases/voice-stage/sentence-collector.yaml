@@ -17,7 +17,7 @@ spec:
     environment: stage
     image:
       repository: mozilla/sentencecollector
-      tag: main-0c6ded6e
+      tag: main-7b0f282d
     ingress:
       enabled: true
       annotations:
