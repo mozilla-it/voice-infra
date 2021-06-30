@@ -17,7 +17,7 @@ spec:
     environment: prod
     image:
       repository: mozilla/sentencecollector
-      tag: v2
+      tag: v2.5.3
     ingress:
       enabled: true
       annotations:
