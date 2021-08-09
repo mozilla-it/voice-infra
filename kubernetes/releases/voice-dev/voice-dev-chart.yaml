@@ -22,13 +22,13 @@ spec:
       replicas: 3
       use_external_secrets: true
       use_default_secrets_file: false
-      image: mozilla/commonvoice:main-5733f3f878906b170b8f3be655332d7cac246009
+      image: mozilla/commonvoice:main-7c47af0ded8c3860ab2ef565a5d65e8603bf17be
       service_account_name: voice-dev
       extra_annotations:
         configmap.reloader.stakater.com/reload: "voice-config"
         secret.reloader.stakater.com/reload: "voice"
       imagePullSecrets:
-        - name: voice-dockerhub
+      - name: voice-dockerhub
 
       ingress:
         enabled: true
