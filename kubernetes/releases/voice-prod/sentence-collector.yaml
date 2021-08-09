@@ -6,7 +6,7 @@ metadata:
   namespace: voice-prod
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:v*
+    filter.fluxcd.io/chart-image: regex:^(v[0-9]+.[0-9]+.[0-9]+)$
 spec:
   releaseName: sentence-collector-prod
   chart:
