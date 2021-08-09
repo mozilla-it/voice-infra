@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://mozilla-it.github.io/helm-charts/
     name: mozilla-common-voice
-    version: 0.4.1
+    version: 0.4.5
   values:
     voice_web:
       # Customize deployment name per environment to make hostnames differents,
@@ -27,6 +27,8 @@ spec:
       extra_annotations:
         configmap.reloader.stakater.com/reload: "voice-config"
         secret.reloader.stakater.com/reload: "voice"
+      imagePullSecrets:
+        - name: voice-dockerhub
 
       ingress:
         enabled: true
