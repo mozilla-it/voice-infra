@@ -27,8 +27,6 @@ spec:
       extra_annotations:
         configmap.reloader.stakater.com/reload: "voice-config"
         secret.reloader.stakater.com/reload: "voice"
-      imagePullSecrets:
-      - name: voice-dockerhub
 
       ingress:
         enabled: true
