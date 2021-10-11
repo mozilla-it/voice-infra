@@ -5,7 +5,7 @@ metadata:
   namespace: stats
 spec:
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com
+    repository: https://grafana.github.io/helm-charts
     name: grafana
     version: 6.11.0
   values:
