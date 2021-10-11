@@ -7,8 +7,10 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com
     name: grafana
-    version: 5.5.5
+    version: 6.11.0
   values:
+    image:
+      tag: 7.5.11
     ingress:
       enabled: true
       annotations:
