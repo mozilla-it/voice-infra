@@ -22,7 +22,6 @@ spec:
         enable-underscores-in-headers: "true"
       ingressClass: voice-dev # Value used for selecting Ingress objects
       kind: Deployment
-      name: ingress-voice-dev
       replicaCount: 1
       scope:
         enabled: true
