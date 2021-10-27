@@ -5,12 +5,12 @@ metadata:
   namespace: voice-sandbox
 spec:
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com
-    name: nginx-ingress
-    version: 1.31.0
+    repository: https://kubernetes.github.io/ingress-nginx
+    name: ingress-nginx
+    version: "3.33.0"
   values:
+    fullnameOverride: "voice-sandbox-ingress-nginx"
     controller:
-      name: ingress-voice-sandbox
       ingressClass: voice-sandbox # Value used for selecting Ingress objects
       scope:
         enabled: true
@@ -22,7 +22,6 @@ spec:
         X-Content-Type-Options: "nosniff"
         X-XSS-Protection: "1; mode=block"
         Strict-Transport-Security: "max-age=31536000"
-
       service:
         targetPorts:
           https: http
